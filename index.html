@@ -8,6 +8,7 @@
     <meta name="description"
         content="India’s first microbiome profiling platform delivering personalized gut insights using advanced long-read sequencing and expert scientific analysis.">
     <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -18,14 +19,24 @@
                 <div class="logo-tagline">Microbes to Medicine</div>
             </a>
             <nav class="flex items-center">
-                <div class="nav-links flex">
-                    <a href="index.html">Home</a>
+                <div class="nav-links flex items-center">
+                    <a href="index.html" class="active">Home</a>
                     <a href="atlas.html">Jivanu Atlas™</a>
                     <a href="rebiome.html">ReBiome™</a>
                     <a href="novabiome.html">NovaBiome™</a>
-                    <a href="team.html">Team</a>
-                    <a href="careers.html">Careers</a>
-                    <a href="contact.html">Contact</a>
+                </div>
+
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+                    <a href="team.html" class="mobile-link">Team</a>
+                    <a href="careers.html" class="mobile-link">Careers</a>
+                    <a href="contact.html" class="mobile-link">Contact</a>
+                    <a href="evidence.html" class="mobile-link">Clinical Evidence</a>
                 </div>
             </nav>
         </div>
@@ -36,22 +47,20 @@
         <section class="hero">
             <div class="container flex items-center">
                 <div class="hero-content" style="flex: 0 0 55%; max-width: 650px; margin-right: 5rem;">
-                    <h1>Welcome to Jivanu</h1>
+                    <h1 style="font-size: 2.8rem; line-height: 1.2; margin-bottom: 2rem; color: var(--navy);">The
+                        future of Medicine is already inside you!</h1>
+
+                    <p
+                        style="font-size: 1.6rem; color: var(--cyan); font-weight: 700; margin-bottom: 0px; font-family: 'Outfit', sans-serif;">
+                        Translating Microbial Complexity into Clinical Clarity</p>
+
                     <h2
-                        style="font-size: 1.6rem; margin-bottom: 2rem; color: var(--cyan); letter-spacing: 0.5px; line-height: 1.3;">
-                        Transforming Healthcare Through Microbiome-Based Therapies</h2>
-                    <p
-                        style="font-size: 1.15rem; color: var(--navy); font-weight: 500; margin-bottom: 0.5rem; text-align: justify; line-height: 1.6;">
-                        <strong>India’s Early Innovator in Microbiome-Based Therapeutics</strong>
-                    </p>
-                    <p
-                        style="font-size: 1.15rem; text-align: justify; color: var(--text); line-height: 1.8;margin-bottom: 1 rem">
-                        Science-Driven Solutions for Complex Diseases of the Gut, Brain, Liver, and Beyond.</p> Our
-                    approach is grounded in rigorous biology, systems-level understanding, and translational
-                    science-moving discoveries from the lab to meaningful clinical impact. At Jivanu, we believe the
-                    future of medicine lies not in symptom management, but in precise, mechanism-driven
-                    interventions that truly work. With a focus on accessibility, efficacy, and scalability, we are
-                    committed to revolutionizing healthcare through microbiome-based treatments.</p>
+                        style="font-size: 1.4rem; font-weight: 400; margin-bottom: 2rem; color: var(--text-main); line-height: 1.6; font-family: 'Inter', sans-serif; text-align: justify;">
+                        Jivanu is pioneering India’s first wave of microbiome-based therapeutics- moving beyond
+                        symptom
+                        management to deliver science driven cures for the gut, brain, liver and beyond.
+                    </h2>
+
                 </div>
                 <div class="hero-visual">
                     <img src="assets/images/hero.png" alt="Microbiome Visualization">
@@ -125,8 +134,9 @@
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
                     </ul>
                 </div>
             </div>

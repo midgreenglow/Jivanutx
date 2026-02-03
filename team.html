@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="js/script.js" defer></script>
     <style>
         .team-section {
             padding: 80px 0;
@@ -142,14 +143,24 @@
                 <div class="logo-tagline">Microbes to Medicine</div>
             </a>
             <nav class="flex items-center">
-                <div class="nav-links flex">
+                <div class="nav-links flex items-center">
                     <a href="index.html">Home</a>
                     <a href="atlas.html">Jivanu Atlas™</a>
                     <a href="rebiome.html">ReBiome™</a>
                     <a href="novabiome.html">NovaBiome™</a>
-                    <a href="team.html" class="active">Team</a>
-                    <a href="careers.html">Careers</a>
-                    <a href="contact.html">Contact</a>
+                </div>
+
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+                    <a href="team.html" class="mobile-link">Team</a>
+                    <a href="careers.html" class="mobile-link">Careers</a>
+                    <a href="contact.html" class="mobile-link">Contact</a>
+                    <a href="evidence.html" class="mobile-link">Clinical Evidence</a>
                 </div>
             </nav>
         </div>
@@ -401,8 +412,9 @@
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
                     </ul>
                 </div>
             </div>

@@ -21,6 +21,7 @@
             transform: scale(1.05);
         }
     </style>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -31,14 +32,24 @@
                 <div class="logo-tagline">Microbes to Medicine</div>
             </a>
             <nav class="flex items-center">
-                <div class="nav-links flex">
+                <div class="nav-links flex items-center">
                     <a href="index.html">Home</a>
                     <a href="atlas.html">Jivanu Atlas™</a>
                     <a href="rebiome.html">ReBiome™</a>
-                    <a href="novabiome.html">NovaBiome™</a>
-                    <a href="team.html">Team</a>
-                    <a href="careers.html">Careers</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="novabiome.html" class="active">NovaBiome™</a>
+                </div>
+
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+                    <a href="team.html" class="mobile-link">Team</a>
+                    <a href="careers.html" class="mobile-link">Careers</a>
+                    <a href="contact.html" class="mobile-link">Contact</a>
+                    <a href="evidence.html" class="mobile-link">Clinical Evidence</a>
                 </div>
             </nav>
         </div>
