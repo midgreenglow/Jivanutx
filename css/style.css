@@ -1642,6 +1642,66 @@ footer {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .hero-visual {
+        width: 100%;
+    }
+
+    .hero-visual img {
+        max-width: 100%;
+        border-radius: 18px;
+    }
+
+    .section-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.9rem;
+    }
+
+    .section-header p {
+        font-size: 1rem;
+    }
+
+    .pricing-card {
+        max-width: 100% !important;
+        padding: 2.5rem 2rem !important;
+    }
+
+    .pricing-card h2 {
+        font-size: 3rem !important;
+    }
+
+    .pricing-card div[style*="justify-content: space-between"] {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .pricing-card div[style*="text-align: left"] {
+        padding: 1.5rem !important;
+    }
+
+    .donor-cards {
+        gap: 1.5rem !important;
+    }
+
+    .donor-cards .problem-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .feature-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-card img {
+        height: 220px !important;
+    }
 }
 
 /* Page background helper classes */
