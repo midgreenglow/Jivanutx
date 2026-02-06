@@ -1894,6 +1894,17 @@ body[class^="bg-"] {
     transition: background-color 0.3s ease;
 }
 
+.comp-bio-visual {
+    overflow: hidden;
+}
+
+.comp-bio-visual img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 @media (min-width: 769px) {
     .reach-out-btn {
         padding-left: 48px;

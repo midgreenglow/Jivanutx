@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const themeToggles = document.querySelectorAll('[data-theme-toggle]');
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const initialTheme = savedTheme || 'dark';
     root.setAttribute('data-theme', initialTheme);
 
     themeToggles.forEach((toggle) => {
