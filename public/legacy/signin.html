@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In | Jivanu Therapeutics</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+    <script src="js/auth.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="logo-container">
+                <div class="logo">Jivanu<span>.</span></div>
+                <div class="logo-tagline">Microbes to Medicine</div>
+            </a>
+            <nav class="flex items-center">
+                <div class="nav-links flex items-center">
+                    <a href="index.html">Home</a>
+                    <a href="atlas.html">Jivanu Atlas™</a>
+                    <a href="rebiome.html">ReBiome™</a>
+                    <a href="novabiome.html">NovaBiome™</a>
+                </div>
+
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+<a href="signin.html" class="mobile-link signin-link active">Sign In</a>
+                    <div class="mobile-section-label mobile-only">Platforms</div>
+                    <a href="atlas.html" class="mobile-link mobile-only">Jivanu Atlas™</a>
+                    <a href="rebiome.html" class="mobile-link mobile-only">ReBiome™</a>
+                    <a href="novabiome.html" class="mobile-link mobile-only">NovaBiome™</a>
+                    <a href="team.html" class="mobile-link">Team</a>
+                    <a href="careers.html" class="mobile-link">Careers</a>
+                    <a href="contact.html" class="mobile-link">Contact</a>
+                    <a href="evidence.html" class="mobile-link">Clinical Evidence</a>
+                    <div class="mobile-divider"></div>
+                                    <button class="mobile-logout" id="mobile-logout" type="button">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="auth-section">
+            <div class="container">
+                <div class="auth-header">
+                    <h1 class="section-title">Sign In to Your Account</h1>
+                    <p class="section-lead">Access your reports and account details.</p>
+                </div>
+
+                <div class="auth-card auth-card-wide auth-panel">
+                    <form id="login-form">
+                        <div class="auth-inline">
+                            <div class="auth-field">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="you@example.com" required>
+                            </div>
+                            <div class="auth-or">OR</div>
+                            <div class="auth-field">
+                                <label>Mobile</label>
+                                <input type="text" name="phone" placeholder="+91 90000 00000">
+                            </div>
+                        </div>
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="••••••••" required>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </form>
+
+                    <div class="auth-divider"><span>or</span></div>
+
+                    <div id="otp-request-section">
+                        <form id="otp-request-form">
+                            <label>Email OR Mobile</label>
+                            <input type="text" name="identifier" placeholder="email or phone" required>
+                            <button type="submit" class="btn btn-secondary">Login / Sign In with OTP</button>
+                        </form>
+                    </div>
+
+                    <div class="otp-code" id="otp-code"></div>
+
+                    <div id="otp-verify-section" style="display: none;">
+                        <form id="otp-verify-form">
+                            <label>Enter Code</label>
+                            <input type="text" name="code" placeholder="6-digit code" required>
+                            <button type="submit" class="btn btn-primary">Verify & Sign In</button>
+                        </form>
+                    </div>
+
+                    <p class="auth-helper">New here? <a href="signup.html">Create an account</a></p>
+                    <p class="auth-helper">We will send the code to your email or phone.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<footer>
+        <div class="container">
+            <div class="grid footer-grid">
+                <div>
+                    <a href="index.html" class="footer-logo-link"><img src="assets/images/Jivanu_Logo.png" alt="Jivanu Logo"
+                        style="max-width: 280px; margin-bottom: 1.5rem;"></a>
+                    </div>
+                <div class="footer-links">
+                    <h4>Platforms</h4>
+                    <ul>
+                        <li><a href="atlas.html">Jivanu Atlas™</a></li>
+                        <li><a href="rebiome.html">ReBiome™</a></li>
+                        <li><a href="novabiome.html">NovaBiome™</a></li>
+                    </ul>
+                    </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
+                    </ul>
+                    </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Jivanu Therapeutics Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
