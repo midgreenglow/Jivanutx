@@ -1216,6 +1216,168 @@ footer {
     border-color: #1d2a38;
 }
 
+/* India highlight — light mode */
+.india-highlight {
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+/* Dark mode — make it amber/yellow so it pops on dark bg */
+[data-theme="dark"] .india-highlight {
+    color: #f59e0b;
+}
+
+/* Dark mode hero text fixes */
+[data-theme="dark"] .hero-lead {
+    color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .hero-title {
+    color: var(--text-main) !important;
+}
+
+/* Dark mode — Science-Driven Solutions section & general section text */
+[data-theme="dark"] .section {
+    background-color: var(--white);
+}
+
+[data-theme="dark"] .section h2,
+[data-theme="dark"] .section h3,
+[data-theme="dark"] .section h4 {
+    color: var(--text-main) !important;
+}
+
+/* Dark mode — navy-background sections: force text back to actual white/bright
+   because --white gets remapped to near-black in dark mode */
+[data-theme="dark"] [style*="background: var(--navy)"] h2,
+[data-theme="dark"] [style*="background: var(--navy)"] h3,
+[data-theme="dark"] [style*="background: var(--navy)"] h4 {
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] [style*="background: var(--navy)"] p {
+    color: #94a3b8 !important;
+}
+
+/* Science-Driven Solutions cards — text inside navy section */
+[data-theme="dark"] [style*="background: var(--navy)"] .feature-card h3 {
+    color: #f1f5f9 !important;
+}
+
+[data-theme="dark"] [style*="background: var(--navy)"] .feature-card p {
+    color: #94a3b8 !important;
+}
+
+/* Badge/status tags inside those cards */
+[data-theme="dark"] [style*="background: var(--navy)"] .feature-card span {
+    color: #64748b !important;
+}
+
+[data-theme="dark"] .section p {
+    color: var(--text-muted) !important;
+}
+
+/* Dark mode — white background sections (light-bg) */
+[data-theme="dark"] .section[style*="background: var(--light-bg)"],
+[data-theme="dark"] [style*="background: var(--light-bg)"] {
+    background: var(--light-bg) !important;
+}
+
+/* Dark mode — cards with white background */
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .problem-card {
+    background: #0f151c !important;
+    border-color: #1d2a38 !important;
+    color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .feature-card h3,
+[data-theme="dark"] .feature-card p,
+[data-theme="dark"] .problem-card h3,
+[data-theme="dark"] .problem-card p {
+    color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .feature-card h3 {
+    color: var(--text-main) !important;
+}
+
+/* Hero tag pill — "WORK WITH US" outlined style */
+.tag {
+    display: inline-block;
+    padding: 0.45rem 1.25rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--cyan);
+    color: var(--cyan);
+    background: transparent;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+}
+
+/* Dark mode — tag pill */
+[data-theme="dark"] .tag {
+    border-color: var(--cyan) !important;
+    color: var(--cyan) !important;
+    background: rgba(31, 202, 211, 0.08) !important;
+}
+
+/* NovaBiome — hero glassmorphic box dark mode */
+[data-theme="dark"] .nova-hero-content {
+    background: rgba(15, 21, 28, 0.92) !important;
+    border-color: rgba(31, 202, 211, 0.2) !important;
+}
+
+[data-theme="dark"] .nova-hero-content h1 {
+    color: var(--text-main) !important;
+}
+
+[data-theme="dark"] .nova-subtitle {
+    color: var(--cyan) !important;
+}
+
+[data-theme="dark"] .nova-hero-content p {
+    color: var(--text-muted) !important;
+}
+
+/* Dark mode — section with navy background stays navy */
+[data-theme="dark"] [style*="background: var(--navy)"] h2,
+[data-theme="dark"] [style*="background: var(--navy)"] p {
+    color: var(--white) !important;
+}
+
+/* Dark mode — footer */
+[data-theme="dark"] footer {
+    background: #080e14 !important;
+    border-top: 1px solid #1d2a38;
+}
+
+[data-theme="dark"] footer h4,
+[data-theme="dark"] footer a,
+[data-theme="dark"] footer p {
+    color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] footer a:hover {
+    color: var(--cyan) !important;
+}
+
+/* Dark mode — donor cards on ReBiome */
+[data-theme="dark"] [style*="background: white"] {
+    background: #0f151c !important;
+}
+
+[data-theme="dark"] [style*="background: white"] h3,
+[data-theme="dark"] [style*="background: white"] p {
+    color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] [style*="background: white"] h3 {
+    color: var(--text-main) !important;
+}
+
 [data-theme="dark"] .report-card h3,
 [data-theme="dark"] .report-card p {
     color: var(--text-main);

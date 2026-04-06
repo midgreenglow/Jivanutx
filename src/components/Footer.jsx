@@ -22,6 +22,9 @@ export default function Footer() {
                 <Link to="/atlas">Jivanu Atlas™</Link>
               </li>
               <li>
+                <Link to="/pathobiome">Pathobiome™</Link>
+              </li>
+              <li>
                 <Link to="/rebiome">ReBiome™</Link>
               </li>
               <li>
