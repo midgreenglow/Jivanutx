@@ -17,6 +17,7 @@ export default function Navbar() {
     () => [
       { to: '/', label: 'Home', end: true },
       { to: '/atlas', label: 'Jivanu Atlas™' },
+      { to: '/pathobiome', label: 'Pathobiome™' },
       { to: '/rebiome', label: 'ReBiome™' },
       { to: '/novabiome', label: 'NovaBiome™' }
     ],

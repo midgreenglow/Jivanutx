@@ -55,63 +55,183 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="hero">
+        <section class="hero" style="position: relative; overflow: hidden; padding-top: 150px; padding-bottom: 80px;">
+            <!-- Moving Minimalist Background -->
+            <style>
+                @keyframes softDrift {
+                    0% { transform: translate(0px, 0px) scale(1); opacity: 0.3; }
+                    50% { transform: translate(50px, -50px) scale(1.1); opacity: 0.5; }
+                    100% { transform: translate(0px, 0px) scale(1); opacity: 0.3; }
+                }
+                @keyframes softDrift2 {
+                    0% { transform: translate(0px, 0px) scale(1); opacity: 0.4; }
+                    50% { transform: translate(-40px, 60px) scale(1.15); opacity: 0.6; }
+                    100% { transform: translate(0px, 0px) scale(1); opacity: 0.4; }
+                }
+                .hero-bg-blob1 {
+                    position: absolute; top: -10%; left: -5%; width: 50%; height: 60%;
+                    background: radial-gradient(circle, rgba(31, 202, 211, 0.15) 0%, transparent 70%);
+                    border-radius: 50%; filter: blur(60px); z-index: -1; animation: softDrift 15s ease-in-out infinite;
+                }
+                .hero-bg-blob2 {
+                    position: absolute; bottom: -20%; right: -10%; width: 60%; height: 70%;
+                    background: radial-gradient(circle, rgba(224, 242, 254, 0.6) 0%, transparent 70%);
+                    border-radius: 50%; filter: blur(60px); z-index: -1; animation: softDrift2 18s ease-in-out infinite;
+                }
+            </style>
+            <div class="hero-bg-blob1"></div>
+            <div class="hero-bg-blob2"></div>
+
             <div class="container flex items-center">
-                <div class="hero-content" style="flex: 0 0 55%; max-width: 650px; margin-right: 5rem;">
+                <div class="hero-content" style="flex: 0 0 45%; max-width: 550px; margin-right: 3rem; z-index: 5;">
                     
-                    <h1 class="hero-title">The
+                    <h1 class="hero-title" style="font-size: 3.8rem; line-height: 1.15; letter-spacing: -1px; margin-bottom: 1.5rem;">The
                         future of Medicine is already inside you!</h1>
 
-                    <p class="hero-subtitle"><strong>Translating Microbial Complexity into Clinical Clarity</strong></p>
+                    <p class="hero-subtitle" style="color: #0f172a; font-size: 1.35rem; margin-bottom: 1.5rem;"><strong>Translating Microbial Complexity into Clinical Clarity</strong></p>
 
-                    <p class="hero-lead">
-                        Jivanu is pioneering India’s first wave of microbiome-based therapeutics, moving beyond
-                        symptom
-                        management to deliver science driven cures for the gut, brain, liver and beyond.
+                    <p class="hero-lead" style="text-align: justify; font-size: 1.15rem; color: #475569; line-height: 1.8;">
+                        Jivanu is pioneering India’s first wave of microbiome-based therapeutics. We're moving beyond mere symptom management to deliver science-driven cures for chronic gut, brain, and immune diseases, all explained in simple terms so you can take control of your health.
                     </p>
                     </div>
-                <div class="hero-visual">
-                    <img src="assets/images/hero.png" alt="Microbiome Visualization">
-                    </div>
+                <div class="hero-visual" style="flex: 1; display: flex; justify-content: center; align-items: center; min-height: 600px; position: relative;">
+                    <!-- Custom SVG Microbiome Visualization (Enlarged) -->
+                    <div style="position: absolute; width: 450px; height: 450px; background: radial-gradient(circle, rgba(31, 202, 211, 0.15) 0%, transparent 70%); animation: pulse 6s infinite alternate; z-index: 1;"></div>
+                    <svg width="600" height="600" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="z-index: 2; overflow: visible;">
+                        <style>
+                            @keyframes float1 { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-10px, -20px) scale(1.05); } 100% { transform: translate(0, 0) scale(1); } }
+                            @keyframes float2 { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(15px, 15px) scale(0.95); } 100% { transform: translate(0, 0) scale(1); } }
+                            @keyframes float3 { 0% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-15px, 15px) scale(1.1); } 100% { transform: translate(0, 0) scale(1); } }
+                            @keyframes glow { 0% { filter: drop-shadow(0 0 10px rgba(31,202,211,0.5)); } 50% { filter: drop-shadow(0 0 25px rgba(31,202,211,0.8)); } 100% { filter: drop-shadow(0 0 10px rgba(31,202,211,0.5)); } }
+                            @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                            .microbe-1 { animation: float1 8s ease-in-out infinite, glow 4s ease-in-out infinite; transform-origin: center; filter: drop-shadow(0 0 15px rgba(31,202,211,0.6)); }
+                            .microbe-2 { animation: float2 10s ease-in-out infinite; transform-origin: center; }
+                            .microbe-3 { animation: float3 9s ease-in-out infinite; transform-origin: center; filter: drop-shadow(0 0 10px rgba(15,23,42,0.4)); }
+                            .DNA-ring { animation: rotate 30s linear infinite; transform-origin: center; }
+                        </style>
+                        
+                        <!-- Intersecting connecting rings -->
+                        <circle cx="200" cy="200" r="150" stroke="var(--cyan)" stroke-width="1" stroke-dasharray="10 15" opacity="0.3" class="DNA-ring" />
+                        <circle cx="200" cy="200" r="100" stroke="var(--navy)" stroke-width="2" stroke-dasharray="20 10 5 10" opacity="0.15" class="DNA-ring" style="animation-duration: 40s; animation-direction: reverse;" />
+                        <circle cx="200" cy="200" r="180" stroke="var(--cyan)" stroke-width="0.5" opacity="0.2" />
+
+                        <!-- Core glowing microbiome structure -->
+                        <g class="microbe-1">
+                            <!-- Complex glassmorphic central cell -->
+                            <rect x="140" y="140" width="120" height="120" rx="40" fill="url(#coreGradient)" stroke="var(--cyan)" stroke-width="3" opacity="0.9" />
+                            <circle cx="200" cy="200" r="30" fill="white" opacity="0.1" />
+                            <path d="M165 170 Q200 150 235 170" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+                            <path d="M165 230 Q200 250 235 230" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.5"/>
+                        </g>
+
+                        <!-- Satellite beneficial bacteria (rod-shaped) -->
+                        <g class="microbe-2">
+                            <rect x="270" y="80" width="30" height="70" rx="15" fill="var(--navy)" opacity="0.8" transform="rotate(30 285 115)" />
+                            <rect x="70" y="240" width="25" height="60" rx="12.5" fill="var(--cyan)" opacity="0.7" transform="rotate(-45 82 270)" />
+                            <circle cx="300" cy="250" r="15" fill="var(--navy)" opacity="0.6"/>
+                        </g>
+
+                        <!-- Satellite beneficial bacteria (spherical) -->
+                        <g class="microbe-3">
+                            <circle cx="100" cy="120" r="25" fill="url(#cyanGradient)" opacity="0.8"/>
+                            <circle cx="95" cy="115" r="5" fill="white" opacity="0.4"/>
+                            
+                            <circle cx="290" cy="290" r="35" fill="url(#navyGradient)" opacity="0.9"/>
+                            <circle cx="280" cy="280" r="8" fill="white" opacity="0.2"/>
+                            
+                            <circle cx="180" cy="70" r="12" fill="var(--cyan)" opacity="0.6"/>
+                        </g>
+                        
+                        <!-- Floating connective tissue / particles -->
+                        <circle cx="150" cy="250" r="3" fill="var(--cyan)" opacity="0.8"><animate attributeName="cy" values="250;230;250" dur="4s" repeatCount="indefinite" /></circle>
+                        <circle cx="260" cy="160" r="4" fill="var(--navy)" opacity="0.5"><animate attributeName="cy" values="160;180;160" dur="5s" repeatCount="indefinite" /></circle>
+                        <circle cx="120" cy="200" r="2" fill="var(--cyan)" opacity="0.9"><animate attributeName="cx" values="120;140;120" dur="3s" repeatCount="indefinite" /></circle>
+                        <circle cx="240" cy="260" r="5" fill="var(--cyan)" opacity="0.3"><animate attributeName="r" values="5;8;5" dur="3s" repeatCount="indefinite" /></circle>
+                        
+                        <!-- Defs for Gradients -->
+                        <defs>
+                            <linearGradient id="coreGradient" x1="140" y1="140" x2="260" y2="260" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#1fcad3" stop-opacity="0.8" />
+                                <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+                            </linearGradient>
+                            <radialGradient id="cyanGradient" cx="100" cy="120" r="25" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#ffffff" />
+                                <stop offset="40%" stop-color="#1fcad3" />
+                                <stop offset="100%" stop-color="#138d94" />
+                            </radialGradient>
+                            <radialGradient id="navyGradient" cx="290" cy="290" r="35" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#334155" />
+                                <stop offset="100%" stop-color="#0f172a" />
+                            </radialGradient>
+                        </defs>
+                    </svg>
+                </div>
             </div>
         </section>
 
-        <!-- Platforms Section -->
-        <section class="section platforms-dark-section">
+        <!-- Science-Driven Solutions Section -->
+        <section class="section" style="background: var(--navy);">
             <div class="container">
-                <div class="section-header">
-                    <h2>Science-Driven Solutions</h2>
-                    <p>Moving discoveries from the lab to meaningful clinical impact.</p>
+                <div class="section-header" style="text-align: center;">
+                    <h2 style="color: var(--white);">Science-Driven Solutions</h2>
+                    <p style="color: var(--text-muted); font-size: 1.15rem;">Moving discoveries from the lab to meaningful clinical impact.</p>
+                </div>
+                <!-- 4-column grid for platforms -->
+                <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
+                    
+                    <!-- Jivanu Atlas -->
+                    <div class="feature-card" style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 2.5rem 1.5rem; border-radius: 16px;">
+                        <div class="icon-wrapper" style="width: 48px; height: 48px; background: rgba(31, 202, 211, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+                            <span style="font-size: 1.5rem;">📊</span>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <h3 style="color: var(--white); margin: 0; font-size: 1.25rem;">Jivanu Atlas™</h3>
+                            <span style="font-size: 0.65rem; padding: 4px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px;">AVAILABLE NOW</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; min-height: 80px;">Personalized Microbiome Profiling Platform for individuals and clinicians.</p>
+                        <a href="atlas.html" style="color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</a>
                     </div>
-                <div class="platforms-grid">
-                    <a href="atlas.html" class="dark-platform-card">
-                        <div class="platform-icon">📊</div>
-                        <h3>
-                            Jivanu Atlas™
-                            <span class="status-tag">AVAILABLE NOW</span>
-                        </h3>
-                        <p>Personalized Microbiome Profiling Platform for individuals and clinicians.</p>
-                        <div class="explore-link">Explore Platform <span>→</span></div>
-                    </a>
-                    <a href="rebiome.html" class="dark-platform-card">
-                        <div class="platform-icon">🧫</div>
-                        <h3>
-                            ReBiome™
-                            <span class="status-tag">CLINICAL PHASE</span>
-                        </h3>
-                        <p>Microbiota Restoration Platform focused on FMT-based therapeutics.</p>
-                        <div class="explore-link">Explore Platform <span>→</span></div>
-                    </a>
-                    <a href="novabiome.html" class="dark-platform-card">
-                        <div class="platform-icon">🧬</div>
-                        <h3>
-                            NovaBiome™
-                            <span class="status-tag">R&D</span>
-                        </h3>
-                        <p>Next-Generation Microbiome Therapeutics Platform.</p>
-                        <div class="explore-link">Explore Platform <span>→</span></div>
-                    </a>
+
+                    <!-- Pathobiome -->
+                    <div class="feature-card" style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 2.5rem 1.5rem; border-radius: 16px;">
+                        <div class="icon-wrapper" style="width: 48px; height: 48px; background: rgba(255, 159, 64, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+                            <span style="font-size: 1.5rem;">🔬</span>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <h3 style="color: var(--white); margin: 0; font-size: 1.25rem;">Pathobiome™</h3>
+                            <span style="font-size: 0.65rem; padding: 4px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px;">R&D</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; min-height: 80px;">Predictive microbial diagnostics and targeted therapies.</p>
+                        <a href="pathobiome.html" style="color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</a>
                     </div>
+
+                    <!-- ReBiome -->
+                    <div class="feature-card" style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 2.5rem 1.5rem; border-radius: 16px;">
+                        <div class="icon-wrapper" style="width: 48px; height: 48px; background: rgba(255, 99, 132, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+                            <span style="font-size: 1.5rem;">💊</span>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <h3 style="color: var(--white); margin: 0; font-size: 1.25rem;">ReBiome™</h3>
+                            <span style="font-size: 0.65rem; padding: 4px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px;">CLINICAL PHASE</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; min-height: 80px;">Microbiota Restoration Platform focused on FMT-based therapeutics.</p>
+                        <a href="rebiome.html" style="color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</a>
+                    </div>
+
+                    <!-- NovaBiome -->
+                    <div class="feature-card" style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); padding: 2.5rem 1.5rem; border-radius: 16px;">
+                        <div class="icon-wrapper" style="width: 48px; height: 48px; background: rgba(153, 102, 255, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem;">
+                            <span style="font-size: 1.5rem;">🧬</span>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+                            <h3 style="color: var(--white); margin: 0; font-size: 1.25rem;">NovaBiome™</h3>
+                            <span style="font-size: 0.65rem; padding: 4px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px;">R&D</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; min-height: 80px;">Next-Generation Microbiome Therapeutics Platform.</p>
+                        <a href="novabiome.html" style="color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</a>
+                    </div>
+                    
+                </div>
             </div>
         </section>
     </main>

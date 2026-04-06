@@ -8,6 +8,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const AtlasPage = lazy(() => import('./pages/AtlasPage'));
 const RebiomePage = lazy(() => import('./pages/RebiomePage'));
 const NovabiomePage = lazy(() => import('./pages/NovabiomePage'));
+const PathobiomePage = lazy(() => import('./pages/PathobiomePage'));
 const TeamPage = lazy(() => import('./pages/TeamPage'));
 const CareersPage = lazy(() => import('./pages/CareersPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
@@ -36,6 +37,7 @@ export default function App() {
             <Route path="/atlas" element={<AtlasPage />} />
             <Route path="/rebiome" element={<RebiomePage />} />
             <Route path="/novabiome" element={<NovabiomePage />} />
+            <Route path="/pathobiome" element={<PathobiomePage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/careers" element={<CareersPage />} />
             <Route path="/contact" element={<ContactPage />} />
@@ -52,6 +54,7 @@ export default function App() {
             <Route path="/atlas.html" element={<Navigate to="/atlas" replace />} />
             <Route path="/rebiome.html" element={<Navigate to="/rebiome" replace />} />
             <Route path="/novabiome.html" element={<Navigate to="/novabiome" replace />} />
+            <Route path="/pathobiome.html" element={<Navigate to="/pathobiome" replace />} />
             <Route path="/team.html" element={<Navigate to="/team" replace />} />
             <Route path="/careers.html" element={<Navigate to="/careers" replace />} />
             <Route path="/contact.html" element={<Navigate to="/contact" replace />} />

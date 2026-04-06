@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jivanu Pathobiome™ | Pathogen & ARG Detection</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
+</head>
+
+<body class="bg-f5f7fa">
+    <header class="site-header">
+        <div class="container flex justify-between items-center">
+            <a href="index.html" class="logo-container">
+                <div class="logo">Jivanu<span>.</span></div>
+                <div class="logo-tagline">Microbes to Medicine</div>
+            </a>
+            <nav class="flex items-center">
+                <div class="nav-links flex items-center">
+                    <a href="index.html">Home</a>
+                    <a href="atlas.html">Jivanu Atlas™</a>
+                    <a href="rebiome.html">ReBiome™</a>
+                    <a href="novabiome.html">NovaBiome™</a>
+                    <a href="pathobiome.html" class="active">Pathobiome™</a>
+                </div>
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+
+                <div class="mobile-menu-overlay" id="mobile-menu-overlay">                    <div class="mobile-signin-row">
+                        <a href="signin.html" class="mobile-link signin-link">Sign In</a>
+                        <label class="theme-switch compact">
+                            <input type="checkbox" class="theme-toggle-input" data-theme-toggle aria-label="Toggle dark mode">
+                            <span class="theme-slider"><span class="theme-knob"></span></span>
+                        </label>
+                    </div>
+<div class="mobile-section-label mobile-only">Platforms</div>
+                    <a href="atlas.html" class="mobile-link mobile-only">Jivanu Atlas™</a>
+                    <a href="rebiome.html" class="mobile-link mobile-only">ReBiome™</a>
+                    <a href="novabiome.html" class="mobile-link mobile-only">NovaBiome™</a>
+                    <a href="pathobiome.html" class="mobile-link mobile-only">Pathobiome™</a>
+                    <a href="team.html" class="mobile-link">Team</a>
+                    <a href="careers.html" class="mobile-link">Careers</a>
+                    <a href="contact.html" class="mobile-link">Contact</a>
+                    <a href="evidence.html" class="mobile-link">Clinical Evidence</a>
+                    <div class="mobile-divider"></div>
+                                    <button class="mobile-logout" id="mobile-logout" type="button">Logout</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero"
+            style="padding-top: 150px; padding-bottom: 80px; background: linear-gradient(135deg, rgba(31, 202, 211, 0.1) 0%, transparent 100%);">
+            <div class="container flex items-center">
+                <div class="hero-content" style="flex: 0 0 55%; max-width: 650px; margin-right: 5rem;">
+                    <span class="tag">Comprehensive Detection Platform</span>
+                    <h1 style="font-size: 3.5rem;">Jivanu Pathobiome™</h1>
+                    <p style="font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem; font-weight: 500;">
+                        Comprehensive Pathogen & Antimicrobial Resistance Detection from Stool</p>
+                    <p style="text-align: justify; line-height: 1.5; font-size: 1.25rem; margin-bottom: 0.5rem;"><strong>Detect More. Treat Smarter.</strong></p>
+                    <p style="text-align: justify; line-height: 1.6;">Broad-spectrum, qPCR-based detection of bacterial, viral, and parasitic pathogens — integrated with antimicrobial resistance profiling for actionable clinical insights.</p>
+
+                    <div style="margin-top: 3rem; display: flex; gap: 1.5rem;">
+                        <a href="contact.html" class="btn btn-primary" style="background: var(--cyan); border-color: var(--cyan);">Contact Us</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="assets/images/hero.png" alt="Pathogen Detection Visualization">
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Jivanu Pathobiome Section -->
+        <section class="section" style="background: var(--white);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Why Jivanu Pathobiome™</h2>
+                </div>
+                
+                <style>
+                    .pb-grid {
+                        display: grid;
+                        grid-template-columns: repeat(6, 1fr);
+                        gap: 2.5rem;
+                    }
+                    .pb-card-top {
+                        grid-column: span 2;
+                    }
+                    .pb-card-bot1 {
+                        grid-column: 2 / span 2;
+                    }
+                    .pb-card-bot2 {
+                        grid-column: 4 / span 2;
+                    }
+                    @media (max-width: 900px) {
+                        .pb-grid {
+                            grid-template-columns: 1fr;
+                        }
+                        .pb-card-top, .pb-card-bot1, .pb-card-bot2 {
+                            grid-column: 1 / -1 !important;
+                        }
+                    }
+                </style>
+                <div class="pb-grid">
+                    <!-- Top Row -->
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;" class="pb-card-top">
+                        <div style="height: 200px; width: 100%; background: url('/assets/images/pat_broad_spectrum.png') center / cover no-repeat;"></div>
+                        <div style="padding: 2.5rem; text-align: center;">
+                            <h3 style="color: var(--navy); margin-bottom: 0.5rem; font-size: 1.35rem;">Broad-Spectrum Coverage</h3>
+                            <p style="color: var(--text-muted); line-height: 1.6;">Extensive detection across bacteria, viruses, and parasites.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;" class="pb-card-top">
+                        <div style="height: 200px; width: 100%; background: url('/assets/images/pat_qpcr.png') center / cover no-repeat;"></div>
+                        <div style="padding: 2.5rem; text-align: center;">
+                            <h3 style="color: var(--navy); margin-bottom: 0.5rem; font-size: 1.35rem;">qPCR-Based Precision</h3>
+                            <p style="color: var(--text-muted); line-height: 1.6;">High sensitivity and specificity with validated qPCR assays.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;" class="pb-card-top">
+                        <div style="height: 200px; width: 100%; background: url('/assets/images/pat_arg.png') center / cover no-repeat;"></div>
+                        <div style="padding: 2.5rem; text-align: center;">
+                            <h3 style="color: var(--navy); margin-bottom: 0.5rem; font-size: 1.35rem;">Integrated ARG Profiling</h3>
+                            <p style="color: var(--text-muted); line-height: 1.6;">Simultaneous detection of key antimicrobial resistance genes.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom Row (Centered) -->
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;" class="pb-card-bot1">
+                        <div style="height: 220px; width: 100%; background: url('/assets/images/pat_cost.png') center / cover no-repeat;"></div>
+                        <div style="padding: 2.5rem; text-align: center;">
+                            <h3 style="color: var(--navy); margin-bottom: 0.5rem; font-size: 1.35rem;">Cost-Optimized Solution</h3>
+                            <p style="color: var(--text-muted); line-height: 1.6;">Expanded panel at a significantly lower cost than multiplex systems.</p>
+                        </div>
+                    </div>
+
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; flex-direction: column;" class="pb-card-bot2">
+                        <div style="height: 220px; width: 100%; background: url('/assets/images/pat_actionable.png') center / cover no-repeat;"></div>
+                        <div style="padding: 2.5rem; text-align: center;">
+                            <h3 style="color: var(--navy); margin-bottom: 0.5rem; font-size: 1.35rem;">Actionable Results</h3>
+                            <p style="color: var(--text-muted); line-height: 1.6;">Supports targeted therapy and antimicrobial stewardship.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comprehensive Panel Coverage Section -->
+        <section class="section" style="background: var(--navy); color: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 style="color: white;">Comprehensive Panel Coverage</h2>
+                    <p style="opacity: 0.9; font-size: 1.1rem;">All-in-One Pathogen & ARG Screening</p>
+                </div>
+                
+                <style>
+                    .pathogen-card {
+                        background: rgba(30, 41, 59, 0.4); 
+                        border: 1px solid rgba(255,255,255,0.05); 
+                        padding: 2.5rem; 
+                        border-radius: 20px;
+                        height: 100%;
+                    }
+                    .pathogen-pill {
+                        display: inline-flex;
+                        align-items: center;
+                        padding: 0.6rem 1.2rem;
+                        background: rgba(255,255,255,0.03);
+                        border: 1px solid rgba(255,255,255,0.08);
+                        border-radius: 50px;
+                        font-size: 0.9rem;
+                        color: #e2e8f0;
+                        transition: all 0.3s ease;
+                    }
+                    .pathogen-pill:hover {
+                        background: rgba(31, 202, 211, 0.1);
+                        border-color: rgba(31, 202, 211, 0.4);
+                        color: var(--white);
+                        transform: translateY(-2px);
+                    }
+                </style>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                    
+                    <!-- Top Full Width: Bacteria -->
+                    <div class="pathogen-card">
+                        <div style="display: flex; align-items: center; margin-bottom: 2.5rem;">
+                            <div style="width: 56px; height: 56px; background: rgba(31, 202, 211, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem;">
+                                <span style="font-size: 1.8rem;">🦠</span>
+                            </div>
+                            <h3 style="color: var(--white); margin: 0; font-size: 1.8rem;">Bacterial Pathogens</h3>
+                        </div>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.85rem;">
+                            <span class="pathogen-pill">Clostridioides difficile</span>
+                            <span class="pathogen-pill">Campylobacter jejuni</span>
+                            <span class="pathogen-pill">Salmonella enterica</span>
+                            <span class="pathogen-pill">Helicobacter pylori</span>
+                            <span class="pathogen-pill">Shigella flexneri</span>
+                            <span class="pathogen-pill">Listeria monocytogenes</span>
+                            <span class="pathogen-pill">Vibrio cholerae</span>
+                            <span class="pathogen-pill">Yersinia enterocolitica</span>
+                            <span class="pathogen-pill">Mycobacterium tuberculosis</span>
+                            <span class="pathogen-pill">Enterococcus faecium</span>
+                            <span class="pathogen-pill">Staphylococcus aureus</span>
+                            <span class="pathogen-pill">Klebsiella pneumoniae</span>
+                            <span class="pathogen-pill">Acinetobacter baumannii</span>
+                            <span class="pathogen-pill">Pseudomonas aeruginosa</span>
+                            <span class="pathogen-pill">Enterobacter cloacae</span>
+                            <span class="pathogen-pill">Klebsiella aerogenes</span>
+                            <span class="pathogen-pill">Escherichia coli O157:H7</span>
+                            <span class="pathogen-pill">ETEC / EHEC / EAEC / EPEC</span>
+                            <span class="pathogen-pill">Plesiomonas shigelloides</span>
+                        </div>
+                    </div>
+
+                    <!-- Bottom 3 Columns: Viruses, Parasites, ARG -->
+                    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                        
+                        <!-- Viruses -->
+                        <div class="pathogen-card">
+                            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                                <div style="width: 48px; height: 48px; background: rgba(255, 99, 132, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 1.25rem;">
+                                    <span style="font-size: 1.5rem;">🧫</span>
+                                </div>
+                                <h3 style="color: var(--white); margin: 0; font-size: 1.35rem;">Viral Pathogens</h3>
+                            </div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                                <span class="pathogen-pill">Adenovirus</span>
+                                <span class="pathogen-pill">Astrovirus</span>
+                                <span class="pathogen-pill">Aichivirus</span>
+                                <span class="pathogen-pill">Bocavirus</span>
+                                <span class="pathogen-pill">Enterovirus</span>
+                                <span class="pathogen-pill">Norovirus (GII)</span>
+                                <span class="pathogen-pill">Parechovirus</span>
+                                <span class="pathogen-pill">Rotavirus</span>
+                                <span class="pathogen-pill">Sapovirus</span>
+                            </div>
+                        </div>
+
+                        <!-- Parasites -->
+                        <div class="pathogen-card">
+                            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                                <div style="width: 48px; height: 48px; background: rgba(153, 102, 255, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 1.25rem;">
+                                    <span style="font-size: 1.5rem;">🧬</span>
+                                </div>
+                                <h3 style="color: var(--white); margin: 0; font-size: 1.35rem;">Parasitic Pathogens</h3>
+                            </div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                                <span class="pathogen-pill">Cryptosporidium</span>
+                                <span class="pathogen-pill">Cyclospora cayetanensis</span>
+                                <span class="pathogen-pill">Entamoeba histolytica</span>
+                                <span class="pathogen-pill">Giardia lamblia</span>
+                                <span class="pathogen-pill">Microsporidia</span>
+                                <span class="pathogen-pill">Blastocystis hominis</span>
+                            </div>
+                        </div>
+
+                        <!-- ARG -->
+                        <div class="pathogen-card" style="background: linear-gradient(145deg, rgba(31, 202, 211, 0.08) 0%, rgba(30, 41, 59, 0.4) 100%); border-color: rgba(31, 202, 211, 0.3);">
+                            <div style="display: flex; align-items: center; margin-bottom: 2rem;">
+                                <div style="width: 48px; height: 48px; background: rgba(31, 202, 211, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-right: 1.25rem;">
+                                    <span style="font-size: 1.5rem;">🧪</span>
+                                </div>
+                                <h3 style="color: var(--white); margin: 0; font-size: 1.35rem;">Resistance Genes</h3>
+                            </div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                                <span class="pathogen-pill" style="border-color: rgba(31,202,211,0.4); color: var(--cyan);">CTX-M, SHV, TEM</span>
+                                <span class="pathogen-pill" style="border-color: rgba(31,202,211,0.4); color: var(--cyan);">mecA variants</span>
+                                <span class="pathogen-pill" style="border-color: rgba(31,202,211,0.4); color: var(--cyan);">NDM, KPC, OXA-48</span>
+                                <span class="pathogen-pill" style="border-color: rgba(31,202,211,0.4); color: var(--cyan);">vanA, vanB</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Designed for Real-World Clinical Use -->
+        <section class="section">
+            <div class="container text-center">
+                <div class="section-header">
+                    <h2>Designed for Real-World Clinical Use</h2>
+                    <p>From Pathogens to Precision Therapy</p>
+                </div>
+                
+                <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+                    <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--cyan); text-align: left;">
+                        <h4 style="margin-bottom: 0;">Suspected gut infections</h4>
+                    </div>
+                    <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--cyan); text-align: left;">
+                        <h4 style="margin-bottom: 0;">Recurrent or antibiotic-associated infections</h4>
+                    </div>
+                    <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--cyan); text-align: left;">
+                        <h4 style="margin-bottom: 0;">Hospital-acquired infections</h4>
+                    </div>
+                    <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--cyan); text-align: left;">
+                        <h4 style="margin-bottom: 0;">Infections in immunocompromised individuals</h4>
+                    </div>
+                    <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--cyan); text-align: left;">
+                        <h4 style="margin-bottom: 0;">Travel-related infections</h4>
+                    </div>
+                    <div style="background: var(--light-bg); padding: 2rem; border-radius: 12px; border-left: 4px solid var(--cyan); text-align: left;">
+                        <h4 style="margin-bottom: 0;">FMT donor screening and selection</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+
+        <!-- CTA Section -->
+        <section class="section" style="background: var(--navy); color: white; text-align: center;">
+            <div class="container">
+                <h2 style="color: white; margin-bottom: 2rem;">Bring Comprehensive Pathogen Detection to Your Practice</h2>
+                <div style="display: flex; justify-content: center; gap: 2rem;">
+                    <a href="contact.html" class="btn btn-primary"
+                        style="background: var(--cyan); border-color: var(--cyan); color: var(--navy); font-weight: 700; padding: 1.25rem 3rem; font-size: 1.2rem;">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="grid footer-grid">
+                <div>
+                    <a href="index.html" class="footer-logo-link"><img src="assets/images/Jivanu_Logo.png" alt="Jivanu Logo"
+                        style="max-width: 280px; margin-bottom: 1.5rem;"></a>
+                </div>
+                <div class="footer-links">
+                    <h4>Platforms</h4>
+                    <ul>
+                        <li><a href="atlas.html">Jivanu Atlas™</a></li>
+                        <li><a href="rebiome.html">ReBiome™</a></li>
+                        <li><a href="novabiome.html">NovaBiome™</a></li>
+                        <li><a href="pathobiome.html">Pathobiome™</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="team.html">Team</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Jivanu Therapeutics Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

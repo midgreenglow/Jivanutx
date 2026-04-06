@@ -6,7 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaBiome™ | Next-Gen Microbiome Therapeutics</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
     <style>
+        /* Microbiome Bubble Animation Styles */
+        .hero-bubbles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle at 35% 35%,
+                rgba(31, 202, 211, 0.18),
+                rgba(31, 202, 211, 0.03)
+            );
+            border: 1px solid rgba(31, 202, 211, 0.12);
+            backdrop-filter: blur(2px);
+            animation: floatBubble var(--dur) var(--delay) ease-in-out infinite alternate;
+        }
+
+        @keyframes floatBubble {
+            0%   { transform: translateY(0)     translateX(0)    scale(1);    opacity: var(--op-start); }
+            50%  { transform: translateY(-22px) translateX(12px) scale(1.04); }
+            100% { transform: translateY(-40px) translateX(-10px) scale(0.97); opacity: var(--op-end); }
+        }
+
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(11, 31, 51, 0.15) !important;
@@ -19,6 +51,48 @@
 
         .feature-card:hover img {
             transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .nova-hero-section {
+                padding-top: 8rem !important;
+                padding-bottom: 5rem !important;
+                min-height: auto !important;
+            }
+
+            .nova-hero-content {
+                max-width: 100% !important;
+                margin-left: 0 !important;
+                padding: 2rem 1.5rem !important;
+                border-radius: 14px !important;
+            }
+
+            .nova-hero-container {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+
+            .nova-hero-content h1 {
+                font-size: 2.4rem !important;
+            }
+
+            .nova-hero-content p {
+                font-size: 1rem !important;
+            }
+
+            .nova-cards-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+
+            .nova-stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: 0.5rem !important;
+            }
+
+            .nova-stats-grid > div {
+                padding: 1.25rem !important;
+            }
         }
     </style>
     <script src="js/script.js" defer></script>
@@ -37,6 +111,7 @@
                     <a href="atlas.html">Jivanu Atlas™</a>
                     <a href="rebiome.html">ReBiome™</a>
                     <a href="novabiome.html" class="active">NovaBiome™</a>
+                    <a href="pathobiome.html">Pathobiome™</a>
                 </div>
                 <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
                     <span class="hamburger-line"></span>
@@ -55,6 +130,7 @@
                     <a href="atlas.html" class="mobile-link mobile-only">Jivanu Atlas™</a>
                     <a href="rebiome.html" class="mobile-link mobile-only">ReBiome™</a>
                     <a href="novabiome.html" class="mobile-link mobile-only">NovaBiome™</a>
+                    <a href="pathobiome.html" class="mobile-link mobile-only">Pathobiome™</a>
                     <a href="team.html" class="mobile-link">Team</a>
                     <a href="careers.html" class="mobile-link">Careers</a>
                     <a href="contact.html" class="mobile-link">Contact</a>
@@ -67,39 +143,37 @@
     </header>
 
     <main>
-        <section class="hero"
-            style="padding-top: 150px; padding-bottom: 80px; background: radial-gradient(circle at bottom left, rgba(31, 202, 211, 0.1), transparent 70%);">
-            <div class="container flex items-center">
-                <div class="hero-content" style="flex: 0 0 55%; max-width: 650px; margin-right: 5rem;">
-                    <span class="tag">Next-Generation Platform</span>
-                    <h1 style="font-size: 3.5rem;">NovaBiome™</h1>
-                    <div style="max-width: 550px;">
-                        <p style="font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem; font-weight: 500;">
+        <section class="hero nova-hero-section" style="padding-top: 15rem; padding-bottom: 12rem; position: relative; display: flex; align-items: center; min-height: 85vh; overflow: hidden;">
+            <!-- Darkened background image using the user provided novabiome.png -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -2; background: url('/assets/images/novabiome.png') center right / cover no-repeat;"></div>
+            <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -1; background: rgba(30, 41, 59, 0.2);"></div>
+            
+            <!-- Microbiome Bubble Animation Container -->
+            <div class="hero-bubbles" id="hero-bubbles"></div>
+            
+            <div class="container flex items-center nova-hero-container" style="position: relative; z-index: 1; justify-content: flex-start; height: 100%; width: 100%;">
+                <!-- Glassmorphic, rounded box anchored to the left -->
+                <div class="hero-content nova-hero-content" style="flex: 0 0 auto; max-width: 650px; background: rgba(245, 247, 250, 0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 4rem 4rem; border-radius: 20px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3); border: 1px solid rgba(255,255,255,0.6); margin-top: 2rem; margin-left: -4rem;">
+                    <span class="tag" style="background: transparent; color: #475569; padding: 0; font-size: 0.9rem; font-weight: 500; margin-bottom: 0.5rem; display: block;">Next-Generation Platform</span>
+                    <h1 style="font-size: 4rem; line-height: 1.1; color: var(--navy); margin-bottom: 1.5rem; margin-top: 0;">NovaBiome™</h1>
+                    <div style="max-width: 600px;">
+                        <p style="font-size: 1.25rem; color: var(--navy); margin-bottom: 1.5rem; font-weight: 600;">
                             Next-Generation Microbiome Therapeutics Platform</p>
-                        <p style="text-align: justify; line-height: 1.8;"><strong>Novabiome™</strong> is Jivanu
-                            Therapeutics’ <strong>innovative
-                                platform for precision
-                                microbial therapies</strong>, designed to go beyond conventional FMT. Our approach
-                            focuses
-                            on <strong>safety,
-                                specificity, and disease-targeted microbiome restoration.</strong> Currently in
-                            pre-clinical
-                            stages.</p>
+                        <p style="text-align: justify; line-height: 1.7; font-size: 1.05rem; color: #475569;">
+                            <strong>Novabiome™</strong> is Jivanu Therapeutics’ <strong>innovative platform for precision microbial therapies</strong>, designed to go beyond conventional FMT. Our approach focuses on <strong>safety, specificity, and disease-targeted microbiome restoration.</strong> Currently in pre-clinical stages.
+                        </p>
                     </div>
 
-                    <div style="margin-top: 3rem;">
-                        <a href="contact.html" class="btn btn-primary">Partner With Us</a>
+                    <div style="margin-top: 2.5rem;">
+                        <a href="contact.html" class="btn btn-primary" style="background: var(--navy); border-color: var(--navy); border-radius: 6px; padding: 0.8rem 2rem; font-size: 1rem; color: white; display: inline-block;">Partner With Us</a>
                     </div>
-                    </div>
-                <div class="hero-visual">
-                    <img src="assets/images/novabiome.jpg" alt="NovaBiome Therapeutics">
-                    </div>
+                </div>
             </div>
         </section>
 
         <section class="section">
             <div class="container">
-                <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 3rem;">
+                <div class="grid nova-cards-grid" style="grid-template-columns: 1fr 1fr; gap: 3rem;">
                     <!-- Consortia Development Card -->
                     <div class="feature-card"
                         style="background: var(--white); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg); transition: var(--transition); border: 1px solid var(--border-color);">
@@ -148,7 +222,7 @@
                         general restoration to
                         targeted interventions that address the root cause of complex diseases.</p>
                     </div>
-                <div class="grid" style="grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem;">
+                <div class="grid nova-stats-grid" style="grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem;">
                     <div style="padding: 2rem;">
                         <h4 style="color: var(--cyan); margin-bottom: 1rem;">Precision</h4>
                         <p>Targeted delivery to disease specific areas</p>

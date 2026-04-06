@@ -317,14 +317,13 @@ export default function LegacyPage({ fileName }) {
         setError('');
 
         if (pageCache.has(fileName)) {
-          if (active) {
-            setState(pageCache.get(fileName));
-            setLoading(false);
-          }
-          return;
+          // Temporarily disable page caching during development so hot-reloads work
+          // const html = pageCache.get(fileName);
+          // injectHtml(html);
+          // return;
         }
 
-        const response = await fetch(`/legacy/${fileName}`);
+        const response = await fetch(`/legacy/${fileName}?t=${Date.now()}`);
         if (!response.ok) {
           throw new Error(`Failed to load ${fileName}`);
         }
