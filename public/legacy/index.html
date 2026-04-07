@@ -88,9 +88,9 @@
                     <h1 class="hero-title" style="font-size: 3.8rem; line-height: 1.15; letter-spacing: -1px; margin-bottom: 1.5rem;">The
                         future of Medicine is already inside you!</h1>
 
-                    <p class="hero-subtitle" style="color: #0f172a; font-size: 1.35rem; margin-bottom: 1.5rem;"><strong>Translating Microbial Complexity into Clinical Clarity</strong></p>
+                    <p class="hero-subtitle" style="color: #ffffff; font-size: 1.35rem; margin-bottom: 1.5rem;"><strong>Translating Microbial Complexity into Clinical Clarity</strong></p>
 
-                    <p class="hero-lead" style="text-align: justify; font-size: 1.15rem; color: #475569; line-height: 1.8;">
+                    <p class="hero-lead" style="text-align: justify; font-size: 1.15rem; color: #ffffff; line-height: 1.8;">
                         Jivanu is pioneering <span class="india-highlight">India’s first</span> wave of microbiome-based therapeutics. We’re moving beyond mere symptom management to deliver science-driven cures for chronic gut, brain, and immune diseases, all explained in simple terms so you can take control of your health.
                     </p>
                     </div>
@@ -170,75 +170,154 @@
         </section>
 
         <!-- Science-Driven Solutions Section -->
+        <style>
+            .xcard {
+                padding: 6px;
+                border-radius: 18px;
+                background: rgba(0, 0, 0, 0.75);
+                background-image: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+                backdrop-filter: blur(24px) saturate(180%);
+                -webkit-backdrop-filter: blur(24px) saturate(180%);
+                border: 1px solid rgba(255,255,255,0.1);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+                text-decoration: none;
+                display: block;
+                transition: transform 0.25s ease, box-shadow 0.25s ease;
+                will-change: transform;
+            }
+            .xcard:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 48px rgba(0,0,0,0.55);
+            }
+            .xcard-inner {
+                border-radius: 13px;
+                overflow: hidden;
+                position: relative;
+                background: linear-gradient(135deg, rgba(255,255,255,0.07) 0%, transparent 100%);
+                border: 1px solid rgba(255,255,255,0.07);
+                height: 100%;
+            }
+            .xcard-inner::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                pointer-events: none;
+                z-index: 1;
+            }
+            .xcard:hover .xcard-inner::before {
+                opacity: 1;
+            }
+            .xcard-img {
+                height: 160px;
+                overflow: hidden;
+            }
+            .xcard-img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+                transition: transform 0.4s ease;
+            }
+            .xcard:hover .xcard-img img {
+                transform: scale(1.05);
+            }
+            .xcard-body {
+                padding: 1.75rem 1.5rem 2rem;
+                position: relative;
+                z-index: 2;
+            }
+            .xcard-badge {
+                font-size: 0.6rem;
+                padding: 3px 7px;
+                border-radius: 5px;
+                background: rgba(31,202,211,0.12);
+                color: #1FCAD3;
+                font-weight: 700;
+                letter-spacing: 0.6px;
+                border: 1px solid rgba(31,202,211,0.2);
+                white-space: nowrap;
+            }
+        </style>
         <section class="section" style="background: #0b1f33;">
             <div class="container">
                 <div class="section-header" style="text-align: center;">
                     <h2 style="color: #ffffff;">Science-Driven Solutions</h2>
                     <p style="color: #94a3b8; font-size: 1.15rem;">Moving discoveries from the lab to meaningful clinical impact.</p>
                 </div>
-                <!-- 4-column grid for platforms -->
                 <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 1.5rem;">
-                    
+
                     <!-- Jivanu Atlas -->
-                    <div class="feature-card" style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden;">
-                        <div style="height: 160px; overflow: hidden;">
-                            <img src="assets/images/kit.jpg" alt="Jivanu Atlas" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
-                        </div>
-                        <div style="padding: 1.75rem 1.5rem 2rem;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                                <h3 style="color: #ffffff; margin: 0; font-size: 1.25rem;">Jivanu Atlas™</h3>
-                                <span style="font-size: 0.65rem; padding: 4px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px;">AVAILABLE NOW</span>
+                    <a href="atlas.html" class="xcard">
+                        <div class="xcard-inner">
+                            <div class="xcard-img">
+                                <img src="assets/images/kit.jpg" alt="Jivanu Atlas">
                             </div>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px;">Personalized Microbiome Profiling Platform for individuals and clinicians.</p>
-                            <a href="atlas.html" style="color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</a>
+                            <div class="xcard-body">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                                    <h3 style="color: #ffffff; margin: 0; font-size: 1.25rem;">Jivanu Atlas™</h3>
+                                    <span class="xcard-badge">AVAILABLE</span>
+                                </div>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px;">Personalized Microbiome Profiling Platform for individuals and clinicians.</p>
+                                <span style="color: #1FCAD3; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Pathobiome -->
-                    <div class="feature-card" style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden;">
-                        <div style="height: 160px; overflow: hidden;">
-                            <img src="assets/images/lab.png" alt="Pathobiome" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
-                        </div>
-                        <div style="padding: 1.75rem 1.5rem 2rem;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                                <h3 style="color: #ffffff; margin: 0; font-size: 1.25rem;">Pathobiome™</h3>
-                                <span style="font-size: 0.65rem; padding: 4px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px;">R&D</span>
+                    <a href="pathobiome.html" class="xcard">
+                        <div class="xcard-inner">
+                            <div class="xcard-img">
+                                <img src="assets/images/lab.png" alt="Pathobiome">
                             </div>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px;">Predictive microbial diagnostics and targeted therapies.</p>
-                            <a href="pathobiome.html" style="color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</a>
+                            <div class="xcard-body">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                                    <h3 style="color: #ffffff; margin: 0; font-size: 1.25rem;">Pathobiome™</h3>
+                                    <span class="xcard-badge">R&amp;D</span>
+                                </div>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px;">Predictive microbial diagnostics and targeted therapies.</p>
+                                <span style="color: #1FCAD3; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- ReBiome -->
-                    <div class="feature-card" style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden;">
-                        <div style="height: 160px; overflow: hidden;">
-                            <img src="assets/images/rebiome.jpg" alt="ReBiome" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
-                        </div>
-                        <div style="padding: 1.75rem 1.5rem 2rem;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                                <h3 style="color: #ffffff; margin: 0; font-size: 1.25rem;">ReBiome™</h3>
-                                <span style="font-size: 0.65rem; padding: 4px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px;">CLINICAL PHASE</span>
+                    <a href="rebiome.html" class="xcard">
+                        <div class="xcard-inner">
+                            <div class="xcard-img">
+                                <img src="assets/images/rebiome.jpg" alt="ReBiome">
                             </div>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px;">Microbiota Restoration Platform focused on FMT-based therapeutics.</p>
-                            <a href="rebiome.html" style="color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</a>
+                            <div class="xcard-body">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                                    <h3 style="color: #ffffff; margin: 0; font-size: 1.25rem;">ReBiome™</h3>
+                                    <span class="xcard-badge">CLINICAL</span>
+                                </div>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px;">Microbiota Restoration Platform focused on FMT-based therapeutics.</p>
+                                <span style="color: #1FCAD3; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- NovaBiome -->
-                    <div class="feature-card" style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; overflow: hidden;">
-                        <div style="height: 160px; overflow: hidden;">
-                            <img src="assets/images/novabiome.jpg" alt="NovaBiome" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;">
-                        </div>
-                        <div style="padding: 1.75rem 1.5rem 2rem;">
-                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                                <h3 style="color: #ffffff; margin: 0; font-size: 1.25rem;">NovaBiome™</h3>
-                                <span style="font-size: 0.65rem; padding: 4px 6px; border-radius: 4px; background: rgba(255,255,255,0.05); color: var(--text-muted); font-weight: 600; letter-spacing: 0.5px;">R&D</span>
+                    <a href="novabiome.html" class="xcard">
+                        <div class="xcard-inner">
+                            <div class="xcard-img">
+                                <img src="assets/images/novabiome.jpg" alt="NovaBiome">
                             </div>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px;">Next-Generation Microbiome Therapeutics Platform.</p>
-                            <a href="novabiome.html" style="color: var(--cyan); text-decoration: none; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</a>
+                            <div class="xcard-body">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                                    <h3 style="color: #ffffff; margin: 0; font-size: 1.25rem;">NovaBiome™</h3>
+                                    <span class="xcard-badge">R&amp;D</span>
+                                </div>
+                                <p style="color: #94a3b8; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; min-height: 60px;">Next-Generation Microbiome Therapeutics Platform.</p>
+                                <span style="color: #1FCAD3; font-weight: 600; font-size: 0.95rem;">Explore Platform &rarr;</span>
+                            </div>
                         </div>
-                    </div>
-                    
+                    </a>
+
                 </div>
             </div>
         </section>

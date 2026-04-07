@@ -82,40 +82,105 @@ ul {
 }
 
 /* Buttons */
+/* ── Buttons ──────────────────────────────────────────────────── */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 999px;        /* pill */
+    font-weight: 700;
     cursor: pointer;
-    transition: var(--transition);
     font-size: 1rem;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
+.btn:hover  { transform: scale(1.045) translateY(-1px); }
+.btn:active { transform: scale(0.97); }
+
+/* Shimmer sweep — runs on every button */
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -110%;
+    width: 55%;
+    background: linear-gradient(
+        100deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.22) 50%,
+        transparent 100%
+    );
+    animation: btnSweep 2.8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes btnSweep {
+    0%   { left: -110%; }
+    100% { left: 220%; }
+}
+
+/* Primary — cyan gradient + pan */
 .btn-primary {
-    background-color: var(--navy);
-    color: var(--white);
-    border: 1px solid var(--navy);
+    background: linear-gradient(105deg, #1FCAD3 0%, #0ea5ad 40%, #24dde7 70%, #1FCAD3 100%);
+    background-size: 220% 100%;
+    color: #0b1f33;
+    border: none;
+    box-shadow: 0 0 16px rgba(31, 202, 211, 0.32);
+    animation: btnGradientPan 3.5s linear infinite;
 }
 
 .btn-primary:hover {
-    background-color: var(--cyan);
-    border-color: var(--cyan);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 0 30px rgba(31, 202, 211, 0.6), 0 4px 20px rgba(31, 202, 211, 0.22);
 }
 
+@keyframes btnGradientPan {
+    0%   { background-position: 0%   0%; }
+    100% { background-position: 220% 0%; }
+}
+
+/* Secondary — outline with animated border glow */
 .btn-secondary {
-    background-color: transparent;
+    background: transparent;
     color: var(--navy);
-    border: 1px solid var(--navy);
+    border: 1.5px solid var(--navy);
+    box-shadow: none;
+    animation: btnBorderPulse 3s ease-in-out infinite;
 }
 
 .btn-secondary:hover {
-    background-color: var(--light-bg);
-    transform: translateY(-2px);
+    color: #1FCAD3;
+    border-color: #1FCAD3;
+    box-shadow: 0 0 18px rgba(31, 202, 211, 0.35), inset 0 0 0 1.5px rgba(31, 202, 211, 0.4);
+}
+
+@keyframes btnBorderPulse {
+    0%, 100% { box-shadow: 0 0 0px rgba(31, 202, 211, 0); }
+    50%       { box-shadow: 0 0 12px rgba(31, 202, 211, 0.25); }
+}
+
+/* Secondary on dark sections — white outlined */
+.btn-secondary-light {
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.55) !important;
+    animation: btnBorderPulseDark 3s ease-in-out infinite;
+}
+
+.btn-secondary-light:hover {
+    color: #1FCAD3 !important;
+    border-color: #1FCAD3 !important;
+    box-shadow: 0 0 18px rgba(31, 202, 211, 0.4), inset 0 0 0 1.5px rgba(31, 202, 211, 0.4) !important;
+}
+
+@keyframes btnBorderPulseDark {
+    0%, 100% { box-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+    50%       { box-shadow: 0 0 12px rgba(255, 255, 255, 0.15); }
 }
 
 .btn-ghost {
@@ -1216,15 +1281,14 @@ footer {
     border-color: #1d2a38;
 }
 
-/* India highlight — light mode */
+/* India highlight */
 .india-highlight {
-    color: var(--cyan);
+    color: #ff6b00;
     font-weight: 700;
 }
 
-/* Dark mode — make it amber/yellow so it pops on dark bg */
 [data-theme="dark"] .india-highlight {
-    color: #f59e0b;
+    color: #ff6b00;
 }
 
 /* Dark mode hero text fixes */
@@ -1443,15 +1507,19 @@ footer {
 }
 
 [data-theme="dark"] .btn-primary {
-    background-color: var(--cyan);
-    border-color: var(--cyan);
+    /* gradient animation already uses cyan — no override needed */
     color: #04121f;
 }
 
 [data-theme="dark"] .btn-secondary {
     background-color: transparent;
-    border-color: var(--text-main);
+    border-color: rgba(255, 255, 255, 0.45);
     color: var(--text-main);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    color: #1FCAD3;
+    border-color: #1FCAD3;
 }
 
 [data-theme="dark"] .problem-card {
