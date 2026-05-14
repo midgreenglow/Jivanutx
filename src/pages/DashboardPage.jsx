@@ -123,7 +123,7 @@ function ProfileModal({ user, onClose, onSaved }) {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await fetch('/api/profile', {
+      const res = await fetch('/api/me', {
         method: 'PUT',
         headers: { ...authHeaders(), 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, dob, blood_group: bloodGroup, phone })
@@ -187,7 +187,7 @@ function DocCard({ doc, onDelete }) {
     if (!confirming) { setConfirming(true); return; }
     setDeleting(true);
     try {
-      const endpoint = isReport ? `/api/reports/${doc.id}` : `/api/documents/${doc.id}`;
+      const endpoint = isReport ? `/api/reports?id=${doc.id}` : `/api/documents/${doc.id}`;
       const res = await fetch(endpoint, { method: 'DELETE', headers: authHeaders() });
       if (res.ok) onDelete(doc.id, isReport);
     } finally {
