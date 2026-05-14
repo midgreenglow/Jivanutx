@@ -74,8 +74,7 @@ export default function HomePage() {
               {...fadeUp(0.7)}
               style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
             >
-              <ButtonColorful to="/atlas" variant="primary">Explore Atlas →</ButtonColorful>
-              <ButtonColorful to="/contact" variant="outline">Contact Us</ButtonColorful>
+              <ButtonColorful to="/contact" variant="primary">Contact Us →</ButtonColorful>
             </motion.div>
           </div>
 
@@ -86,13 +85,13 @@ export default function HomePage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div style={{ position: 'absolute', width: '420px', height: '420px', background: 'radial-gradient(circle, rgba(31,202,211,0.18) 0%, transparent 70%)', borderRadius: '50%', animation: 'pulse 6s infinite alternate' }} />
-            <svg width="560" height="560" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: 'visible' }}>
+            <div style={{ position: 'absolute', width: '480px', height: '480px', background: 'radial-gradient(circle, rgba(31,202,211,0.42) 0%, rgba(31,202,211,0.12) 45%, transparent 72%)', borderRadius: '50%', animation: 'pulse 6s infinite alternate' }} />
+            <svg width="560" height="560" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ overflow: 'visible', filter: 'drop-shadow(0 0 18px rgba(31,202,211,0.35))' }}>
               <style>{`
                 @keyframes float1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-8px,-16px) scale(1.03); } }
                 @keyframes float2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(12px,12px) scale(0.97); } }
                 @keyframes float3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-12px,10px) scale(1.05); } }
-                @keyframes glow   { 0%,100% { filter: drop-shadow(0 0 10px rgba(31,202,211,0.5)); } 50% { filter: drop-shadow(0 0 28px rgba(31,202,211,0.9)); } }
+                @keyframes glow   { 0%,100% { filter: drop-shadow(0 0 14px rgba(31,202,211,0.85)) drop-shadow(0 0 30px rgba(31,202,211,0.4)); } 50% { filter: drop-shadow(0 0 42px rgba(31,202,211,1)) drop-shadow(0 0 70px rgba(31,202,211,0.65)) drop-shadow(0 0 10px #ffffff); } }
                 @keyframes rotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
                 @keyframes wriggle { 0%,100% { transform: scaleY(1) rotate(0deg); } 50% { transform: scaleY(1.06) rotate(1.5deg); } }
                 .m1 { animation: float1 8s ease-in-out infinite, glow 4s ease-in-out infinite; transform-origin: 200px 200px; }
@@ -103,9 +102,9 @@ export default function HomePage() {
               `}</style>
 
               {/* Petri-dish orbital rings */}
-              <circle cx="200" cy="200" r="155" stroke="#1FCAD3" strokeWidth="1" strokeDasharray="8 14" opacity="0.3" className="dna" />
-              <circle cx="200" cy="200" r="105" stroke="#ffffff" strokeWidth="1" strokeDasharray="18 10 4 10" opacity="0.1" className="dna" style={{ animationDuration: '45s', animationDirection: 'reverse' }} />
-              <circle cx="200" cy="200" r="182" stroke="#1FCAD3" strokeWidth="0.5" opacity="0.15" />
+              <circle cx="200" cy="200" r="155" stroke="#1FCAD3" strokeWidth="1.5" strokeDasharray="8 14" opacity="0.65" className="dna" />
+              <circle cx="200" cy="200" r="105" stroke="#1FCAD3" strokeWidth="1" strokeDasharray="18 10 4 10" opacity="0.3" className="dna" style={{ animationDuration: '45s', animationDirection: 'reverse' }} />
+              <circle cx="200" cy="200" r="182" stroke="#1FCAD3" strokeWidth="1" opacity="0.35" />
 
               {/* ── m1: Central Bacillus (E.coli / engineered rod bacterium) ── */}
               <g className="m1 bacillus">
@@ -132,10 +131,10 @@ export default function HomePage() {
               {/* ── m2: Cocci cluster (Staphylococcus) + small rod ── */}
               <g className="m2">
                 {/* 2×2 cocci cluster — top right */}
-                <circle cx="299" cy="96" r="12" fill="#0a2235" stroke="#1FCAD3" strokeWidth="1.6" opacity="0.9" />
-                <circle cx="319" cy="96" r="12" fill="#0a2235" stroke="#1FCAD3" strokeWidth="1.6" opacity="0.85" />
-                <circle cx="309" cy="79" r="12" fill="#0a2235" stroke="#1FCAD3" strokeWidth="1.6" opacity="0.8" />
-                <circle cx="309" cy="113" r="12" fill="#0a2235" stroke="#1FCAD3" strokeWidth="1.6" opacity="0.75" />
+                <circle cx="299" cy="96" r="12" fill="#0d3348" stroke="#1FCAD3" strokeWidth="2" opacity="0.95" />
+                <circle cx="319" cy="96" r="12" fill="#0d3348" stroke="#1FCAD3" strokeWidth="2" opacity="0.9" />
+                <circle cx="309" cy="79" r="12" fill="#0d3348" stroke="#1FCAD3" strokeWidth="2" opacity="0.88" />
+                <circle cx="309" cy="113" r="12" fill="#0d3348" stroke="#1FCAD3" strokeWidth="2" opacity="0.85" />
                 {/* Gloss on top cocci */}
                 <circle cx="304" cy="92" r="3.5" fill="white" opacity="0.18" />
                 {/* Label-style: tiny "+" division planes */}
@@ -149,7 +148,7 @@ export default function HomePage() {
                 <path d="M68 256 C60 245 53 233 43 231" stroke="#1FCAD3" strokeWidth="1.3" fill="none" strokeLinecap="round" opacity="0.6" />
 
                 {/* Lone cocci bottom right */}
-                <circle cx="312" cy="258" r="9" fill="#0a2235" stroke="#1FCAD3" strokeWidth="1.2" opacity="0.6" />
+                <circle cx="312" cy="258" r="9" fill="#0d3348" stroke="#1FCAD3" strokeWidth="1.8" opacity="0.9" />
               </g>
 
               {/* ── m3: Spirochete + binary fission ── */}
@@ -175,29 +174,30 @@ export default function HomePage() {
               </g>
 
               {/* Drifting spores / metabolite particles */}
-              <circle cx="148" cy="252" r="3" fill="#1FCAD3" opacity="0.85">
+              <circle cx="148" cy="252" r="3.5" fill="#1FCAD3" opacity="1" style={{ filter: 'drop-shadow(0 0 5px #1FCAD3)' }}>
                 <animate attributeName="cy" values="252;232;252" dur="4s" repeatCount="indefinite" />
               </circle>
-              <circle cx="263" cy="157" r="3.5" fill="#0b1f33" stroke="#1FCAD3" strokeWidth="1" opacity="0.7">
+              <circle cx="263" cy="157" r="4" fill="#1FCAD3" stroke="#ffffff" strokeWidth="1" opacity="0.9" style={{ filter: 'drop-shadow(0 0 6px #1FCAD3)' }}>
                 <animate attributeName="cy" values="157;177;157" dur="5.5s" repeatCount="indefinite" />
               </circle>
-              <circle cx="120" cy="200" r="2.5" fill="#1FCAD3" opacity="0.9">
+              <circle cx="120" cy="200" r="3" fill="#1FCAD3" opacity="1" style={{ filter: 'drop-shadow(0 0 5px #1FCAD3)' }}>
                 <animate attributeName="cx" values="120;140;120" dur="3.2s" repeatCount="indefinite" />
               </circle>
               {/* Pulsing spore (sporulation) */}
-              <circle cx="244" cy="264" r="4.5" fill="#1FCAD3" opacity="0.35">
-                <animate attributeName="r" values="4.5;8;4.5" dur="3s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.35;0.08;0.35" dur="3s" repeatCount="indefinite" />
+              <circle cx="244" cy="264" r="4.5" fill="#1FCAD3" opacity="0.7">
+                <animate attributeName="r" values="4.5;10;4.5" dur="3s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.7;0.15;0.7" dur="3s" repeatCount="indefinite" />
               </circle>
               {/* Tiny released vesicle */}
-              <circle cx="340" cy="190" r="5" fill="none" stroke="#1FCAD3" strokeWidth="1" opacity="0.45">
-                <animate attributeName="r" values="5;9;5" dur="4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.45;0.1;0.45" dur="4s" repeatCount="indefinite" />
+              <circle cx="340" cy="190" r="5" fill="none" stroke="#1FCAD3" strokeWidth="1.5" opacity="0.75">
+                <animate attributeName="r" values="5;11;5" dur="4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.75;0.15;0.75" dur="4s" repeatCount="indefinite" />
               </circle>
 
               <defs>
                 <linearGradient id="coreG" x1="140" y1="167" x2="260" y2="233" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#1FCAD3" stopOpacity="0.9" />
+                  <stop offset="0%" stopColor="#1FCAD3" stopOpacity="1" />
+                  <stop offset="55%" stopColor="#1FCAD3" stopOpacity="0.6" />
                   <stop offset="100%" stopColor="#0b1f33" stopOpacity="0.97" />
                 </linearGradient>
                 <radialGradient id="cyanG" cx="176" cy="66" r="10" gradientUnits="userSpaceOnUse">

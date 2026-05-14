@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import PatientChatBot from './components/PatientChatBot';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const AtlasPage = lazy(() => import('./pages/AtlasPage'));
@@ -20,6 +21,7 @@ const SignInPage = lazy(() => import('./pages/SignInPage'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage'));
 const AccountPage = lazy(() => import('./pages/AccountPage'));
 const AdminUploadPage = lazy(() => import('./pages/AdminUploadPage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 
 function PageFallback() {
   return <div className="page-skeleton">Loading...</div>;
@@ -31,6 +33,7 @@ export default function App() {
       <ScrollToTop />
       <Navbar />
       <main className="app-main">
+        <PatientChatBot />
         <Suspense fallback={<PageFallback />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -49,6 +52,7 @@ export default function App() {
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/account" element={<AccountPage />} />
             <Route path="/admin-upload" element={<AdminUploadPage />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
 
             <Route path="/index.html" element={<Navigate to="/" replace />} />
             <Route path="/atlas.html" element={<Navigate to="/atlas" replace />} />

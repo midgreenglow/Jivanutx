@@ -67,6 +67,11 @@ export default function Navbar() {
                 {link.label}
               </NavLink>
             ))}
+            {hasToken && (
+              <NavLink to="/dashboard" className={buildClass} onClick={closeMobile} style={{ marginLeft: '0.5rem' }}>
+                My Dashboard
+              </NavLink>
+            )}
           </div>
 
           <button
@@ -125,9 +130,14 @@ export default function Navbar() {
             </NavLink>
             <div className="mobile-divider" />
             {hasToken ? (
-              <button className="mobile-logout" id="mobile-logout" type="button" onClick={handleLogout}>
-                Logout
-              </button>
+              <>
+                <NavLink to="/dashboard" className="mobile-link" onClick={closeMobile}>
+                  My Dashboard
+                </NavLink>
+                <button className="mobile-logout" id="mobile-logout" type="button" onClick={handleLogout}>
+                  Logout
+                </button>
+              </>
             ) : null}
           </div>
         </nav>
