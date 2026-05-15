@@ -3,6 +3,7 @@
 .dashboard-root {
   display: flex;
   min-height: calc(100vh - 80px);
+  margin-top: 80px;
   background: var(--dash-bg, #0d1b2a);
   color: var(--dash-text, #e2e8f0);
   font-family: 'Inter', sans-serif;

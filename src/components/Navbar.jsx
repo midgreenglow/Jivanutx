@@ -67,7 +67,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="flex items-center">
-          {/* Desktop nav links */}
+          {/* Desktop-only nav links */}
           <div className="nav-links flex items-center">
             {navLinks.map((link) => (
               <NavLink key={link.to} to={link.to} end={link.end} className={buildClass}>
@@ -76,49 +76,33 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop: theme toggle + user icon or sign in */}
-          <div className="desktop-nav-actions">
-            <label className="theme-switch compact">
-              <input
-                type="checkbox"
-                checked={theme === 'dark'}
-                aria-label="Toggle dark mode"
-                onChange={(e) => setTheme(e.target.checked ? 'dark' : 'light')}
-              />
-              <span className="theme-slider"><span className="theme-knob" /></span>
-            </label>
+          {/* User icon — desktop only, shows when logged in */}
+          {hasToken && (
+            <div className="user-dropdown desktop-only-user" ref={dropdownRef}>
+              <button
+                className="user-icon-btn"
+                onClick={() => setDropdownOpen((prev) => !prev)}
+                aria-label="Account menu"
+              >
+                <User size={20} strokeWidth={2} />
+              </button>
+              {dropdownOpen && (
+                <div className="user-dropdown-menu">
+                  <NavLink to="/dashboard" className="dropdown-item" onClick={() => setDropdownOpen(false)}>
+                    My Dashboard
+                  </NavLink>
+                  <button className="dropdown-item dropdown-logout" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
 
-            {hasToken ? (
-              <div className="user-dropdown" ref={dropdownRef}>
-                <button
-                  className="user-icon-btn"
-                  onClick={() => setDropdownOpen((prev) => !prev)}
-                  aria-label="Account menu"
-                >
-                  <User size={20} strokeWidth={2} />
-                </button>
-                {dropdownOpen && (
-                  <div className="user-dropdown-menu">
-                    <NavLink to="/dashboard" className="dropdown-item" onClick={() => setDropdownOpen(false)}>
-                      My Dashboard
-                    </NavLink>
-                    <button className="dropdown-item dropdown-logout" onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <NavLink to="/signin" className="desktop-signin-btn">
-                Sign In
-              </NavLink>
-            )}
-          </div>
-
-          {/* Hamburger — mobile only */}
+          {/* Hamburger — always visible on all screen sizes */}
           <button
             className={`hamburger-menu ${mobileOpen ? 'active' : ''}`}
-            aria-label="Menu"
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
           >
@@ -127,7 +111,7 @@ export default function Navbar() {
             <span className="hamburger-line" />
           </button>
 
-          {/* Mobile slide-out overlay */}
+          {/* Slide-out overlay */}
           <div
             className={`mobile-menu-overlay ${mobileOpen ? 'active' : ''}`}
             onClick={(e) => { if (e.target === e.currentTarget) closeMobile(); }}
@@ -143,6 +127,7 @@ export default function Navbar() {
                   Sign In
                 </NavLink>
               )}
+              {/* Theme toggle lives inside the menu */}
               <label className="theme-switch compact">
                 <input
                   type="checkbox"
@@ -154,18 +139,21 @@ export default function Navbar() {
               </label>
             </div>
 
-            <div className="mobile-section-label mobile-only">Platforms</div>
+            <div className="mobile-section-label">Platforms</div>
             {navLinks.slice(1).map((link) => (
-              <NavLink key={link.to} to={link.to} className="mobile-link mobile-only" onClick={closeMobile}>
+              <NavLink key={link.to} to={link.to} className="mobile-link" onClick={closeMobile}>
                 {link.label}
               </NavLink>
             ))}
+
+            <div className="mobile-section-label" style={{ marginTop: '0.5rem' }}>Company</div>
             <NavLink to="/team" className="mobile-link" onClick={closeMobile}>Team</NavLink>
             <NavLink to="/careers" className="mobile-link" onClick={closeMobile}>Careers</NavLink>
             <NavLink to="/contact" className="mobile-link" onClick={closeMobile}>Contact</NavLink>
             <NavLink to="/evidence" className="mobile-link" onClick={closeMobile}>Clinical Evidence</NavLink>
+
             <div className="mobile-divider" />
-            {hasToken && (
+            {hasToken ? (
               <>
                 <NavLink to="/dashboard" className="mobile-link" onClick={closeMobile}>
                   My Dashboard
@@ -174,6 +162,10 @@ export default function Navbar() {
                   Logout
                 </button>
               </>
+            ) : (
+              <NavLink to="/signup" className="mobile-link" onClick={closeMobile}>
+                Create Account
+              </NavLink>
             )}
           </div>
         </nav>

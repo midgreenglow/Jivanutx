@@ -838,7 +838,7 @@ footer {
 
 /* Hamburger Menu */
 .hamburger-menu {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     width: 30px;
@@ -1084,16 +1084,26 @@ footer {
 
 [data-theme="dark"] .user-dropdown-menu {
     background: #0d1f2d;
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.12);
 }
 
 [data-theme="dark"] .dropdown-item {
-    color: var(--white);
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+    background: rgba(31, 202, 211, 0.12);
+    color: var(--cyan) !important;
 }
 
 [data-theme="dark"] .dropdown-logout {
     border-color: rgba(255,255,255,0.1);
-    color: #fc8181;
+    color: #fc8181 !important;
+}
+
+[data-theme="dark"] .dropdown-logout:hover {
+    background: rgba(252,129,129,0.1);
+    color: #fc8181 !important;
 }
 
 /* Mobile account label */
@@ -1105,13 +1115,13 @@ footer {
     align-items: center;
 }
 
-/* Hide desktop actions on mobile, show hamburger */
+/* Hide user icon on mobile — it's accessible via the hamburger menu instead */
 @media (max-width: 768px) {
-    .desktop-nav-actions {
+    .desktop-only-user {
         display: none;
     }
-    .hamburger-menu {
-        display: flex;
+    .nav-links {
+        display: none;
     }
 }
 
