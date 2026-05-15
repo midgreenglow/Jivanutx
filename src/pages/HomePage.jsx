@@ -9,6 +9,13 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }
 });
 
+const scrollFadeUp = (delay = 0) => ({
+  initial: { opacity: 0, y: 36 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }
+});
+
 export default function HomePage() {
   return (
     <div style={{ minHeight: '100vh' }}>
@@ -221,10 +228,10 @@ export default function HomePage() {
       {/* ── SCIENCE-DRIVEN SOLUTIONS ────────────────────────── */}
       <section style={{ background: '#0b1f33', padding: '100px 0' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <motion.div {...scrollFadeUp(0)} style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 style={{ color: '#ffffff', marginBottom: '1rem' }}>Science-Driven Solutions</h2>
             <p style={{ color: '#94a3b8', fontSize: '1.15rem' }}>Moving discoveries from the lab to meaningful clinical impact.</p>
-          </div>
+          </motion.div>
 
           <div className="grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.5rem' }}>
             {[
@@ -232,8 +239,8 @@ export default function HomePage() {
               { to: '/pathobiome', img: '/assets/images/lab.png',     title: 'Pathobiome™',    badge: 'R&D',           desc: 'Predictive microbial diagnostics and targeted therapies.' },
               { to: '/rebiome',    img: '/assets/images/rebiome.jpg', title: 'ReBiome™',       badge: 'CLINICAL PHASE',desc: 'Microbiota Restoration Platform focused on FMT-based therapeutics.' },
               { to: '/novabiome',  img: '/assets/images/novabiome.jpg',title: 'NovaBiome™',    badge: 'R&D',           desc: 'Next-Generation Microbiome Therapeutics Platform.' },
-            ].map(({ to, img, title, badge, desc }) => (
-              <div key={to} className="feature-card" style={{ background: 'rgba(30,41,59,0.4)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', overflow: 'hidden' }}>
+            ].map(({ to, img, title, badge, desc }, i) => (
+              <motion.div key={to} {...scrollFadeUp(i * 0.1)} className="feature-card" style={{ background: 'rgba(30,41,59,0.4)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', overflow: 'hidden' }}>
                 <div style={{ height: '160px', overflow: 'hidden' }}>
                   <img src={img} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 </div>
@@ -245,7 +252,7 @@ export default function HomePage() {
                   <p style={{ color: '#94a3b8', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem', minHeight: '60px' }}>{desc}</p>
                   <Link to={to} style={{ color: '#1FCAD3', textDecoration: 'none', fontWeight: 600, fontSize: '0.92rem' }}>Explore Platform →</Link>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

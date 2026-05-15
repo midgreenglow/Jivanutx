@@ -378,6 +378,38 @@ export default function LegacyPage({ fileName }) {
     return initLegacyAuthAndData(contentRef.current, navigate);
   }, [state.html, navigate]);
 
+  useEffect(() => {
+    if (!contentRef.current || !state.html) return undefined;
+
+    const targets = contentRef.current.querySelectorAll(
+      '.card, .feature-card, .proof-card, .step-item, .team-card, ' +
+      '.platform-card, .segment-card, .section-header, .infographic-block, ' +
+      '.evidence-card, .career-card, .value-card, [class$="-card"], ' +
+      '.platforms-grid > *, .steps-grid > *, .proof-grid > *, ' +
+      '.segment-grid > *, .footer-col'
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('scroll-anim-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    targets.forEach((el, i) => {
+      el.classList.add('scroll-anim-ready');
+      el.style.transitionDelay = `${(i % 4) * 80}ms`;
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [state.html]);
+
   const handleClick = (event) => {
     const anchor = event.target.closest('a[href]');
     if (!anchor) return;

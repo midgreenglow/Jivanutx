@@ -603,6 +603,42 @@ footer {
     font-size: 0.9rem;
 }
 
+/* ── Scroll-triggered animations (legacy pages) ──────────────────────────── */
+.scroll-anim-ready {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.scroll-anim-in {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-anim-ready {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ── Touch-friendly active states (replaces hover on mobile) ─────────────── */
+@media (hover: none) {
+    .card:active,
+    .feature-card:active,
+    .proof-card:active,
+    .platform-card:active,
+    .team-card:active {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 30px rgba(31, 202, 211, 0.15);
+    }
+
+    .btn:active {
+        transform: scale(0.96);
+    }
+}
+
 /* Animations */
 @keyframes fadeInUp {
     from {
