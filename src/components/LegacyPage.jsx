@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { toSpaPath } from '../lib/routes';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const pageCache = new Map();
 const TOKEN_KEY = 'jivanu_token';
@@ -378,36 +382,248 @@ export default function LegacyPage({ fileName }) {
     return initLegacyAuthAndData(contentRef.current, navigate);
   }, [state.html, navigate]);
 
+  /* ── GSAP Scroll & Entrance Animations ─────────────────────────────── */
   useEffect(() => {
     if (!contentRef.current || !state.html) return undefined;
 
-    const targets = contentRef.current.querySelectorAll(
-      '.card, .feature-card, .proof-card, .step-item, .team-card, ' +
-      '.platform-card, .segment-card, .section-header, .infographic-block, ' +
-      '.evidence-card, .career-card, .value-card, [class$="-card"], ' +
-      '.platforms-grid > *, .steps-grid > *, .proof-grid > *, ' +
-      '.segment-grid > *, .footer-col'
-    );
+    const el = contentRef.current;
+    const ctx = gsap.context(() => {
+      const ease = 'power3.out';
+      const easeBack = 'back.out(1.5)';
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('scroll-anim-in');
-            observer.unobserve(entry.target);
+      /* ── Helper: word-split an element ── */
+      function splitWords(heading) {
+        if (!heading) return;
+        // Preserve existing child elements (like <strong>, <span>)
+        // Only split pure text nodes
+        const clone = heading.cloneNode(true);
+        const text = clone.textContent.trim();
+        if (!text || heading.querySelectorAll('*').length > 2) return; // skip complex markup
+        const words = text.split(' ');
+        heading.innerHTML = words
+          .map(
+            (w) =>
+              `<span class="gsap-word" style="display:inline-block;overflow:hidden;vertical-align:bottom"><span class="gsap-word-inner" style="display:inline-block">${w}</span></span>`,
+          )
+          .join(' ');
+      }
+
+      /* ── 1. HERO section ── */
+      const hero = el.querySelector('.hero');
+      if (hero) {
+        const tl = gsap.timeline({ defaults: { ease } });
+
+        const tag = hero.querySelector('.tag');
+        if (tag) {
+          gsap.set(tag, { opacity: 0, y: -18 });
+          tl.to(tag, { opacity: 1, y: 0, duration: 0.45 }, 0.15);
+        }
+
+        const h1 = hero.querySelector('h1');
+        if (h1) {
+          splitWords(h1);
+          const inners = h1.querySelectorAll('.gsap-word-inner');
+          if (inners.length) {
+            gsap.set(inners, { y: '110%', opacity: 0 });
+            tl.to(inners, { y: '0%', opacity: 1, duration: 0.65, stagger: 0.045 }, 0.3);
+          } else {
+            gsap.set(h1, { opacity: 0, y: 28 });
+            tl.to(h1, { opacity: 1, y: 0, duration: 0.75 }, 0.3);
           }
+        }
+
+        const heroTexts = hero.querySelectorAll('p, .hero-lead');
+        if (heroTexts.length) {
+          gsap.set(heroTexts, { opacity: 0, y: 22 });
+          tl.to(heroTexts, { opacity: 1, y: 0, duration: 0.65, stagger: 0.12 }, 0.7);
+        }
+
+        const heroBtns = hero.querySelectorAll('.btn');
+        if (heroBtns.length) {
+          gsap.set(heroBtns, { opacity: 0, y: 16, scale: 0.94 });
+          tl.to(heroBtns, { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1 }, 1.0);
+        }
+
+        const heroImg = hero.querySelector('.hero-visual img');
+        if (heroImg) {
+          gsap.set(heroImg, { opacity: 0, scale: 0.88, x: 24 });
+          tl.to(heroImg, { opacity: 1, scale: 1, x: 0, duration: 1.0 }, 0.45);
+        }
+      }
+
+      /* ── 2. Section headers ── */
+      el.querySelectorAll('.section-header h2, .section-title, .section-header h1').forEach((heading) => {
+        splitWords(heading);
+        const inners = heading.querySelectorAll('.gsap-word-inner');
+        gsap.set(inners.length ? inners : [heading], { opacity: 0, y: 36 });
+        ScrollTrigger.create({
+          trigger: heading,
+          start: 'top 86%',
+          onEnter: () =>
+            gsap.to(inners.length ? inners : [heading], {
+              opacity: 1, y: 0, duration: 0.7, stagger: 0.05, ease,
+            }),
+          once: true,
         });
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    );
+      });
 
-    targets.forEach((el, i) => {
-      el.classList.add('scroll-anim-ready');
-      el.style.transitionDelay = `${(i % 4) * 80}ms`;
-      observer.observe(el);
-    });
+      /* ── 3. Problem / feature / team cards with stagger ── */
+      const cardSelector =
+        '.problem-card, .feature-card, .team-card, .career-card, ' +
+        '.evidence-card, .value-card, .pricing-card';
 
-    return () => observer.disconnect();
+      el.querySelectorAll('.grid, .cards-grid, .problem-grid, .team-grid').forEach((grid) => {
+        const cards = grid.querySelectorAll(cardSelector);
+        if (!cards.length) return;
+        gsap.set(cards, { opacity: 0, y: 48, scale: 0.97 });
+        ScrollTrigger.create({
+          trigger: grid,
+          start: 'top 82%',
+          onEnter: () =>
+            gsap.to(cards, {
+              opacity: 1, y: 0, scale: 1,
+              duration: 0.65, stagger: 0.1, ease,
+            }),
+          once: true,
+        });
+      });
+
+      /* standalone pricing card (not inside a .grid) */
+      el.querySelectorAll('.pricing-card').forEach((card) => {
+        if (card.closest('.grid, .cards-grid')) return; // already handled
+        gsap.set(card, { opacity: 0, y: 40, scale: 0.96 });
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 82%',
+          onEnter: () =>
+            gsap.to(card, { opacity: 1, y: 0, scale: 1, duration: 0.85, ease: easeBack }),
+          once: true,
+        });
+
+        /* price count-up */
+        const priceEl = card.querySelector('h2');
+        if (priceEl && priceEl.textContent.includes('₹')) {
+          const match = priceEl.textContent.replace(/[^0-9]/g, '');
+          const finalVal = parseInt(match, 10) || 10000;
+          const obj = { n: 0 };
+          ScrollTrigger.create({
+            trigger: card,
+            start: 'top 82%',
+            onEnter: () =>
+              gsap.to(obj, {
+                n: finalVal,
+                duration: 1.4,
+                ease: 'power2.out',
+                onUpdate() {
+                  priceEl.textContent = `₹${Math.round(obj.n).toLocaleString('en-IN')}`;
+                },
+                onComplete() {
+                  priceEl.textContent = `₹${finalVal.toLocaleString('en-IN')}`;
+                },
+              }),
+            once: true,
+          });
+        }
+      });
+
+      /* ── 4. Benefit list items ── */
+      el.querySelectorAll('.benefit-list').forEach((list) => {
+        const items = list.querySelectorAll('.benefit-item');
+        if (!items.length) return;
+        gsap.set(items, { opacity: 0, x: -32 });
+        ScrollTrigger.create({
+          trigger: list,
+          start: 'top 82%',
+          onEnter: () =>
+            gsap.to(items, { opacity: 1, x: 0, duration: 0.55, stagger: 0.12, ease }),
+          once: true,
+        });
+      });
+
+      /* ── 5. Stand-alone section paragraphs ── */
+      el.querySelectorAll('.section > .container > p, .section > .container > div > p').forEach(
+        (p) => {
+          if (p.closest('.problem-card, .pricing-card, .benefit-list, .hero')) return;
+          gsap.set(p, { opacity: 0, y: 18 });
+          ScrollTrigger.create({
+            trigger: p,
+            start: 'top 88%',
+            onEnter: () => gsap.to(p, { opacity: 1, y: 0, duration: 0.6, ease }),
+            once: true,
+          });
+        },
+      );
+
+      /* ── 6. Images (non-hero) with reveal ── */
+      el.querySelectorAll('.hero-visual img').forEach((img) => {
+        if (img.closest('.hero')) return; // hero already handled
+        gsap.set(img, { opacity: 0, scale: 0.92, x: 20 });
+        ScrollTrigger.create({
+          trigger: img,
+          start: 'top 82%',
+          onEnter: () =>
+            gsap.to(img, { opacity: 1, scale: 1, x: 0, duration: 0.9, ease }),
+          once: true,
+        });
+      });
+
+      /* ── 7. CTA buttons in dark sections ── */
+      el.querySelectorAll('section .btn').forEach((btn) => {
+        if (btn.closest('.hero')) return;
+        gsap.set(btn, { opacity: 0, y: 14 });
+        ScrollTrigger.create({
+          trigger: btn,
+          start: 'top 90%',
+          onEnter: () =>
+            gsap.to(btn, { opacity: 1, y: 0, duration: 0.5, ease }),
+          once: true,
+        });
+      });
+
+      /* ── 8. Card 3-D tilt on hover (desktop) ── */
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isTouchDevice = 'ontouchstart' in window;
+      if (!prefersReduced && !isTouchDevice) {
+        el.querySelectorAll('.problem-card, .feature-card, .team-card').forEach((card) => {
+          card.style.willChange = 'transform';
+          const onMove = (e) => {
+            const r = card.getBoundingClientRect();
+            const x = e.clientX - r.left;
+            const y = e.clientY - r.top;
+            const rx = ((y - r.height / 2) / r.height) * -7;
+            const ry = ((x - r.width / 2) / r.width) * 7;
+            gsap.to(card, {
+              rotateX: rx, rotateY: ry,
+              duration: 0.3, ease: 'power1.out',
+              transformPerspective: 900, transformOrigin: 'center center',
+            });
+          };
+          const onLeave = () =>
+            gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.55, ease: 'power1.out' });
+          card.addEventListener('mousemove', onMove);
+          card.addEventListener('mouseleave', onLeave);
+        });
+      }
+
+      /* ── 9. Scroll-parallax on hero images ── */
+      const heroBg = el.querySelector('.hero');
+      if (heroBg) {
+        const heroVisual = heroBg.querySelector('.hero-visual');
+        if (heroVisual) {
+          gsap.to(heroVisual, {
+            y: 60,
+            ease: 'none',
+            scrollTrigger: { trigger: heroBg, start: 'top top', end: 'bottom top', scrub: 1.2 },
+          });
+        }
+      }
+
+    }, el);
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, [state.html]);
 
   const handleClick = (event) => {

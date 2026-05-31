@@ -1,8 +1,13 @@
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { MeshGradient } from '@paper-design/shaders-react';
 import { Link } from 'react-router-dom';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ButtonColorful } from '../components/ui/ButtonColorful';
 import './HomePage.css';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -18,6 +23,57 @@ const scrollFadeUp = (delay = 0) => ({
 });
 
 export default function HomePage() {
+  const solutionsRef = useRef(null);
+  const solutionCardsRef = useRef([]);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      /* Solutions section: staggered reveal with scale + blur */
+      if (solutionsRef.current) {
+        const heading = solutionsRef.current.querySelector('h2');
+        const sub = solutionsRef.current.querySelector('p');
+        const cards = solutionsRef.current.querySelectorAll('.feature-card');
+
+        if (heading) {
+          gsap.set(heading, { opacity: 0, y: 40 });
+          ScrollTrigger.create({
+            trigger: heading,
+            start: 'top 82%',
+            onEnter: () => gsap.to(heading, { opacity: 1, y: 0, duration: 0.75, ease: 'power3.out' }),
+            once: true,
+          });
+        }
+        if (sub) {
+          gsap.set(sub, { opacity: 0, y: 24 });
+          ScrollTrigger.create({
+            trigger: sub,
+            start: 'top 84%',
+            onEnter: () => gsap.to(sub, { opacity: 1, y: 0, duration: 0.65, ease: 'power3.out' }),
+            once: true,
+          });
+        }
+        if (cards.length) {
+          gsap.set(cards, { opacity: 0, y: 60, scale: 0.95 });
+          ScrollTrigger.create({
+            trigger: solutionsRef.current.querySelector('.grid'),
+            start: 'top 80%',
+            onEnter: () =>
+              gsap.to(cards, {
+                opacity: 1, y: 0, scale: 1,
+                duration: 0.7, stagger: 0.15, ease: 'back.out(1.3)',
+              }),
+            once: true,
+          });
+        }
+      }
+    });
+
+    return () => {
+      ctx.revert();
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
   return (
     /* home-page wrapper: sets background to darkest navy so any tiny
        gap between sections shows that colour instead of the body white  */
@@ -262,7 +318,7 @@ export default function HomePage() {
       </section>
 
       {/* ── SCIENCE-DRIVEN SOLUTIONS ────────────────────────── */}
-      <section className="home-solutions" style={{ background: '#0b1f33', padding: '100px 0' }}>
+      <section ref={solutionsRef} className="home-solutions" style={{ background: '#0b1f33', padding: '100px 0' }}>
         <div className="container">
           <motion.div {...scrollFadeUp(0)} style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h2 style={{ color: '#ffffff', marginBottom: '1rem' }}>Science-Driven Solutions</h2>

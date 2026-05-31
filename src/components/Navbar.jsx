@@ -1,6 +1,10 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { User } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const TOKEN_KEY = 'jivanu_token';
 
@@ -13,6 +17,7 @@ export default function Navbar() {
   const [theme, setTheme]           = useState(() => localStorage.getItem('theme') || 'dark');
   const [hasToken, setHasToken]     = useState(() => !!localStorage.getItem(TOKEN_KEY));
   const navigate = useNavigate();
+  const headerRef = useRef(null);
 
   const navLinks = useMemo(
     () => [
@@ -28,6 +33,34 @@ export default function Navbar() {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  /* Navbar entrance + scroll-shrink effect */
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    /* Initial entrance: slide down + fade in */
+    gsap.fromTo(
+      header,
+      { y: -72, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.65, ease: 'power3.out', delay: 0.1 },
+    );
+
+    /* Scroll-shrink: compress padding and add shadow as user scrolls */
+    const st = ScrollTrigger.create({
+      start: 80,
+      end: 99999,
+      onUpdate: (self) => {
+        if (self.isActive) {
+          header.classList.add('navbar-scrolled');
+        } else {
+          header.classList.remove('navbar-scrolled');
+        }
+      },
+    });
+
+    return () => st.kill();
+  }, []);
 
   useEffect(() => {
     const onStorage = () => setHasToken(!!localStorage.getItem(TOKEN_KEY));
@@ -45,7 +78,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="site-header">
+    <header ref={headerRef} className="site-header">
       <div className="container flex justify-between items-center">
         <Link to="/" className="logo-container" onClick={closeMobile}>
           <div className="logo">Jivanu<span>.</span></div>

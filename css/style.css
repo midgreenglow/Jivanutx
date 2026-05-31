@@ -2566,3 +2566,68 @@ body[class^="bg-"] {
         border-radius: 18px !important;
     }
 }
+
+/* ── GSAP Animation Helpers ─────────────────────────────────────────────── */
+
+/* Word-split spans: ensure no overflow bleed from y-clip reveal */
+.gsap-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: inherit;
+}
+.gsap-word-inner {
+  display: inline-block;
+}
+
+/* Card 3-D tilt: ensure perspective is inherited for GSAP rotateX/Y */
+.problem-card,
+.feature-card,
+.team-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Navbar scroll-shrink state */
+.site-header.navbar-scrolled {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(14px) saturate(1.5);
+  -webkit-backdrop-filter: blur(14px) saturate(1.5);
+  background: rgba(11, 31, 51, 0.88) !important;
+  transition: padding 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+[data-theme="light"] .site-header.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Smooth header transition for scroll effect */
+.site-header {
+  transition: padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Prevent layout shift during GSAP opacity-0 set */
+.gsap-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Price counter: mono font for smooth number changes */
+.pricing-card h2 {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Parallax hero visual: prevent overflow clip */
+.hero-visual {
+  overflow: visible !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gsap-word,
+  .gsap-word-inner {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
