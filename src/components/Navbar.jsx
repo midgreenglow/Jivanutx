@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { User } from 'lucide-react';
 
 const TOKEN_KEY = 'jivanu_token';
@@ -9,12 +9,10 @@ function buildClass({ isActive }) {
 }
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen]   = useState(false);
-  const [theme, setTheme]             = useState(() => localStorage.getItem('theme') || 'dark');
-  const [hasToken, setHasToken]       = useState(() => !!localStorage.getItem(TOKEN_KEY));
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const navigate    = useNavigate();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [theme, setTheme]           = useState(() => localStorage.getItem('theme') || 'dark');
+  const [hasToken, setHasToken]     = useState(() => !!localStorage.getItem(TOKEN_KEY));
+  const navigate = useNavigate();
 
   const navLinks = useMemo(
     () => [
@@ -37,22 +35,11 @@ export default function Navbar() {
     return () => window.removeEventListener('storage', onStorage);
   }, []);
 
-  useEffect(() => {
-    function handleOutsideClick(e) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setDropdownOpen(false);
-      }
-    }
-    document.addEventListener('mousedown', handleOutsideClick);
-    return () => document.removeEventListener('mousedown', handleOutsideClick);
-  }, []);
-
   const closeMobile = () => setMobileOpen(false);
 
   const handleLogout = () => {
     localStorage.removeItem(TOKEN_KEY);
     setHasToken(false);
-    setDropdownOpen(false);
     closeMobile();
     navigate('/signin');
   };
@@ -74,33 +61,6 @@ export default function Navbar() {
               </NavLink>
             ))}
           </div>
-
-          {/* User icon — desktop only, shows when logged in */}
-          {hasToken && (
-            <div className="user-dropdown desktop-only-user" ref={dropdownRef}>
-              <button
-                className="user-icon-btn"
-                onClick={() => setDropdownOpen((prev) => !prev)}
-                aria-label="Account menu"
-              >
-                <User size={20} strokeWidth={2} />
-              </button>
-              {dropdownOpen && (
-                <div className="user-dropdown-menu">
-                  <NavLink
-                    to="/account"
-                    className="dropdown-item"
-                    onClick={() => setDropdownOpen(false)}
-                  >
-                    My Account
-                  </NavLink>
-                  <button className="dropdown-item dropdown-logout" onClick={handleLogout}>
-                    Logout
-                  </button>
-                </div>
-              )}
-            </div>
-          )}
 
           {/* Hamburger — always visible */}
           <button
