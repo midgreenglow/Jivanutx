@@ -9,20 +9,19 @@ function buildClass({ isActive }) {
 }
 
 export default function Navbar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [theme, setTheme] = useState(() => localStorage.getItem('theme') || 'dark');
-  const [hasToken, setHasToken] = useState(() => !!localStorage.getItem(TOKEN_KEY));
+  const [mobileOpen, setMobileOpen]   = useState(false);
+  const [theme, setTheme]             = useState(() => localStorage.getItem('theme') || 'dark');
+  const [hasToken, setHasToken]       = useState(() => !!localStorage.getItem(TOKEN_KEY));
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const navigate = useNavigate();
+  const navigate    = useNavigate();
 
   const navLinks = useMemo(
     () => [
-      { to: '/', label: 'Home', end: true },
-      { to: '/atlas', label: 'Jivanu Atlas™' },
-      { to: '/pathobiome', label: 'Pathobiome™' },
-      { to: '/rebiome', label: 'ReBiome™' },
-      { to: '/novabiome', label: 'NovaBiome™' }
+      { to: '/',         label: 'Home',              end: true },
+      { to: '/atlas',    label: 'Jivanu Atlas™'               },
+      { to: '/rebiome',  label: 'ReBiome™'                    },
+      { to: '/evidence', label: 'Clinical Evidence'            },
     ],
     []
   );
@@ -67,7 +66,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="flex items-center">
-          {/* Desktop-only nav links */}
+          {/* Desktop nav links */}
           <div className="nav-links flex items-center">
             {navLinks.map((link) => (
               <NavLink key={link.to} to={link.to} end={link.end} className={buildClass}>
@@ -88,8 +87,12 @@ export default function Navbar() {
               </button>
               {dropdownOpen && (
                 <div className="user-dropdown-menu">
-                  <NavLink to="/dashboard" className="dropdown-item" onClick={() => setDropdownOpen(false)}>
-                    My Dashboard
+                  <NavLink
+                    to="/account"
+                    className="dropdown-item"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    My Account
                   </NavLink>
                   <button className="dropdown-item dropdown-logout" onClick={handleLogout}>
                     Logout
@@ -99,7 +102,7 @@ export default function Navbar() {
             </div>
           )}
 
-          {/* Hamburger — always visible on all screen sizes */}
+          {/* Hamburger — always visible */}
           <button
             className={`hamburger-menu ${mobileOpen ? 'active' : ''}`}
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
@@ -127,7 +130,7 @@ export default function Navbar() {
                   Sign In
                 </NavLink>
               )}
-              {/* Theme toggle lives inside the menu */}
+              {/* Theme toggle */}
               <label className="theme-switch compact">
                 <input
                   type="checkbox"
@@ -147,16 +150,16 @@ export default function Navbar() {
             ))}
 
             <div className="mobile-section-label" style={{ marginTop: '0.5rem' }}>Company</div>
-            <NavLink to="/team" className="mobile-link" onClick={closeMobile}>Team</NavLink>
-            <NavLink to="/careers" className="mobile-link" onClick={closeMobile}>Careers</NavLink>
-            <NavLink to="/contact" className="mobile-link" onClick={closeMobile}>Contact</NavLink>
+            <NavLink to="/team"     className="mobile-link" onClick={closeMobile}>Team</NavLink>
+            <NavLink to="/careers"  className="mobile-link" onClick={closeMobile}>Careers</NavLink>
+            <NavLink to="/contact"  className="mobile-link" onClick={closeMobile}>Contact</NavLink>
             <NavLink to="/evidence" className="mobile-link" onClick={closeMobile}>Clinical Evidence</NavLink>
 
             <div className="mobile-divider" />
             {hasToken ? (
               <>
-                <NavLink to="/dashboard" className="mobile-link" onClick={closeMobile}>
-                  My Dashboard
+                <NavLink to="/account" className="mobile-link" onClick={closeMobile}>
+                  My Account
                 </NavLink>
                 <button className="mobile-logout" type="button" onClick={handleLogout}>
                   Logout

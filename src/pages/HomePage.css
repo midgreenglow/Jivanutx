@@ -1,0 +1,140 @@
+/* ═══════════════════════════════════════════════════════
+   HomePage — Mobile-first responsive overrides
+   All rules use !important to override the inline styles
+   that the JSX component sets (which can't be beaten any
+   other way without refactoring every style prop).
+═══════════════════════════════════════════════════════ */
+
+/* ── 1. Wrapper: seal background so body colour never bleeds ── */
+.home-page {
+  background: #030c16;       /* darkest navy — matches hero gradient start */
+  overflow-x: hidden;
+}
+
+/* ── 2. Hero section ─────────────────────────────────────────── */
+
+/* Remove the double-top-gap on tablets/phones.
+   Body already has padding-top:80px for the fixed navbar,
+   so the hero's own paddingTop only needs to provide inner
+   breathing room, not navbar clearance. */
+@media (max-width: 1024px) {
+  .home-hero {
+    padding-top: 56px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Shrink the towering hero so content fills it naturally */
+  .home-hero {
+    min-height: 100svh !important;   /* svh = small viewport height, avoids mobile-browser-chrome gap */
+    padding-top: 32px !important;
+    padding-bottom: 56px !important;
+    align-items: flex-start !important;
+  }
+
+  /* Stack text above visual instead of side-by-side */
+  .home-hero-inner {
+    flex-direction: column !important;
+    gap: 0 !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  /* Full-width text block */
+  .home-hero-text {
+    flex: unset !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Scale the giant headline down to fit a phone screen */
+  .home-hero-text h1 {
+    font-size: 2.05rem !important;
+    line-height: 1.18 !important;
+    letter-spacing: -0.5px !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  /* Subtitle */
+  .home-hero-text .hero-subtitle-mobile {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.9rem !important;
+  }
+
+  /* Body paragraph — no justify on mobile (looks bad in narrow columns) */
+  .home-hero-text .hero-body-mobile {
+    font-size: 0.98rem !important;
+    line-height: 1.7 !important;
+    text-align: left !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* CTA button row — left-align on mobile */
+  .home-hero-cta {
+    justify-content: flex-start !important;
+  }
+
+  /* Hide the heavy SVG animation on mobile:
+     • removes layout-breaking overflow
+     • eliminates battery-draining animations
+     • frees up the full width for readable text             */
+  .home-hero-visual {
+    display: none !important;
+  }
+}
+
+/* ── 3. Science-Driven Solutions section ─────────────────────── */
+@media (max-width: 768px) {
+  .home-solutions {
+    padding: 52px 0 60px !important;  /* was 100px — removes the giant "gap" feel */
+  }
+
+  .home-solutions h2 {
+    font-size: 1.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .home-solutions > .container > div:first-child {
+    margin-bottom: 2.25rem !important;
+  }
+
+  /* Single column card stack on mobile */
+  .home-solutions .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.1rem !important;
+  }
+
+  /* Tighten card image height on small screens */
+  .home-solutions .feature-card > div:first-child {
+    height: 180px !important;
+  }
+}
+
+/* ── 4. Animation performance — stop SVG keyframes on mobile ─── */
+/*   The SVG is hidden via .home-hero-visual {display:none} above,
+     but this belt-and-suspenders rule kills any leftover paint     */
+@media (max-width: 768px) {
+  .home-page svg * {
+    animation-play-state: paused !important;
+  }
+}
+
+/* ── 5. Respect user reduced-motion preference globally ──────── */
+@media (prefers-reduced-motion: reduce) {
+  .home-page svg * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── 6. Tablet (769–1024px) tweaks ──────────────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .home-hero-text h1 {
+    font-size: 2.9rem !important;
+    letter-spacing: -1px !important;
+  }
+
+  .home-solutions {
+    padding: 72px 0 !important;
+  }
+}

@@ -706,6 +706,164 @@ footer {
     }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL MOBILE OPTIMISATION — gaps, padding, layout fixes
+   Applied across all pages to remove the "huge empty space"
+   feel that 100px sections create on a phone screen.
+═══════════════════════════════════════════════════════════ */
+
+/* ── Reduce section padding on mobile ── */
+@media (max-width: 768px) {
+    /* .section utility class */
+    .section {
+        padding: 56px 0 !important;
+    }
+
+    /* Dark platform section */
+    .platforms-dark-section {
+        padding: 56px 0 !important;
+    }
+
+    /* Legacy dark sections that set padding inline via class */
+    .science-section,
+    .how-it-works,
+    .problem-section,
+    .product-section {
+        padding-top: 56px !important;
+        padding-bottom: 56px !important;
+    }
+
+    /* Hero → remove excessive double top-padding on legacy pages */
+    .hero {
+        padding-top: 110px !important;
+        padding-bottom: 60px !important;
+    }
+
+    /* Hero mini (product page heroes) */
+    .hero-mini {
+        padding: 100px 0 56px !important;
+    }
+
+    /* Reduce container horizontal gutter so text breathes on narrow screens */
+    .container {
+        padding: 0 1.1rem !important;
+    }
+
+    /* Section headings — scale down on mobile */
+    .section-header h2,
+    h2 {
+        font-size: 1.75rem !important;
+    }
+
+    h3 {
+        font-size: 1.15rem !important;
+    }
+
+    /* Platforms grid single column */
+    .platforms-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        margin-top: 2rem !important;
+    }
+
+    /* Platform cards compact on mobile */
+    .dark-platform-card {
+        padding: 2rem 1.5rem !important;
+        border-radius: 20px !important;
+    }
+
+    /* Footer compact on mobile */
+    footer {
+        padding: 56px 0 32px !important;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.75rem !important;
+        margin-bottom: 2rem !important;
+        text-align: center !important;
+    }
+
+    .footer-grid img {
+        margin: 0 auto !important;
+    }
+
+    .footer-links ul {
+        padding-left: 0 !important;
+    }
+
+    .footer-bottom {
+        flex-direction: column !important;
+        gap: 0.5rem !important;
+        text-align: center !important;
+        padding-top: 1.5rem !important;
+        font-size: 0.82rem !important;
+    }
+
+    /* Science-grid on dark sections */
+    .science-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .science-points {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+
+    /* Proof strip → 2-col on phones */
+    .proof-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.25rem !important;
+    }
+
+    /* Remove minHeight that creates blank space inside sections */
+    .pricing-card {
+        margin: 0 !important;
+        padding: 2rem 1.25rem !important;
+    }
+
+    /* Team grid */
+    .team-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+        gap: 1.5rem !important;
+        margin-top: 2rem !important;
+    }
+
+    .team-member img {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    /* Evidence table — allow horizontal scroll instead of breaking layout */
+    .evidence-table {
+        display: block !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        font-size: 0.88rem !important;
+    }
+}
+
+/* ── Tablet tweaks (769px – 1024px) ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .section {
+        padding: 72px 0 !important;
+    }
+
+    .platforms-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .proof-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 2.5rem !important;
+    }
+}
+
 /* Platforms Section - Dark Theme */
 .platforms-dark-section {
     background-color: #04121f;
