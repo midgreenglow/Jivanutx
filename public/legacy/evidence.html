@@ -7,139 +7,21 @@
     <title>Clinical Evidence | FMT in Gut-Related Diseases</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
-        .evidence-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .blog-section {
-            margin-bottom: 5rem;
-        }
-
-        .blog-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--navy);
-            border-bottom: 2px solid var(--cyan);
-            display: inline-block;
-            padding-bottom: 0.5rem;
-        }
-
-        .blog-section h3 {
-            font-size: 1.8rem;
-            margin: 2.5rem 0 1rem;
-            color: var(--navy);
-        }
-
-        .blog-section p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-main);
-            margin-bottom: 1.5rem;
-            text-align: justify;
-        }
-
-        .findings-box {
-            background: var(--light-bg);
-            padding: 2.5rem;
-            border-radius: 15px;
-            border-left: 5px solid var(--cyan);
-            margin: 2rem 0;
-        }
-
-        .findings-box h4 {
-            margin-bottom: 1rem;
-            color: var(--navy);
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .findings-box ul {
-            list-style: none;
-        }
-
-        .findings-box li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .findings-box li::before {
-            content: "•";
-            color: var(--cyan);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .summary-blockquote {
-            background: rgba(31, 202, 211, 0.05);
-            border-left: 4px solid var(--cyan);
-            padding: 1.5rem 2rem;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--navy);
-            font-weight: 500;
-        }
-
-        .references-section {
-            background: #f8fbfc;
-            padding: 5rem 2rem;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .reference-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .reference-item {
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            padding-left: 2rem;
-            position: relative;
-        }
-
-        .reference-item::before {
-            content: attr(data-index);
-            position: absolute;
-            left: 0;
-            color: var(--cyan);
-            font-weight: bold;
-        }
-
-        .reference-item a {
-            color: var(--cyan);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .reference-item a:hover {
-            text-decoration: underline;
-        }
-
+        /* ── Hero ── */
         .hero-mini {
             position: relative;
-            background: linear-gradient(rgba(11, 31, 51, 0.85), rgba(11, 31, 51, 0.85)), url('assets/images/evidence_bg.png');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(11,31,51,0.88), rgba(11,31,51,0.88)),
+                        url('assets/images/evidence_bg.png') center/cover no-repeat;
             color: white;
-            padding: 160px 0 100px;
+            padding: 160px 0 90px;
             text-align: center;
-            margin-top: 0;
         }
-
         .hero-mini .tag {
-            background: rgba(31, 202, 211, 0.2);
+            background: rgba(31,202,211,0.2);
             color: var(--cyan);
-            border: 1px solid rgba(31, 202, 211, 0.3);
+            border: 1px solid rgba(31,202,211,0.3);
             backdrop-filter: blur(5px);
             padding: 0.5rem 1.5rem;
             border-radius: 50px;
@@ -149,15 +31,211 @@
             font-size: 0.85rem;
         }
 
-        sup a {
+        /* ── Topic Cards ── */
+        .evidence-topic-card {
+            background: var(--white);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 4px 28px rgba(0,0,0,0.07);
+            border: 1px solid rgba(0,0,0,0.06);
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .evidence-topic-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+        }
+        .etc-header {
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .etc-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .etc-title-group { flex: 1; }
+        .etc-category {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+        .etc-title {
+            color: white;
+            font-size: 1.15rem;
+            margin: 0.2rem 0 0;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+        .etc-body { padding: 1.4rem 2rem 1.75rem; }
+        .etc-body p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.65;
+            margin: 0 0 1.1rem;
+        }
+        .etc-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .stat-pill {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+        }
+        .read-link {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        .read-link:hover { opacity: 0.75; }
+
+        /* ── Blog Article Cards ── */
+        .blog-article-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.05);
+            scroll-margin-top: 100px;
+        }
+        .article-badge {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .article-badge-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .article-meta { flex: 1; }
+        .article-meta-cat {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+        }
+        .article-badge h2 {
+            font-size: 1.6rem;
+            margin: 0;
+        }
+        .blog-article-card h3 {
+            font-size: 1.2rem;
+            margin: 2.25rem 0 0.9rem;
+            color: var(--navy);
+        }
+        .blog-article-card p,
+        .blog-article-card li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-main);
+        }
+        .blog-article-card p { margin-bottom: 1.25rem; text-align: justify; }
+        .blog-article-card ul {
+            margin: 0.5rem 0 1.5rem 1.5rem;
+        }
+        .blog-article-card li { margin-bottom: 0.6rem; }
+        .summary-blockquote {
+            background: rgba(31,202,211,0.06);
+            border-left: 4px solid var(--cyan);
+            padding: 1.25rem 1.75rem;
+            margin: 1.5rem 0;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            color: var(--navy);
+            font-weight: 500;
+        }
+        .article-links {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        .study-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: rgba(31,202,211,0.08);
+            color: var(--cyan);
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid rgba(31,202,211,0.22);
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .study-btn:hover {
+            background: rgba(31,202,211,0.15);
+            border-color: var(--cyan);
+        }
+        .study-btn svg { flex-shrink: 0; }
+
+        /* ── References ── */
+        .references-section {
+            background: var(--light-bg);
+            padding: 5rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        .reference-list { list-style: none; padding: 0; }
+        .reference-item {
+            margin-bottom: 1.75rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            padding-left: 2rem;
+            position: relative;
+        }
+        .reference-item::before {
+            content: attr(data-index);
+            position: absolute;
+            left: 0;
+            color: var(--cyan);
+            font-weight: bold;
+        }
+        .reference-item a {
             color: var(--cyan);
             text-decoration: none;
-            font-weight: bold;
-            padding: 0 2px;
+            font-weight: 500;
         }
+        .reference-item a:hover { text-decoration: underline; }
 
-        sup a:hover {
-            text-decoration: underline;
+        /* ── sup links ── */
+        sup a { color: var(--cyan); text-decoration: none; font-weight: bold; padding: 0 2px; }
+        sup a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .evidence-topic-grid { grid-template-columns: 1fr !important; }
+            .blog-article-card { padding: 2rem 1.5rem; }
+            .article-badge h2 { font-size: 1.3rem; }
         }
     </style>
     <script src="js/script.js" defer></script>
@@ -175,188 +253,429 @@
                     <a href="index.html">Home</a>
                     <a href="atlas.html">Jivanu Atlas™</a>
                     <a href="rebiome.html">ReBiome™</a>
-                    <a href="novabiome.html">NovaBiome™</a>
+                    <a href="evidence.html" class="active">Clinical Evidence</a>
                 </div>
-<button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
+                <button class="hamburger-menu" id="hamburger-menu" aria-label="Menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-
-                <div class="mobile-menu-overlay" id="mobile-menu-overlay">                    <div class="mobile-signin-row">
+                <div class="mobile-menu-overlay" id="mobile-menu-overlay">
+                    <div class="mobile-signin-row">
                         <a href="signin.html" class="mobile-link signin-link">Sign In</a>
                         <label class="theme-switch compact">
                             <input type="checkbox" class="theme-toggle-input" data-theme-toggle aria-label="Toggle dark mode">
                             <span class="theme-slider"><span class="theme-knob"></span></span>
                         </label>
                     </div>
-<div class="mobile-section-label mobile-only">Platforms</div>
+                    <div class="mobile-section-label mobile-only">Platforms</div>
                     <a href="atlas.html" class="mobile-link mobile-only">Jivanu Atlas™</a>
                     <a href="rebiome.html" class="mobile-link mobile-only">ReBiome™</a>
-                    <a href="novabiome.html" class="mobile-link mobile-only">NovaBiome™</a>
                     <a href="team.html" class="mobile-link">Team</a>
                     <a href="careers.html" class="mobile-link">Careers</a>
                     <a href="contact.html" class="mobile-link">Contact</a>
                     <a href="evidence.html" class="mobile-link">Clinical Evidence</a>
                     <div class="mobile-divider"></div>
-                                    <button class="mobile-logout" id="mobile-logout" type="button">Logout</button>
+                    <button class="mobile-logout" id="mobile-logout" type="button">Logout</button>
                 </div>
             </nav>
         </div>
     </header>
 
     <main>
+        <!-- ── Hero ── -->
         <section class="hero-mini">
             <div class="container">
                 <span class="tag">Scientific Education</span>
-                <h1 style="color: white; font-size: 3.5rem; margin-top: 1.5rem; letter-spacing: -0.5px;">Clinical
-                    Evidence: FMT in Gut-Related Diseases</h1>
-                <p
-                    style="color: rgba(255,255,255,0.9); max-width: 800px; margin: 2rem auto 0; font-size: 1.35rem; line-height: 1.6; font-weight: 300;">
-                    Providing high transparency and science-driven insights into the therapeutic potential of the
-                    microbiome.
+                <h1 style="color:white; font-size:3.2rem; margin-top:1.5rem; letter-spacing:-0.5px; max-width:800px; margin-left:auto; margin-right:auto;">
+                    Clinical Evidence: FMT in Gut-Related Diseases
+                </h1>
+                <p style="color:rgba(255,255,255,0.85); max-width:700px; margin:2rem auto 0; font-size:1.25rem; line-height:1.65; font-weight:300;">
+                    High-transparency, science-driven insights into the therapeutic potential of microbiome restoration.
                 </p>
             </div>
         </section>
 
-        <article class="evidence-container">
-            <section class="blog-section">
-                <h3>Overview</h3>
-                <p>Fecal Microbiota Transplantation (FMT) is a microbiome-based approach designed to restore healthy gut
-                    microbial balance. It has been examined across multiple clinical settings, showing the strongest
-                    evidence in inflammatory and infectious gut diseases.</p>
-            </section>
+        <!-- ── Topic Overview Cards ── -->
+        <section class="section evidence-cards-section" style="background:var(--light-bg); padding:80px 0 60px;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Research Areas</h2>
+                    <p style="color:var(--text-muted); margin-top:0.75rem; font-size:1.05rem;">
+                        FMT is being studied across a growing range of conditions. Explore each area below.
+                    </p>
+                </div>
 
-            <section class="blog-section">
-                <h2>1. Ulcerative Colitis (UC)</h2>
+                <div class="grid evidence-topic-grid" style="grid-template-columns:repeat(2,1fr); gap:2rem; max-width:960px; margin:3rem auto 0;">
 
-                <h3>Real-World Evidence (India)</h3>
-                <p>A prospective real-world analysis conducted at <strong>Dayanand Medical College & Hospital
-                        (Ludhiana)</strong> involving steroid-dependent UC patients treated with repeated FMT sessions
-                    via colonoscopy demonstrated significant outcomes:</p>
-                <ul>
-                    <li><strong>~46%</strong> achieved steroid-free clinical remission.</li>
-                    <li><strong>~76%</strong> showed clinical response; <strong>~63%</strong> achieved endoscopic
-                        remission at 24 weeks.</li>
-                    <li>Responders successfully withdrew from steroids without serious adverse effects <sup
-                            id="cite1"><a href="#ref1">[1]</a></sup>.</li>
-                </ul>
+                    <!-- Card 1: Ulcerative Colitis -->
+                    <a href="#uc-section" class="evidence-topic-card problem-card" style="border:none; padding:0; text-decoration:none;">
+                        <div class="etc-header" style="background:linear-gradient(135deg,#1FCAD3,#0d7a80);">
+                            <div class="etc-icon">
+                                <!-- Colon + inflammation SVG infographic -->
+                                <svg width="44" height="44" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <ellipse cx="28" cy="28" rx="17" ry="21" stroke="rgba(255,255,255,0.75)" stroke-width="2.5" fill="none"/>
+                                    <ellipse cx="28" cy="28" rx="11" ry="14" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+                                    <!-- villi -->
+                                    <path d="M21 14 Q21 10 21 7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M28 12 Q28 8 28 5" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M35 14 Q35 10 35 7" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <!-- inflammation spots -->
+                                    <circle cx="21" cy="19" r="3.5" fill="#FF6B6B" opacity="0.85"/>
+                                    <circle cx="36" cy="25" r="2.5" fill="#FF6B6B" opacity="0.8"/>
+                                    <circle cx="24" cy="37" r="3" fill="#FF6B6B" opacity="0.75"/>
+                                    <circle cx="37" cy="36" r="2" fill="#FF8C94" opacity="0.7"/>
+                                    <!-- healthy microbe -->
+                                    <circle cx="28" cy="28" r="2.5" fill="white" opacity="0.9"/>
+                                    <circle cx="20" cy="30" r="1.5" fill="white" opacity="0.55"/>
+                                    <circle cx="34" cy="21" r="1.5" fill="white" opacity="0.55"/>
+                                </svg>
+                            </div>
+                            <div class="etc-title-group">
+                                <div class="etc-category">Gastrointestinal</div>
+                                <div class="etc-title">Ulcerative Colitis (UC)</div>
+                            </div>
+                        </div>
+                        <div class="etc-body">
+                            <p>FMT shows strong evidence for inducing and maintaining remission in UC. Multiple Indian RCTs and real-world analyses validate its clinical potential.</p>
+                            <div class="etc-footer">
+                                <span class="stat-pill" style="background:rgba(31,202,211,0.12); color:var(--cyan);">~46% Remission Rate</span>
+                                <a href="https://pubmed.ncbi.nlm.nih.gov/30449078/" target="_blank" class="read-link" style="color:var(--cyan);" onclick="event.stopPropagation()">PubMed ↗</a>
+                            </div>
+                        </div>
+                    </a>
 
-                <h3>Multicenter Randomized Controlled Trial (India)</h3>
-                <p>An open-label RCT involving leading institutions (AIIMS Delhi, PGIMER, Lisie, IMS BHU, Lokmanya
-                    Tilak, and Dayanand) evaluated multi-donor FMT combined with an anti-inflammatory diet. The study
-                    showed effective induction and maintenance of remission over one year when combined with standard
-                    care <sup id="cite2"><a href="#ref2">[2]</a></sup>.</p>
+                    <!-- Card 2: C. difficile -->
+                    <a href="#cdi-section" class="evidence-topic-card problem-card" style="border:none; padding:0; text-decoration:none;">
+                        <div class="etc-header" style="background:linear-gradient(135deg,#1565c0,#0c3d8a);">
+                            <div class="etc-icon">
+                                <!-- C. diff bacterium + spore SVG -->
+                                <svg width="44" height="44" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- rod body -->
+                                    <rect x="10" y="19" width="26" height="12" rx="6" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.75)" stroke-width="2.5"/>
+                                    <!-- spore at right end -->
+                                    <ellipse cx="42" cy="25" rx="6" ry="8" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.85)" stroke-width="2"/>
+                                    <!-- flagella-like lines -->
+                                    <path d="M18 19 C15 12 12 8 10 6" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <path d="M24 19 C22 13 21 9 20 6" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/>
+                                    <!-- warning triangle -->
+                                    <path d="M24 36 L18 47 L30 47 Z" fill="#FF6B6B"/>
+                                    <rect x="23.5" y="39" width="2" height="5" rx="1" fill="white"/>
+                                    <circle cx="24.5" cy="46" r="1" fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="etc-title-group">
+                                <div class="etc-category">Infectious Disease</div>
+                                <div class="etc-title">C. difficile Infection (CDI)</div>
+                            </div>
+                        </div>
+                        <div class="etc-body">
+                            <p>FMT demonstrates high resolution rates for recurrent CDI even in immunocompromised patients, matching or exceeding global antibiotic benchmarks.</p>
+                            <div class="etc-footer">
+                                <span class="stat-pill" style="background:rgba(21,101,192,0.1); color:#1565c0;">Complete Resolution</span>
+                                <a href="https://pubmed.ncbi.nlm.nih.gov/38323255/" target="_blank" class="read-link" style="color:#1565c0;" onclick="event.stopPropagation()">PubMed ↗</a>
+                            </div>
+                        </div>
+                    </a>
 
-                <h3>Global Evidence</h3>
-                <p>Meta-analyses of multiple Randomized Controlled Trials (RCTs) confirm that FMT significantly
-                    increases clinical and endoscopic remission rates compared to control groups, validating its
-                    therapeutic potential globally <sup id="cite3"><a href="#ref3">[3]</a></sup>.</p>
+                    <!-- Card 3: Parkinson's -->
+                    <a href="#pd-section" class="evidence-topic-card problem-card" style="border:none; padding:0; text-decoration:none;">
+                        <div class="etc-header" style="background:linear-gradient(135deg,#7b1fa2,#47106b);">
+                            <div class="etc-icon">
+                                <!-- Brain + gut-brain axis SVG -->
+                                <svg width="44" height="44" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- brain outline (simplified hemisphere) -->
+                                    <path d="M10 34 C6 25 8 14 16 11 C21 6 35 7 40 15 C48 13 53 24 49 33 C47 40 40 44 32 42 C24 44 13 42 10 34Z" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.75)" stroke-width="2.5"/>
+                                    <!-- neural nodes -->
+                                    <circle cx="20" cy="24" r="2.5" fill="white" opacity="0.9"/>
+                                    <circle cx="32" cy="20" r="2.5" fill="white" opacity="0.9"/>
+                                    <circle cx="28" cy="32" r="2.5" fill="white" opacity="0.9"/>
+                                    <!-- connections -->
+                                    <line x1="20" y1="24" x2="32" y2="20" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+                                    <line x1="32" y1="20" x2="28" y2="32" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+                                    <line x1="20" y1="24" x2="28" y2="32" stroke="rgba(255,255,255,0.45)" stroke-width="1.5"/>
+                                    <!-- gut-brain axis arrow -->
+                                    <line x1="30" y1="44" x2="30" y2="53" stroke="rgba(255,255,255,0.4)" stroke-width="2" stroke-dasharray="3 2.5"/>
+                                    <circle cx="30" cy="55" r="3" fill="rgba(255,255,255,0.3)"/>
+                                </svg>
+                            </div>
+                            <div class="etc-title-group">
+                                <div class="etc-category">Gut–Brain Axis</div>
+                                <div class="etc-title">Parkinson's Disease</div>
+                            </div>
+                        </div>
+                        <div class="etc-body">
+                            <p>Pilot studies show FMT is well-tolerated in Parkinson's patients, with successful microbial engraftment and improvements in GI symptoms.</p>
+                            <div class="etc-footer">
+                                <span class="stat-pill" style="background:rgba(123,31,162,0.1); color:#7b1fa2;">Exploratory Phase</span>
+                                <a href="https://pubmed.ncbi.nlm.nih.gov/36937520/" target="_blank" class="read-link" style="color:#7b1fa2;" onclick="event.stopPropagation()">PubMed ↗</a>
+                            </div>
+                        </div>
+                    </a>
 
-                <div class="summary-blockquote">
-                    <strong>Summary:</strong> Both controlled and real-world data support FMT’s role in inducing
-                    remission in UC, with substantial clinical evidence contributed by major Indian medical centers.
-                    </div>
-            </section>
+                    <!-- Card 4: ASD -->
+                    <a href="#asd-section" class="evidence-topic-card problem-card" style="border:none; padding:0; text-decoration:none;">
+                        <div class="etc-header" style="background:linear-gradient(135deg,#e65100,#8c3200);">
+                            <div class="etc-icon">
+                                <!-- ASD spectrum / neural SVG -->
+                                <svg width="44" height="44" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- head circle -->
+                                    <circle cx="28" cy="26" r="18" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.65)" stroke-width="2.5"/>
+                                    <!-- colorful spectrum nodes -->
+                                    <circle cx="20" cy="22" r="4" fill="#FF6B6B" opacity="0.85"/>
+                                    <circle cx="28" cy="17" r="4" fill="#FFD93D" opacity="0.85"/>
+                                    <circle cx="36" cy="22" r="4" fill="#6BCB77" opacity="0.85"/>
+                                    <circle cx="22" cy="32" r="4" fill="#4D96FF" opacity="0.85"/>
+                                    <circle cx="34" cy="32" r="4" fill="#C77DFF" opacity="0.85"/>
+                                    <!-- connections -->
+                                    <line x1="20" y1="22" x2="28" y2="17" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                                    <line x1="28" y1="17" x2="36" y2="22" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                                    <line x1="20" y1="22" x2="22" y2="32" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                                    <line x1="36" y1="22" x2="34" y2="32" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                                    <line x1="22" y1="32" x2="34" y2="32" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+                            <div class="etc-title-group">
+                                <div class="etc-category">Neurodevelopmental</div>
+                                <div class="etc-title">Autism Spectrum Disorder</div>
+                            </div>
+                        </div>
+                        <div class="etc-body">
+                            <p>ICMR-approved clinical research in India and international trials show FMT improves GI and behavioural symptoms in ASD without serious adverse events.</p>
+                            <div class="etc-footer">
+                                <span class="stat-pill" style="background:rgba(230,81,0,0.1); color:#e65100;">ICMR Approved</span>
+                                <a href="https://timesofindia.indiatimes.com/city/hyderabad/hyds-institute-gets-icmr-nod-for-fmt-trial-on-autistic-kids/articleshow/124881223.cms" target="_blank" class="read-link" style="color:#e65100;" onclick="event.stopPropagation()">Times of India ↗</a>
+                            </div>
+                        </div>
+                    </a>
 
-            <section class="blog-section">
-                <h2>2. Recurrent Clostridioides difficile Infection (CDI)</h2>
+                </div>
+            </div>
+        </section>
 
-                <h3>Tertiary Care Insights (India)</h3>
-                <p>In high-risk cases, such as hematopoietic stem cell transplant (HSCT) recipients with refractory or
-                    recurrent CDI, FMT administered at a tertiary center in India led to a complete resolution of
-                    infection in the majority of patients with minimal unrelated adverse events <sup id="cite4"><a
-                            href="#ref4">[4]</a></sup>.</p>
+        <!-- ── Full Blog Articles ── -->
+        <section class="section" style="background:var(--white); padding:70px 0 80px;">
+            <div class="container" style="max-width:900px;">
 
-                <h3>Global Context</h3>
-                <p>Systematic reviews consistently show that FMT provides a massive increase in resolution rates for
-                    recurrent CDI compared to standard antibiotic therapy, maintaining high cure rates across
-                    international studies <sup id="cite5"><a href="#ref5">[5]</a></sup>.</p>
-
-                <div class="summary-blockquote">
-                    <strong>Summary:</strong> FMT is highly effective in resolving recurrent CDI, even in
-                    immunocompromised patients, aligning Indian clinical success with global benchmarks.
-                    </div>
-            </section>
-
-            <section class="blog-section">
-                <h2>3. Parkinson’s Disease (Gut–Brain Axis)</h2>
-                <p>Emerging research into the gut–brain axis has led to clinical trials exploring FMT for Parkinson’s
-                    Disease. Early pilot studies suggest that FMT is well-tolerated and can successfully shift gut
-                    microbial profiles, with some patients reporting improvements in gastrointestinal symptoms like
-                    constipation. However, evidence for direct neurologic benefit remains exploratory <sup id="cite6"><a
-                            href="#ref6">[6]</a></sup>.</p>
-            </section>
-
-            <section class="blog-section">
-                <h2>4. Autism Spectrum Disorder (ASD)</h2>
-
-                <h3>International Research</h3>
-                <p>FMT in ASD is being actively explored globally. Clinical trials assess safety and microbiome changes
-                    in children, with some prospective studies showing improvements in both GI symptoms and core
-                    behavioral symptoms without serious adverse events <sup id="cite7"><a href="#ref7">[7]</a></sup>.
+                <!-- Overview -->
+                <p style="font-size:1.1rem; line-height:1.85; color:var(--text-muted); text-align:justify; margin-bottom:3rem; padding:1.5rem 2rem; background:var(--light-bg); border-radius:14px; border-left:4px solid var(--cyan);">
+                    <strong style="color:var(--navy);">Overview:</strong> Fecal Microbiota Transplantation (FMT) is a microbiome-based approach designed to restore healthy gut microbial balance. It has been examined across multiple clinical settings, showing the strongest evidence in inflammatory and infectious gut diseases.
                 </p>
 
-                <h3>Emerging Research in India</h3>
-                <p>The <strong>Indian Council of Medical Research (ICMR)</strong> has approved FMT research for autistic
-                    children at the Resplice Autism Institute in Hyderabad. This reflects the growing clinical interest
-                    in microbiome influences on neurodevelopmental conditions in India <sup id="cite8"><a
-                            href="#ref8">[8]</a></sup>.</p>
-            </section>
-        </article>
+                <!-- ── Article 1: UC ── -->
+                <div class="blog-article-card" id="uc-section">
+                    <div class="article-badge">
+                        <div class="article-badge-icon" style="background:linear-gradient(135deg,#1FCAD3,#0d7a80);">
+                            <svg width="26" height="26" viewBox="0 0 56 56" fill="none">
+                                <ellipse cx="28" cy="28" rx="17" ry="21" stroke="white" stroke-width="2.5" fill="none"/>
+                                <circle cx="21" cy="19" r="3.5" fill="#FF6B6B" opacity="0.85"/>
+                                <circle cx="36" cy="25" r="2.5" fill="#FF6B6B" opacity="0.8"/>
+                                <circle cx="24" cy="37" r="3" fill="#FF6B6B" opacity="0.75"/>
+                                <circle cx="28" cy="28" r="2.5" fill="white" opacity="0.9"/>
+                            </svg>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-meta-cat" style="color:var(--cyan);">Gastrointestinal · Research Summary</div>
+                            <h2 style="color:var(--navy);">1. Ulcerative Colitis (UC)</h2>
+                        </div>
+                    </div>
 
+                    <h3>Real-World Evidence (India)</h3>
+                    <p>A prospective real-world analysis conducted at <strong>Dayanand Medical College &amp; Hospital (Ludhiana)</strong> involving steroid-dependent UC patients treated with repeated FMT sessions via colonoscopy demonstrated significant outcomes:</p>
+                    <ul>
+                        <li><strong>~46%</strong> achieved steroid-free clinical remission.</li>
+                        <li><strong>~76%</strong> showed clinical response; <strong>~63%</strong> achieved endoscopic remission at 24 weeks.</li>
+                        <li>Responders successfully withdrew from steroids without serious adverse effects <sup id="cite1"><a href="#ref1">[1]</a></sup>.</li>
+                    </ul>
+
+                    <h3>Multicenter Randomized Controlled Trial (India)</h3>
+                    <p>An open-label RCT involving leading institutions (AIIMS Delhi, PGIMER, Lisie, IMS BHU, Lokmanya Tilak, and Dayanand) evaluated multi-donor FMT combined with an anti-inflammatory diet. The study showed effective induction and maintenance of remission over one year when combined with standard care <sup id="cite2"><a href="#ref2">[2]</a></sup>.</p>
+
+                    <h3>Global Evidence</h3>
+                    <p>Meta-analyses of multiple Randomized Controlled Trials (RCTs) confirm that FMT significantly increases clinical and endoscopic remission rates compared to control groups, validating its therapeutic potential globally <sup id="cite3"><a href="#ref3">[3]</a></sup>.</p>
+
+                    <div class="summary-blockquote">
+                        <strong>Summary:</strong> Both controlled and real-world data support FMT's role in inducing remission in UC, with substantial clinical evidence contributed by major Indian medical centers.
+                    </div>
+
+                    <div class="article-links">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/30449078/" target="_blank" class="study-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            PMID: 30449078 — Dayanand RW Study
+                        </a>
+                        <a href="https://www.centerwatch.com/clinical-trials/listings/NCT06895252/" target="_blank" class="study-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            NCT06895252 — Multicenter India RCT
+                        </a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/35965832/" target="_blank" class="study-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            PMID: 35965832 — Global Meta-analysis
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ── Article 2: CDI ── -->
+                <div class="blog-article-card" id="cdi-section">
+                    <div class="article-badge">
+                        <div class="article-badge-icon" style="background:linear-gradient(135deg,#1565c0,#0c3d8a);">
+                            <svg width="26" height="26" viewBox="0 0 56 56" fill="none">
+                                <rect x="10" y="19" width="26" height="12" rx="6" stroke="white" stroke-width="2.5" fill="none"/>
+                                <ellipse cx="42" cy="25" rx="6" ry="8" stroke="white" stroke-width="2" fill="rgba(255,255,255,0.15)"/>
+                                <path d="M24 36 L18 47 L30 47 Z" fill="#FF6B6B"/>
+                                <rect x="23.5" y="39" width="2" height="5" rx="1" fill="white"/>
+                                <circle cx="24.5" cy="46" r="1" fill="white"/>
+                            </svg>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-meta-cat" style="color:#1565c0;">Infectious Disease · Research Summary</div>
+                            <h2 style="color:var(--navy);">2. Recurrent Clostridioides difficile Infection (CDI)</h2>
+                        </div>
+                    </div>
+
+                    <h3>Tertiary Care Insights (India)</h3>
+                    <p>In high-risk cases, such as hematopoietic stem cell transplant (HSCT) recipients with refractory or recurrent CDI, FMT administered at a tertiary center in India led to a complete resolution of infection in the majority of patients with minimal unrelated adverse events <sup id="cite4"><a href="#ref4">[4]</a></sup>.</p>
+
+                    <h3>Global Context</h3>
+                    <p>Systematic reviews consistently show that FMT provides a massive increase in resolution rates for recurrent CDI compared to standard antibiotic therapy, maintaining high cure rates across international studies <sup id="cite5"><a href="#ref5">[5]</a></sup>.</p>
+
+                    <div class="summary-blockquote">
+                        <strong>Summary:</strong> FMT is highly effective in resolving recurrent CDI, even in immunocompromised patients, aligning Indian clinical success with global benchmarks.
+                    </div>
+
+                    <div class="article-links">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/38323255/" target="_blank" class="study-btn" style="color:#1565c0; border-color:rgba(21,101,192,0.22); background:rgba(21,101,192,0.07);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            PMID: 38323255 — Indian Tertiary Center Experience
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ── Article 3: Parkinson's ── -->
+                <div class="blog-article-card" id="pd-section">
+                    <div class="article-badge">
+                        <div class="article-badge-icon" style="background:linear-gradient(135deg,#7b1fa2,#47106b);">
+                            <svg width="26" height="26" viewBox="0 0 56 56" fill="none">
+                                <path d="M10 34 C6 25 8 14 16 11 C21 6 35 7 40 15 C48 13 53 24 49 33 C47 40 40 44 32 42 C24 44 13 42 10 34Z" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="2.5"/>
+                                <circle cx="20" cy="24" r="2.5" fill="white" opacity="0.9"/>
+                                <circle cx="32" cy="20" r="2.5" fill="white" opacity="0.9"/>
+                                <circle cx="28" cy="32" r="2.5" fill="white" opacity="0.9"/>
+                                <line x1="20" y1="24" x2="32" y2="20" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+                                <line x1="32" y1="20" x2="28" y2="32" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+                                <line x1="20" y1="24" x2="28" y2="32" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-meta-cat" style="color:#7b1fa2;">Gut–Brain Axis · Research Summary</div>
+                            <h2 style="color:var(--navy);">3. Parkinson's Disease (Gut–Brain Axis)</h2>
+                        </div>
+                    </div>
+
+                    <p>Emerging research into the gut–brain axis has led to clinical trials exploring FMT for Parkinson's Disease. Early pilot studies suggest that FMT is well-tolerated and can successfully shift gut microbial profiles, with some patients reporting improvements in gastrointestinal symptoms like constipation. However, evidence for direct neurologic benefit remains exploratory <sup id="cite6"><a href="#ref6">[6]</a></sup>.</p>
+
+                    <div class="summary-blockquote">
+                        <strong>Note:</strong> This is an active area of research. FMT's role in Parkinson's is being studied through the lens of the gut–brain microbiome axis, and early data are promising.
+                    </div>
+
+                    <div class="article-links">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/36937520/" target="_blank" class="study-btn" style="color:#7b1fa2; border-color:rgba(123,31,162,0.22); background:rgba(123,31,162,0.07);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            PMID: 36937520 — Parkinson's Pilot RCT
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ── Article 4: ASD ── -->
+                <div class="blog-article-card" id="asd-section">
+                    <div class="article-badge">
+                        <div class="article-badge-icon" style="background:linear-gradient(135deg,#e65100,#8c3200);">
+                            <svg width="26" height="26" viewBox="0 0 56 56" fill="none">
+                                <circle cx="28" cy="26" r="18" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="2.5"/>
+                                <circle cx="20" cy="22" r="3.5" fill="#FF6B6B" opacity="0.85"/>
+                                <circle cx="28" cy="17" r="3.5" fill="#FFD93D" opacity="0.85"/>
+                                <circle cx="36" cy="22" r="3.5" fill="#6BCB77" opacity="0.85"/>
+                                <circle cx="22" cy="32" r="3.5" fill="#4D96FF" opacity="0.85"/>
+                                <circle cx="34" cy="32" r="3.5" fill="#C77DFF" opacity="0.85"/>
+                                <line x1="20" y1="22" x2="28" y2="17" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                                <line x1="28" y1="17" x2="36" y2="22" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                                <line x1="22" y1="32" x2="34" y2="32" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <div class="article-meta">
+                            <div class="article-meta-cat" style="color:#e65100;">Neurodevelopmental · Research Summary</div>
+                            <h2 style="color:var(--navy);">4. Autism Spectrum Disorder (ASD)</h2>
+                        </div>
+                    </div>
+
+                    <h3>International Research</h3>
+                    <p>FMT in ASD is being actively explored globally. Clinical trials assess safety and microbiome changes in children, with some prospective studies showing improvements in both GI symptoms and core behavioral symptoms without serious adverse events <sup id="cite7"><a href="#ref7">[7]</a></sup>.</p>
+
+                    <h3>Emerging Research in India</h3>
+                    <p>The <strong>Indian Council of Medical Research (ICMR)</strong> has approved FMT research for autistic children at the Resplice Autism Institute in Hyderabad. This reflects the growing clinical interest in microbiome influences on neurodevelopmental conditions in India <sup id="cite8"><a href="#ref8">[8]</a></sup>.</p>
+
+                    <div class="summary-blockquote">
+                        <strong>Summary:</strong> India is emerging as an active site of ASD-microbiome research, with ICMR-approved trials reflecting global enthusiasm for this novel therapeutic avenue.
+                    </div>
+
+                    <div class="article-links">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/39677507/" target="_blank" class="study-btn" style="color:#e65100; border-color:rgba(230,81,0,0.22); background:rgba(230,81,0,0.07);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            PMID: 39677507 — FMT in ASD Children
+                        </a>
+                        <a href="https://timesofindia.indiatimes.com/city/hyderabad/hyds-institute-gets-icmr-nod-for-fmt-trial-on-autistic-kids/articleshow/124881223.cms" target="_blank" class="study-btn" style="color:#e65100; border-color:rgba(230,81,0,0.22); background:rgba(230,81,0,0.07);">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Times of India — ICMR Approval
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ── References ── -->
         <section class="references-section" id="references">
-            <div class="container">
-                <h2 style="margin-bottom: 3rem; color: var(--navy);">References</h2>
+            <div class="container" style="max-width:900px;">
+                <h2 style="margin-bottom:2.5rem; color:var(--navy);">References</h2>
                 <ul class="reference-list">
                     <li class="reference-item" id="ref1" data-index="1.">
-                        <strong>Sood A, Mahajan R, et al.</strong> Efficacy of fecal microbiota therapy in steroid
-                        dependent ulcerative colitis. <em>Dayanand Medical College & Hospital.</em>
+                        <strong>Sood A, Mahajan R, et al.</strong> Efficacy of fecal microbiota therapy in steroid dependent ulcerative colitis. <em>Dayanand Medical College &amp; Hospital.</em>
                         <a href="https://pubmed.ncbi.nlm.nih.gov/30449078/" target="_blank">PMID: 30449078</a>
                     </li>
                     <li class="reference-item" id="ref2" data-index="2.">
-                        <strong>Clinical Trial Protocol.</strong> Effect of fecal transplant and dietary changes on
-                        newly diagnosed active ulcerative colitis. <em>Multicenter India.</em>
-                        <a href="https://www.centerwatch.com/clinical-trials/listings/NCT06895252/"
-                            target="_blank">NCT06895252</a>
+                        <strong>Clinical Trial Protocol.</strong> Effect of fecal transplant and dietary changes on newly diagnosed active ulcerative colitis. <em>Multicenter India.</em>
+                        <a href="https://www.centerwatch.com/clinical-trials/listings/NCT06895252/" target="_blank">NCT06895252</a>
                     </li>
                     <li class="reference-item" id="ref3" data-index="3.">
-                        <strong>Costello SP, et al.</strong> Systematic review and meta-analysis of FMT for induction of
-                        remission in UC.
+                        <strong>Costello SP, et al.</strong> Systematic review and meta-analysis of FMT for induction of remission in UC.
                         <a href="https://pubmed.ncbi.nlm.nih.gov/35965832/" target="_blank">PMID: 35965832</a>
                     </li>
                     <li class="reference-item" id="ref4" data-index="4.">
-                        <strong>Prayag PS, Patwardhan SA, et al.</strong> FMT for CDI in hematopoietic stem cell
-                        transplant recipients: Indian tertiary center experience.
+                        <strong>Prayag PS, Patwardhan SA, et al.</strong> FMT for CDI in hematopoietic stem cell transplant recipients: Indian tertiary center experience.
                         <a href="https://pubmed.ncbi.nlm.nih.gov/38323255/" target="_blank">PMID: 38323255</a>
                     </li>
                     <li class="reference-item" id="ref5" data-index="5.">
-                        <strong>Global Systematic Review.</strong> Resolution of Recurrent Clostridioides difficile
-                        Infection following FMT. (Generic reference based on provided text context).
+                        <strong>Global Systematic Review.</strong> Resolution of Recurrent Clostridioides difficile Infection following FMT.
                     </li>
                     <li class="reference-item" id="ref6" data-index="6.">
-                        <strong>Pilot RCT.</strong> Safety and microbiome changes in Parkinson’s disease.
+                        <strong>Pilot RCT.</strong> Safety and microbiome changes in Parkinson's disease.
                         <a href="https://pubmed.ncbi.nlm.nih.gov/36937520/" target="_blank">PMID: 36937520</a>
                     </li>
                     <li class="reference-item" id="ref7" data-index="7.">
-                        <strong>Li Y, et al.</strong> FMT in children with autism spectrum disorder: GI and core symptom
-                        improvements.
+                        <strong>Li Y, et al.</strong> FMT in children with autism spectrum disorder: GI and core symptom improvements.
                         <a href="https://pubmed.ncbi.nlm.nih.gov/39677507/" target="_blank">PMID: 39677507</a>
                     </li>
                     <li class="reference-item" id="ref8" data-index="8.">
                         <strong>News Report.</strong> ICMR nod for FMT trial on autistic children in Hyderabad.
-                        <a href="https://timesofindia.indiatimes.com/city/hyderabad/hyds-institute-gets-icmr-nod-for-fmt-trial-on-autistic-kids/articleshow/124881223.cms"
-                            target="_blank">Times of India</a>
+                        <a href="https://timesofindia.indiatimes.com/city/hyderabad/hyds-institute-gets-icmr-nod-for-fmt-trial-on-autistic-kids/articleshow/124881223.cms" target="_blank">Times of India</a>
                     </li>
                 </ul>
             </div>
         </section>
 
-        <section class="section" style="background: var(--navy); color: white; text-align: center;">
+        <!-- ── CTA ── -->
+        <section class="section" style="background:var(--navy); color:white; text-align:center;">
             <div class="container">
-                <h2 style="color: white; margin-bottom: 2rem;">Collaborate with Jivanu</h2>
-                <p style="margin-bottom: 3rem; opacity: 0.9;">We are focused on translating this evidence into
-                    standardized microbial therapies.</p>
+                <h2 style="color:white; margin-bottom:1.5rem;">Collaborate with Jivanu</h2>
+                <p style="margin-bottom:2.5rem; opacity:0.9; font-size:1.1rem;">We are focused on translating this evidence into standardized microbial therapies.</p>
                 <a href="contact.html" class="btn btn-primary">Get In Touch</a>
             </div>
         </section>
@@ -366,19 +685,15 @@
         <div class="container">
             <div class="grid footer-grid">
                 <div>
-                    <a href="index.html" class="footer-logo-link"><img src="assets/images/Jivanu_Logo.png" alt="Jivanu Logo"
-                        style="max-width: 280px; margin-bottom: 1.5rem;"></a>
-                    </div>
-                <!-- ... footer links (same as before) ... -->
+                    <a href="index.html" class="footer-logo-link"><img src="assets/images/Jivanu_Logo.png" alt="Jivanu Logo" style="max-width:280px; margin-bottom:1.5rem;"></a>
+                </div>
                 <div class="footer-links">
                     <h4>Platforms</h4>
                     <ul>
                         <li><a href="atlas.html">Jivanu Atlas™</a></li>
-                        <li><a href="pathobiome.html">Pathobiome™</a></li>
                         <li><a href="rebiome.html">ReBiome™</a></li>
-                        <li><a href="novabiome.html">NovaBiome™</a></li>
                     </ul>
-                    </div>
+                </div>
                 <div class="footer-links">
                     <h4>Company</h4>
                     <ul>
@@ -386,7 +701,7 @@
                         <li><a href="careers.html">Careers</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
-                    </div>
+                </div>
                 <div class="footer-links">
                     <h4>Legal</h4>
                     <ul>
@@ -394,7 +709,7 @@
                         <li><a href="terms.html">Terms of Service</a></li>
                         <li><a href="refund.html">Refund Policy</a></li>
                     </ul>
-                    </div>
+                </div>
             </div>
             <div class="footer-bottom">
                 <p>© 2026 Jivanu Therapeutics Pvt Ltd. All rights reserved.</p>

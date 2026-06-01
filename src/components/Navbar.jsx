@@ -1,6 +1,5 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { User } from 'lucide-react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -80,9 +79,29 @@ export default function Navbar() {
   return (
     <header ref={headerRef} className="site-header">
       <div className="container flex justify-between items-center">
-        <Link to="/" className="logo-container" onClick={closeMobile}>
-          <div className="logo">Jivanu<span>.</span></div>
-          <div className="logo-tagline">Microbes to Medicine</div>
+        <Link to="/" className="logo-container" onClick={closeMobile} style={{ textDecoration: 'none' }}>
+          <svg
+            viewBox="0 0 290 76"
+            style={{ width: 'clamp(120px, 14vw, 165px)', height: 'auto', display: 'block', overflow: 'visible' }}
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Jivanu — Microbes to Medicines"
+          >
+            <text
+              x="0" y="53"
+              fontFamily="'Outfit', sans-serif"
+              fontWeight="700"
+              fontSize="56"
+              fill="#1FCAD3"
+            >Jivanu</text>
+            <text
+              x="3" y="72"
+              fontFamily="'Inter', sans-serif"
+              fontWeight="400"
+              fontSize="13"
+              fill="rgba(148,163,184,0.9)"
+              letterSpacing="0.8"
+            >Microbes to Medicines</text>
+          </svg>
         </Link>
 
         <nav className="flex items-center">
@@ -113,16 +132,9 @@ export default function Navbar() {
             onClick={(e) => { if (e.target === e.currentTarget) closeMobile(); }}
           >
             <div className="mobile-signin-row">
-              {hasToken ? (
-                <span className="mobile-user-label">
-                  <User size={16} style={{ marginRight: 6, verticalAlign: 'middle' }} />
-                  My Account
-                </span>
-              ) : (
-                <NavLink to="/signin" className="mobile-link signin-link" onClick={closeMobile}>
-                  Sign In
-                </NavLink>
-              )}
+              <NavLink to="/signin" className="mobile-link signin-link" onClick={closeMobile}>
+                Sign In
+              </NavLink>
               {/* Theme toggle */}
               <label className="theme-switch compact">
                 <input
@@ -150,14 +162,9 @@ export default function Navbar() {
 
             <div className="mobile-divider" />
             {hasToken ? (
-              <>
-                <NavLink to="/account" className="mobile-link" onClick={closeMobile}>
-                  My Account
-                </NavLink>
-                <button className="mobile-logout" type="button" onClick={handleLogout}>
-                  Logout
-                </button>
-              </>
+              <button className="mobile-logout" type="button" onClick={handleLogout}>
+                Logout
+              </button>
             ) : (
               <NavLink to="/signup" className="mobile-link" onClick={closeMobile}>
                 Create Account

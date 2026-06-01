@@ -606,7 +606,7 @@ export default function LegacyPage({ fileName }) {
       }
 
       /* ── 9. Scroll-parallax on hero images ── */
-      const heroBg = el.querySelector('.hero');
+      const heroBg = el.querySelector('.hero, .hero-mini');
       if (heroBg) {
         const heroVisual = heroBg.querySelector('.hero-visual');
         if (heroVisual) {
@@ -617,6 +617,58 @@ export default function LegacyPage({ fileName }) {
           });
         }
       }
+
+      /* ── 10. hero-mini (evidence page hero) ── */
+      const heroMini = el.querySelector('.hero-mini');
+      if (heroMini) {
+        const tl2 = gsap.timeline({ defaults: { ease } });
+        const tag2 = heroMini.querySelector('.tag');
+        const h12  = heroMini.querySelector('h1');
+        const p2   = heroMini.querySelector('p');
+        if (tag2) { gsap.set(tag2, { opacity: 0, y: -20 }); tl2.to(tag2, { opacity: 1, y: 0, duration: 0.45 }, 0.1); }
+        if (h12)  { gsap.set(h12, { opacity: 0, y: 32 });    tl2.to(h12, { opacity: 1, y: 0, duration: 0.7 }, 0.3); }
+        if (p2)   { gsap.set(p2, { opacity: 0, y: 20 });     tl2.to(p2, { opacity: 1, y: 0, duration: 0.6 }, 0.65); }
+      }
+
+      /* ── 11. Blog article cards (evidence page) ── */
+      el.querySelectorAll('.blog-article-card').forEach((card, i) => {
+        gsap.set(card, { opacity: 0, y: 40 });
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top 82%',
+          onEnter: () =>
+            gsap.to(card, { opacity: 1, y: 0, duration: 0.7, ease }),
+          once: true,
+        });
+      });
+
+      /* ── 12. Reference list items ── */
+      el.querySelectorAll('.reference-list').forEach((list) => {
+        const items = list.querySelectorAll('.reference-item');
+        if (!items.length) return;
+        gsap.set(items, { opacity: 0, x: -28 });
+        ScrollTrigger.create({
+          trigger: list,
+          start: 'top 80%',
+          onEnter: () =>
+            gsap.to(items, { opacity: 1, x: 0, duration: 0.5, stagger: 0.07, ease }),
+          once: true,
+        });
+      });
+
+      /* ── 13. Study / article link buttons ── */
+      el.querySelectorAll('.article-links').forEach((group) => {
+        const btns = group.querySelectorAll('.study-btn');
+        if (!btns.length) return;
+        gsap.set(btns, { opacity: 0, y: 10 });
+        ScrollTrigger.create({
+          trigger: group,
+          start: 'top 88%',
+          onEnter: () =>
+            gsap.to(btns, { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease }),
+          once: true,
+        });
+      });
 
     }, el);
 
