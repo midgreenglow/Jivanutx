@@ -132,8 +132,8 @@ export default function Navbar() {
             onClick={(e) => { if (e.target === e.currentTarget) closeMobile(); }}
           >
             <div className="mobile-signin-row">
-              <NavLink to="/signin" className="mobile-link signin-link" onClick={closeMobile}>
-                Sign In
+              <NavLink to="/contact" className="mobile-link signin-link" onClick={closeMobile}>
+                Contact Us
               </NavLink>
               {/* Theme toggle */}
               <label className="theme-switch compact">
@@ -155,10 +155,8 @@ export default function Navbar() {
             ))}
 
             <div className="mobile-section-label" style={{ marginTop: '0.5rem' }}>Company</div>
-            <NavLink to="/team"     className="mobile-link" onClick={closeMobile}>Team</NavLink>
-            <NavLink to="/careers"  className="mobile-link" onClick={closeMobile}>Careers</NavLink>
-            <NavLink to="/contact"  className="mobile-link" onClick={closeMobile}>Contact</NavLink>
-            <NavLink to="/evidence" className="mobile-link" onClick={closeMobile}>Clinical Evidence</NavLink>
+            <NavLink to="/team"    className="mobile-link" onClick={closeMobile}>Team</NavLink>
+            <NavLink to="/careers" className="mobile-link" onClick={closeMobile}>Careers</NavLink>
 
             <div className="mobile-divider" />
             {hasToken ? (
