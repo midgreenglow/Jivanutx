@@ -158,15 +158,13 @@ export default function Navbar() {
             <NavLink to="/team"    className="mobile-link" onClick={closeMobile}>Team</NavLink>
             <NavLink to="/careers" className="mobile-link" onClick={closeMobile}>Careers</NavLink>
 
-            <div className="mobile-divider" />
-            {hasToken ? (
-              <button className="mobile-logout" type="button" onClick={handleLogout}>
-                Logout
-              </button>
-            ) : (
-              <NavLink to="/signup" className="mobile-link" onClick={closeMobile}>
-                Create Account
-              </NavLink>
+            {hasToken && (
+              <>
+                <div className="mobile-divider" />
+                <button className="mobile-logout" type="button" onClick={handleLogout}>
+                  Logout
+                </button>
+              </>
             )}
           </div>
         </nav>

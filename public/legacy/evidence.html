@@ -83,7 +83,7 @@
             line-height: 1.25;
         }
         .ev-card-body {
-            padding: 1.35rem 1.75rem 1.65rem;
+            padding: 1.5rem 2rem 1.75rem;
             background: var(--white);
         }
         .ev-card-body p {
@@ -91,6 +91,8 @@
             font-size: 0.9rem;
             line-height: 1.62;
             margin: 0 0 1rem;
+            overflow-wrap: break-word;
+            word-break: break-word;
         }
         .ev-card-footer {
             display: flex;
@@ -105,6 +107,7 @@
             font-size: 0.76rem;
             font-weight: 700;
             letter-spacing: 0.2px;
+            white-space: nowrap;
         }
         .ev-link {
             font-size: 0.84rem;
@@ -112,6 +115,7 @@
             text-decoration: none;
             opacity: 0.88;
             transition: opacity 0.2s;
+            white-space: nowrap;
         }
         .ev-link:hover { opacity: 1; text-decoration: underline; }
 
@@ -220,6 +224,25 @@
             .ev-cards-grid { grid-template-columns: 1fr; }
             .ev-art { padding: 2rem 1.5rem; }
         }
+
+        /* ── Dark mode overrides ── */
+        [data-theme="dark"] .ev-art h2,
+        [data-theme="dark"] .ev-art h3 { color: var(--text-main); }
+
+        [data-theme="dark"] .ev-blockquote {
+            color: var(--text-main);
+            background: rgba(31,202,211,0.08);
+        }
+
+        [data-theme="dark"] .ev-art-cat { color: var(--text-muted) !important; }
+
+        [data-theme="dark"] .ev-card-body p { color: var(--text-main); }
+
+        [data-theme="dark"] .ev-stat[style*="1565c0"],
+        [data-theme="dark"] .ev-link[style*="1565c0"] { color: #7eb3e8 !important; }
+
+        [data-theme="dark"] .ev-stat[style*="7b1fa2"],
+        [data-theme="dark"] .ev-link[style*="7b1fa2"] { color: #c77dff !important; }
     </style>
     <script src="js/script.js" defer></script>
 </head>
@@ -284,9 +307,6 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Research Areas</h2>
-                    <p style="color:var(--text-muted); margin-top:0.75rem; font-size:1.05rem;">
-                        Click a topic to read the full clinical evidence below.
-                    </p>
                 </div>
 
                 <div class="ev-cards-grid">
@@ -406,7 +426,7 @@
             <div class="container ev-articles">
 
                 <p style="font-size:1.05rem; line-height:1.85; color:var(--text-muted); margin-bottom:3rem; padding:1.5rem 2rem; background:var(--light-bg); border-radius:14px; border-left:4px solid var(--cyan);">
-                    <strong style="color:var(--navy);">Overview:</strong> Fecal Microbiota Transplantation (FMT) is a microbiome-based approach designed to restore healthy gut microbial balance. It has been examined across multiple clinical settings, showing the strongest evidence in inflammatory and infectious gut diseases.
+                    <strong>Overview:</strong> Fecal Microbiota Transplantation (FMT) is a microbiome-based approach designed to restore healthy gut microbial balance. It has been examined across multiple clinical settings, showing the strongest evidence in inflammatory and infectious gut diseases.
                 </p>
 
                 <!-- Article 1: UC -->
@@ -576,7 +596,7 @@
         <!-- ── References ── -->
         <section class="references-section" id="references">
             <div class="container" style="max-width:900px;">
-                <h2 style="margin-bottom:2.5rem; color:var(--navy);">References</h2>
+                <h2 style="margin-bottom:2.5rem;">References</h2>
                 <ul class="reference-list">
                     <li class="reference-item" id="ref1" data-index="1.">
                         <strong>Sood A, Mahajan R, et al.</strong> Efficacy of fecal microbiota therapy in steroid dependent ulcerative colitis. <em>Dayanand Medical College &amp; Hospital.</em>
