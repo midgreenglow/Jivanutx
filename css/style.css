@@ -2,6 +2,7 @@
 
 :root {
     --navy: #0b1f33;
+    --nav-logo-tagline: rgba(40,55,70,0.82);
     --cyan: #1fcad3;
     --cyan-hover: #18b5bd;
     --white: #ffffff;
@@ -1456,6 +1457,7 @@ footer {
     --text-main: #e6edf5;
     --text-muted: #a6b2bf;
     --border-color: #243140;
+    --nav-logo-tagline: rgba(200,210,220,0.85);
 }
 
 [data-theme="dark"] body {

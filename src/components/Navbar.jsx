@@ -98,7 +98,7 @@ export default function Navbar() {
               fontFamily="'Inter', sans-serif"
               fontWeight="400"
               fontSize="13.5"
-              fill="rgba(200,210,220,0.85)"
+              style={{ fill: 'var(--nav-logo-tagline)' }}
               letterSpacing="0.5"
             >Microbes to Medicines</text>
           </svg>
