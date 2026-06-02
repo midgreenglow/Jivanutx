@@ -41,8 +41,8 @@
         .ev-card {
             display: block;
             text-decoration: none;
-            border-radius: 20px;
-            overflow: hidden;
+            border-radius: 16px;
+            overflow: visible;
             background: var(--white);
             box-shadow: 0 4px 24px rgba(0,0,0,0.07);
             border: 1px solid rgba(0,0,0,0.06);
@@ -60,6 +60,8 @@
             align-items: center;
             text-align: center;
             gap: 0.65rem;
+            border-radius: 16px 16px 0 0;
+            overflow: hidden;
         }
         .ev-card-icon {
             width: 60px; height: 60px;
@@ -85,6 +87,7 @@
         .ev-card-body {
             padding: 1.5rem 2rem 1.75rem;
             background: var(--white);
+            border-radius: 0 0 16px 16px;
         }
         .ev-card-body p {
             color: var(--text-muted);

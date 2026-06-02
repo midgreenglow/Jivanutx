@@ -81,25 +81,25 @@ export default function Navbar() {
       <div className="container flex justify-between items-center">
         <Link to="/" className="logo-container" onClick={closeMobile} style={{ textDecoration: 'none' }}>
           <svg
-            viewBox="0 0 290 76"
-            style={{ width: 'clamp(120px, 14vw, 165px)', height: 'auto', display: 'block', overflow: 'visible' }}
+            viewBox="0 0 320 80"
+            style={{ width: 'clamp(130px, 15vw, 175px)', height: 'auto', display: 'block', overflow: 'visible' }}
             xmlns="http://www.w3.org/2000/svg"
             aria-label="Jivanu — Microbes to Medicines"
           >
             <text
-              x="0" y="53"
-              fontFamily="'Outfit', sans-serif"
-              fontWeight="700"
-              fontSize="56"
+              x="0" y="56"
+              fontFamily="'Nunito', 'Outfit', sans-serif"
+              fontWeight="900"
+              fontSize="60"
               fill="#1FCAD3"
             >Jivanu</text>
             <text
-              x="3" y="72"
+              x="4" y="75"
               fontFamily="'Inter', sans-serif"
               fontWeight="400"
-              fontSize="13"
-              fill="rgba(148,163,184,0.9)"
-              letterSpacing="0.8"
+              fontSize="13.5"
+              fill="rgba(200,210,220,0.85)"
+              letterSpacing="0.5"
             >Microbes to Medicines</text>
           </svg>
         </Link>
