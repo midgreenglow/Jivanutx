@@ -6,29 +6,12 @@ export default function Footer() {
       <div className="container">
         <div className="grid footer-grid">
           <div>
-            <Link to="/" className="footer-logo-link" style={{ textDecoration: 'none', display: 'inline-block', marginBottom: '1.5rem' }}>
-              <svg
-                viewBox="0 0 320 80"
-                style={{ width: 'clamp(160px, 16vw, 220px)', height: 'auto', display: 'block', overflow: 'visible' }}
-                xmlns="http://www.w3.org/2000/svg"
-                aria-label="Jivanu — Microbes to Medicines"
-              >
-                <text
-                  x="0" y="56"
-                  fontFamily="'Nunito', 'Outfit', sans-serif"
-                  fontWeight="900"
-                  fontSize="60"
-                  fill="#1FCAD3"
-                >Jivanu</text>
-                <text
-                  x="4" y="75"
-                  fontFamily="'Inter', sans-serif"
-                  fontWeight="400"
-                  fontSize="13.5"
-                  fill="rgba(200,210,220,0.75)"
-                  letterSpacing="0.5"
-                >Microbes to Medicines</text>
-              </svg>
+            <Link to="/" className="footer-logo-link">
+              <img
+                src="/assets/images/Jivanu_Logo.png"
+                alt="Jivanu Logo"
+                style={{ maxWidth: '280px', marginBottom: '1.5rem' }}
+              />
             </Link>
           </div>
 
