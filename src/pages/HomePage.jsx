@@ -327,9 +327,9 @@ export default function HomePage() {
 
           <div className="grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', maxWidth: '780px', margin: '0 auto' }}>
             {[
-              { to: '/atlas',   img: '/assets/images/kit.jpg',     title: 'Jivanu Atlas™', desc: 'Personalized Microbiome Profiling Platform for individuals and clinicians.' },
-              { to: '/rebiome', img: '/assets/images/rebiome.jpg', title: 'ReBiome™',      desc: 'Microbiota Restoration Platform focused on FMT-based therapeutics.' },
-            ].map(({ to, img, title, desc }, i) => (
+              { to: '/atlas',   img: '/assets/images/kit.jpg',     title: 'Jivanu Atlas™', badge: 'AVAILABLE NOW',  desc: 'Personalized Microbiome Profiling Platform for individuals and clinicians.' },
+              { to: '/rebiome', img: '/assets/images/rebiome.jpg', title: 'ReBiome™',      badge: 'CLINICAL PHASE', desc: 'Microbiota Restoration Platform focused on FMT-based therapeutics.' },
+            ].map(({ to, img, title, badge, desc }, i) => (
               <motion.div
                 key={to}
                 {...scrollFadeUp(i * 0.1)}
@@ -345,8 +345,9 @@ export default function HomePage() {
                   <img src={img} alt={title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 </div>
                 <div style={{ padding: '1.75rem 1.5rem 2rem' }}>
-                  <div style={{ marginBottom: '0.75rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
                     <h3 style={{ color: '#ffffff', margin: 0, fontSize: '1.2rem' }}>{title}</h3>
+                    <span style={{ fontSize: '0.6rem', padding: '3px 6px', borderRadius: '4px', background: 'rgba(255,255,255,0.06)', color: '#64748b', fontWeight: 700, letterSpacing: '0.5px' }}>{badge}</span>
                   </div>
                   <p style={{ color: '#94a3b8', fontSize: '0.92rem', lineHeight: 1.6, marginBottom: '1.25rem', minHeight: '60px' }}>{desc}</p>
                   <Link to={to} style={{ color: '#1FCAD3', textDecoration: 'none', fontWeight: 600, fontSize: '0.92rem' }}>Explore Platform →</Link>
