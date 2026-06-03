@@ -31,106 +31,226 @@
         }
 
         /* ── Research topic cards (redesign) ── */
+        :root {
+            --uc-color: #1FCAD3;
+            --uc-bg: rgba(31,202,211,0.06);
+            --uc-border: rgba(31,202,211,0.2);
+
+            --cdi-color: #1976d2;
+            --cdi-bg: rgba(25,118,210,0.06);
+            --cdi-border: rgba(25,118,210,0.2);
+
+            --pd-color: #8e24aa;
+            --pd-bg: rgba(142,36,170,0.06);
+            --pd-border: rgba(142,36,170,0.2);
+
+            --asd-color: #f4511e;
+            --asd-bg: rgba(244,81,30,0.06);
+            --asd-border: rgba(244,81,30,0.2);
+        }
+
+        [data-theme="dark"] {
+            --cdi-color: #63b3ed;
+            --cdi-bg: rgba(99,179,237,0.1);
+            --cdi-border: rgba(99,179,237,0.3);
+
+            --pd-color: #c77dff;
+            --pd-bg: rgba(199,125,255,0.1);
+            --pd-border: rgba(199,125,255,0.3);
+
+            --asd-color: #fbd38d;
+            --asd-bg: rgba(249,115,22,0.1);
+            --asd-border: rgba(249,115,22,0.3);
+        }
+
+        .ev-card-uc, .ev-art-uc {
+            --theme-color: var(--uc-color);
+            --theme-bg: var(--uc-bg);
+            --theme-border: var(--uc-border);
+        }
+        .ev-card-cdi, .ev-art-cdi {
+            --theme-color: var(--cdi-color);
+            --theme-bg: var(--cdi-bg);
+            --theme-border: var(--cdi-border);
+        }
+        .ev-card-pd, .ev-art-pd {
+            --theme-color: var(--pd-color);
+            --theme-bg: var(--pd-bg);
+            --theme-border: var(--pd-border);
+        }
+        .ev-card-asd, .ev-art-asd {
+            --theme-color: var(--asd-color);
+            --theme-bg: var(--asd-bg);
+            --theme-border: var(--asd-border);
+        }
+
         .ev-cards-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 960px;
-            margin: 2.5rem auto 0;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 3rem auto 0;
         }
         .ev-card {
             display: flex;
             flex-direction: column;
-            text-decoration: none;
-            border-radius: 18px;
+            border-radius: 20px;
             overflow: hidden;
             background: var(--white);
             border: 1px solid var(--border-color);
-            box-shadow: 0 2px 14px rgba(0,0,0,0.05);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                        box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+                        border-color 0.4s ease;
+            position: relative;
         }
         .ev-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.11);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            border-color: var(--theme-color);
         }
-        .ev-card-stripe { height: 5px; width: 100%; flex-shrink: 0; }
-        .ev-card-inner {
-            padding: 1.65rem 1.75rem 1.5rem;
+        .ev-card-click-area {
+            text-decoration: none;
             display: flex;
             flex-direction: column;
-            flex: 1;
+            height: 100%;
+            color: inherit;
         }
-        .ev-card-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.9rem;
+        .ev-card-image-wrapper {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            width: 100%;
+        }
+        .ev-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .ev-card:hover .ev-card-img {
+            transform: scale(1.08);
+        }
+        .ev-card-image-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%);
+            pointer-events: none;
         }
         .ev-cat-pill {
-            font-size: 0.65rem;
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 0.68rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1.1px;
-            padding: 4px 10px;
-            border-radius: 20px;
+            letter-spacing: 1.2px;
+            padding: 6px 12px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            z-index: 2;
+            color: var(--theme-color);
+            background: var(--theme-bg);
+            border: 1px solid var(--theme-border);
         }
-        .ev-card-num {
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            opacity: 0.45;
-            font-family: 'Outfit', sans-serif;
+        .ev-card-inner {
+            padding: 1.5rem 1.75rem 1rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .ev-card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
         }
         .ev-card-disease {
-            font-size: 1.18rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 850;
             color: var(--navy);
-            margin: 0 0 1.1rem;
-            line-height: 1.3;
+            line-height: 1.25;
             font-family: 'Outfit', sans-serif;
+        }
+        .ev-card-num {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            opacity: 0.25;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1;
         }
         .ev-stat-hero {
-            margin-bottom: 1rem;
-            padding: 0.9rem 1.1rem;
+            margin-bottom: 1.2rem;
+            padding: 0.75rem 1rem;
             border-radius: 12px;
             background: var(--light-bg);
+            border-left: 3px solid var(--theme-color);
+            display: flex;
+            flex-direction: column;
         }
         .ev-stat-value {
-            display: block;
-            font-size: 1.85rem;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 0.18rem;
+            font-size: 1.8rem;
+            font-weight: 850;
+            line-height: 1.1;
+            margin-bottom: 0.2rem;
             font-family: 'Outfit', sans-serif;
+            color: var(--theme-color);
         }
         .ev-stat-label {
-            display: block;
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.9px;
-            opacity: 0.7;
+            letter-spacing: 0.8px;
+            opacity: 0.8;
+            color: var(--theme-color);
         }
         .ev-card-desc {
-            font-size: 0.87rem;
-            line-height: 1.65;
+            font-size: 0.9rem;
+            line-height: 1.6;
             color: var(--text-muted);
-            margin: 0 0 1.1rem;
-            flex: 1;
+            margin: 0 0 1.5rem;
+            flex-grow: 1;
+        }
+        .ev-card-footer {
+            padding: 0 1.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(0,0,0,0.03);
+            margin-top: auto;
+            padding-top: 1rem;
         }
         .ev-read-link {
-            display: inline-flex;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            display: flex;
             align-items: center;
-            gap: 0.3rem;
-            font-size: 0.8rem;
+            gap: 0.25rem;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+            color: var(--theme-color);
+        }
+        .ev-card:hover .ev-read-link {
+            transform: translateX(3px);
+        }
+        .ev-pub-link {
+            font-size: 0.78rem;
             font-weight: 700;
             text-decoration: none;
-            letter-spacing: 0.3px;
-            margin-top: auto;
-            transition: gap 0.2s ease;
+            padding: 6px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--theme-border);
+            color: var(--theme-color);
+            background: var(--theme-bg);
+            transition: all 0.25s ease;
         }
-        .ev-read-link:hover { gap: 0.55rem; }
+        .ev-pub-link:hover {
+            transform: scale(1.03);
+            background: var(--theme-border);
+            border-color: var(--theme-color);
+        }
 
         /* ── Article sections ── */
         .ev-articles {
@@ -165,6 +285,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: var(--theme-color);
         }
         .ev-art h2 { font-size: 1.5rem; margin: 0.2rem 0 0; color: var(--navy); }
         .ev-art h3 { font-size: 1.15rem; margin: 2rem 0 0.8rem; color: var(--navy); }
@@ -172,8 +293,8 @@
         .ev-art ul { margin: 0.4rem 0 1.25rem 1.4rem; }
         .ev-art li { font-size: 1rem; line-height: 1.72; color: var(--text-main); margin-bottom: 0.5rem; }
         .ev-blockquote {
-            background: rgba(31,202,211,0.06);
-            border-left: 4px solid var(--cyan);
+            background: var(--theme-bg);
+            border-left: 4px solid var(--theme-color);
             padding: 1.15rem 1.65rem;
             margin: 1.5rem 0;
             border-radius: 0 10px 10px 0;
@@ -194,19 +315,20 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            background: rgba(31,202,211,0.07);
-            color: var(--cyan);
+            color: var(--theme-color);
+            border: 1px solid var(--theme-border);
+            background: var(--theme-bg);
             padding: 0.5rem 1rem;
             border-radius: 8px;
             font-size: 0.86rem;
             font-weight: 600;
             text-decoration: none;
-            border: 1px solid rgba(31,202,211,0.2);
             transition: background 0.2s, border-color 0.2s;
         }
         .ev-study-btn:hover {
-            background: rgba(31,202,211,0.14);
-            border-color: var(--cyan);
+            background: var(--theme-border);
+            border-color: var(--theme-color);
+            color: var(--theme-color);
         }
 
         /* ── References ── */
@@ -239,19 +361,35 @@
         }
 
         /* ── Dark mode overrides ── */
+        [data-theme="dark"] .ev-card {
+            background: rgba(255,255,255,0.03);
+            border-color: rgba(255,255,255,0.08);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+        [data-theme="dark"] .ev-card-footer {
+            border-top-color: rgba(255,255,255,0.06);
+        }
+        [data-theme="dark"] .ev-card-disease {
+            color: #ffffff;
+        }
+        [data-theme="dark"] .ev-card-desc {
+            color: rgba(255,255,255,0.7);
+        }
+        [data-theme="dark"] .ev-stat-hero {
+            background: rgba(255,255,255,0.03);
+        }
+        [data-theme="dark"] .ev-art {
+            background: rgba(255,255,255,0.03);
+            border-color: rgba(255,255,255,0.08);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
         [data-theme="dark"] .ev-art h2,
-        [data-theme="dark"] .ev-art h3 { color: var(--text-main); }
-
+        [data-theme="dark"] .ev-art h3 {
+            color: #ffffff;
+        }
         [data-theme="dark"] .ev-blockquote {
             color: var(--text-main);
-            background: rgba(31,202,211,0.08);
         }
-
-        [data-theme="dark"] .ev-art-cat { color: var(--text-muted) !important; }
-
-        [data-theme="dark"] .ev-card-disease { color: var(--text-main); }
-
-        [data-theme="dark"] .ev-stat-hero { background: rgba(255,255,255,0.04); }
     </style>
     <script src="js/script.js" defer></script>
 </head>
@@ -321,76 +459,108 @@
                 <div class="ev-cards-grid">
 
                     <!-- 1. Ulcerative Colitis -->
-                    <a href="#uc-section" class="ev-card">
-                        <div class="ev-card-stripe" style="background:linear-gradient(90deg,#1FCAD3,#0fa8b0);"></div>
-                        <div class="ev-card-inner">
-                            <div class="ev-card-top">
-                                <span class="ev-cat-pill" style="background:rgba(31,202,211,0.1);color:#0d9099;">Gastrointestinal</span>
-                                <span class="ev-card-num">01</span>
+                    <div class="ev-card ev-card-uc">
+                        <a href="#uc-section" class="ev-card-click-area">
+                            <div class="ev-card-image-wrapper">
+                                <img src="assets/images/gut_microbiome_uc.png" alt="Ulcerative Colitis Gut Microbiome" class="ev-card-img">
+                                <div class="ev-card-image-overlay"></div>
+                                <span class="ev-cat-pill">Gastrointestinal</span>
                             </div>
-                            <div class="ev-card-disease">Ulcerative Colitis (UC)</div>
-                            <div class="ev-stat-hero">
-                                <span class="ev-stat-value" style="color:#1FCAD3;">~46%</span>
-                                <span class="ev-stat-label" style="color:#1FCAD3;">Steroid-Free Remission</span>
+                            <div class="ev-card-inner">
+                                <div class="ev-card-header-row">
+                                    <div class="ev-card-disease">Ulcerative Colitis (UC)</div>
+                                    <span class="ev-card-num">01</span>
+                                </div>
+                                <div class="ev-stat-hero">
+                                    <span class="ev-stat-value">~46%</span>
+                                    <span class="ev-stat-label">Steroid-Free Remission</span>
+                                </div>
+                                <p class="ev-card-desc">FMT induces and maintains remission in UC. Major Indian RCTs at AIIMS, PGIMER, and Dayanand validate its clinical potential.</p>
                             </div>
-                            <p class="ev-card-desc">FMT induces and maintains remission in UC. Major Indian RCTs at AIIMS, PGIMER, and Dayanand validate its clinical potential.</p>
-                            <a href="https://pubmed.ncbi.nlm.nih.gov/30449078/" target="_blank" class="ev-read-link" style="color:#1FCAD3;" onclick="event.stopPropagation()">View on PubMed →</a>
+                        </a>
+                        <div class="ev-card-footer">
+                            <a href="#uc-section" class="ev-read-link">Read details →</a>
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/30449078/" target="_blank" class="ev-pub-link">PubMed ↗</a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- 2. C. difficile -->
-                    <a href="#cdi-section" class="ev-card">
-                        <div class="ev-card-stripe" style="background:linear-gradient(90deg,#1976d2,#0d5aad);"></div>
-                        <div class="ev-card-inner">
-                            <div class="ev-card-top">
-                                <span class="ev-cat-pill" style="background:rgba(25,118,210,0.1);color:#1565c0;">Infectious Disease</span>
-                                <span class="ev-card-num">02</span>
+                    <div class="ev-card ev-card-cdi">
+                        <a href="#cdi-section" class="ev-card-click-area">
+                            <div class="ev-card-image-wrapper">
+                                <img src="assets/images/bacteria_target_cdi.png" alt="C. difficile Infection bacteria targeting" class="ev-card-img">
+                                <div class="ev-card-image-overlay"></div>
+                                <span class="ev-cat-pill">Infectious Disease</span>
                             </div>
-                            <div class="ev-card-disease">C. difficile Infection (CDI)</div>
-                            <div class="ev-stat-hero">
-                                <span class="ev-stat-value" style="color:#1976d2;">90%+</span>
-                                <span class="ev-stat-label" style="color:#1976d2;">Resolution Rate</span>
+                            <div class="ev-card-inner">
+                                <div class="ev-card-header-row">
+                                    <div class="ev-card-disease">C. difficile Infection (CDI)</div>
+                                    <span class="ev-card-num">02</span>
+                                </div>
+                                <div class="ev-stat-hero">
+                                    <span class="ev-stat-value">90%+</span>
+                                    <span class="ev-stat-label">Resolution Rate</span>
+                                </div>
+                                <p class="ev-card-desc">FMT achieves high resolution rates even in immunocompromised patients, matching or exceeding global antibiotic benchmarks.</p>
                             </div>
-                            <p class="ev-card-desc">FMT achieves high resolution rates even in immunocompromised patients, matching or exceeding global antibiotic benchmarks.</p>
-                            <a href="https://pubmed.ncbi.nlm.nih.gov/38323255/" target="_blank" class="ev-read-link" style="color:#1976d2;" onclick="event.stopPropagation()">View on PubMed →</a>
+                        </a>
+                        <div class="ev-card-footer">
+                            <a href="#cdi-section" class="ev-read-link">Read details →</a>
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/38323255/" target="_blank" class="ev-pub-link">PubMed ↗</a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- 3. Parkinson's -->
-                    <a href="#pd-section" class="ev-card">
-                        <div class="ev-card-stripe" style="background:linear-gradient(90deg,#8e24aa,#5c1070);"></div>
-                        <div class="ev-card-inner">
-                            <div class="ev-card-top">
-                                <span class="ev-cat-pill" style="background:rgba(142,36,170,0.1);color:#7b1fa2;">Gut–Brain Axis</span>
-                                <span class="ev-card-num">03</span>
+                    <div class="ev-card ev-card-pd">
+                        <a href="#pd-section" class="ev-card-click-area">
+                            <div class="ev-card-image-wrapper">
+                                <img src="assets/images/gut_brain_parkinsons.png" alt="Parkinson's Disease Gut-Brain Axis" class="ev-card-img">
+                                <div class="ev-card-image-overlay"></div>
+                                <span class="ev-cat-pill">Gut–Brain Axis</span>
                             </div>
-                            <div class="ev-card-disease">Parkinson's Disease</div>
-                            <div class="ev-stat-hero">
-                                <span class="ev-stat-value" style="color:#8e24aa;">Pilot RCT</span>
-                                <span class="ev-stat-label" style="color:#8e24aa;">Safe &amp; Well-Tolerated</span>
+                            <div class="ev-card-inner">
+                                <div class="ev-card-header-row">
+                                    <div class="ev-card-disease">Parkinson's Disease</div>
+                                    <span class="ev-card-num">03</span>
+                                </div>
+                                <div class="ev-stat-hero">
+                                    <span class="ev-stat-value">Pilot RCT</span>
+                                    <span class="ev-stat-label">Safe &amp; Well-Tolerated</span>
+                                </div>
+                                <p class="ev-card-desc">FMT is safe in Parkinson's patients with successful microbial engraftment and GI symptom improvements in early trials.</p>
                             </div>
-                            <p class="ev-card-desc">FMT is safe in Parkinson's patients with successful microbial engraftment and GI symptom improvements in early trials.</p>
-                            <a href="https://pubmed.ncbi.nlm.nih.gov/36937520/" target="_blank" class="ev-read-link" style="color:#8e24aa;" onclick="event.stopPropagation()">View on PubMed →</a>
+                        </a>
+                        <div class="ev-card-footer">
+                            <a href="#pd-section" class="ev-read-link">Read details →</a>
+                            <a href="https://pubmed.ncbi.nlm.nih.gov/36937520/" target="_blank" class="ev-pub-link">PubMed ↗</a>
                         </div>
-                    </a>
+                    </div>
 
                     <!-- 4. ASD -->
-                    <a href="#asd-section" class="ev-card">
-                        <div class="ev-card-stripe" style="background:linear-gradient(90deg,#f4511e,#b83500);"></div>
-                        <div class="ev-card-inner">
-                            <div class="ev-card-top">
-                                <span class="ev-cat-pill" style="background:rgba(244,81,30,0.1);color:#e65100;">Neurodevelopmental</span>
-                                <span class="ev-card-num">04</span>
+                    <div class="ev-card ev-card-asd">
+                        <a href="#asd-section" class="ev-card-click-area">
+                            <div class="ev-card-image-wrapper">
+                                <img src="assets/images/neuro_connectivity_asd.png" alt="Autism Spectrum Disorder neural connectivity" class="ev-card-img">
+                                <div class="ev-card-image-overlay"></div>
+                                <span class="ev-cat-pill">Neurodevelopmental</span>
                             </div>
-                            <div class="ev-card-disease">Autism Spectrum Disorder</div>
-                            <div class="ev-stat-hero">
-                                <span class="ev-stat-value" style="color:#f4511e;">ICMR</span>
-                                <span class="ev-stat-label" style="color:#f4511e;">Approved Trial in India</span>
+                            <div class="ev-card-inner">
+                                <div class="ev-card-header-row">
+                                    <div class="ev-card-disease">Autism Spectrum Disorder</div>
+                                    <span class="ev-card-num">04</span>
+                                </div>
+                                <div class="ev-stat-hero">
+                                    <span class="ev-stat-value">ICMR</span>
+                                    <span class="ev-stat-label">Approved Trial in India</span>
+                                </div>
+                                <p class="ev-card-desc">ICMR-approved FMT trials in India and international studies show improvements in GI and behavioural symptoms in ASD.</p>
                             </div>
-                            <p class="ev-card-desc">ICMR-approved FMT trials in India and international studies show improvements in GI and behavioural symptoms in ASD.</p>
-                            <a href="https://timesofindia.indiatimes.com/city/hyderabad/hyds-institute-gets-icmr-nod-for-fmt-trial-on-autistic-kids/articleshow/124881223.cms" target="_blank" class="ev-read-link" style="color:#f4511e;" onclick="event.stopPropagation()">Times of India →</a>
+                        </a>
+                        <div class="ev-card-footer">
+                            <a href="#asd-section" class="ev-read-link">Read details →</a>
+                            <a href="https://timesofindia.indiatimes.com/city/hyderabad/hyds-institute-gets-icmr-nod-for-fmt-trial-on-autistic-kids/articleshow/124881223.cms" target="_blank" class="ev-pub-link">News Link ↗</a>
                         </div>
-                    </a>
+                    </div>
 
                 </div>
             </div>
@@ -405,7 +575,7 @@
                 </p>
 
                 <!-- Article 1: UC -->
-                <div class="ev-art" id="uc-section">
+                <div class="ev-art ev-art-uc" id="uc-section">
                     <div class="ev-art-badge">
                         <div class="ev-art-icon" style="background:linear-gradient(135deg,#1FCAD3,#0d7a80);">
                             <svg width="24" height="24" viewBox="0 0 56 56" fill="none">
@@ -416,7 +586,7 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="ev-art-cat" style="color:var(--cyan);">Gastrointestinal · Research Summary</div>
+                            <div class="ev-art-cat">Gastrointestinal · Research Summary</div>
                             <h2>1. Ulcerative Colitis (UC)</h2>
                         </div>
                     </div>
@@ -456,7 +626,7 @@
                 </div>
 
                 <!-- Article 2: CDI -->
-                <div class="ev-art" id="cdi-section">
+                <div class="ev-art ev-art-cdi" id="cdi-section">
                     <div class="ev-art-badge">
                         <div class="ev-art-icon" style="background:linear-gradient(135deg,#1565c0,#0c3d8a);">
                             <svg width="24" height="24" viewBox="0 0 56 56" fill="none">
@@ -468,7 +638,7 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="ev-art-cat" style="color:#1565c0;">Infectious Disease · Research Summary</div>
+                            <div class="ev-art-cat">Infectious Disease · Research Summary</div>
                             <h2>2. Recurrent Clostridioides difficile Infection (CDI)</h2>
                         </div>
                     </div>
@@ -484,7 +654,7 @@
                     </div>
 
                     <div class="ev-art-links">
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/38323255/" target="_blank" class="ev-study-btn" style="color:#1565c0;border-color:rgba(21,101,192,0.2);background:rgba(21,101,192,0.06);">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/38323255/" target="_blank" class="ev-study-btn">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             PMID 38323255 — Indian Tertiary Center
                         </a>
@@ -492,7 +662,7 @@
                 </div>
 
                 <!-- Article 3: Parkinson's -->
-                <div class="ev-art" id="pd-section">
+                <div class="ev-art ev-art-pd" id="pd-section">
                     <div class="ev-art-badge">
                         <div class="ev-art-icon" style="background:linear-gradient(135deg,#7b1fa2,#47106b);">
                             <svg width="24" height="24" viewBox="0 0 56 56" fill="none">
@@ -505,7 +675,7 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="ev-art-cat" style="color:#7b1fa2;">Gut–Brain Axis · Research Summary</div>
+                            <div class="ev-art-cat">Gut–Brain Axis · Research Summary</div>
                             <h2>3. Parkinson's Disease (Gut–Brain Axis)</h2>
                         </div>
                     </div>
@@ -517,7 +687,7 @@
                     </div>
 
                     <div class="ev-art-links">
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/36937520/" target="_blank" class="ev-study-btn" style="color:#7b1fa2;border-color:rgba(123,31,162,0.2);background:rgba(123,31,162,0.06);">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/36937520/" target="_blank" class="ev-study-btn">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             PMID 36937520 — Parkinson's Pilot RCT
                         </a>
@@ -525,7 +695,7 @@
                 </div>
 
                 <!-- Article 4: ASD -->
-                <div class="ev-art" id="asd-section">
+                <div class="ev-art ev-art-asd" id="asd-section">
                     <div class="ev-art-badge">
                         <div class="ev-art-icon" style="background:linear-gradient(135deg,#e65100,#8c3200);">
                             <svg width="24" height="24" viewBox="0 0 56 56" fill="none">
@@ -538,7 +708,7 @@
                             </svg>
                         </div>
                         <div>
-                            <div class="ev-art-cat" style="color:#e65100;">Neurodevelopmental · Research Summary</div>
+                            <div class="ev-art-cat">Neurodevelopmental · Research Summary</div>
                             <h2>4. Autism Spectrum Disorder (ASD)</h2>
                         </div>
                     </div>
@@ -554,11 +724,11 @@
                     </div>
 
                     <div class="ev-art-links">
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/39677507/" target="_blank" class="ev-study-btn" style="color:#e65100;border-color:rgba(230,81,0,0.2);background:rgba(230,81,0,0.06);">
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/39677507/" target="_blank" class="ev-study-btn">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             PMID 39677507 — FMT in ASD Children
                         </a>
-                        <a href="https://timesofindia.indiatimes.com/city/hyderabad/hyds-institute-gets-icmr-nod-for-fmt-trial-on-autistic-kids/articleshow/124881223.cms" target="_blank" class="ev-study-btn" style="color:#e65100;border-color:rgba(230,81,0,0.2);background:rgba(230,81,0,0.06);">
+                        <a href="https://timesofindia.indiatimes.com/city/hyderabad/hyds-institute-gets-icmr-nod-for-fmt-trial-on-autistic-kids/articleshow/124881223.cms" target="_blank" class="ev-study-btn">
                             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                             Times of India — ICMR Approval
                         </a>
