@@ -160,6 +160,9 @@ function ContactItem({ icon: Icon, title, children }) {
   );
 }
 
+const SUPABASE_URL = 'https://pynbsutycwuxneoxgndl.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5bmJzdXR5Y3d1eG5lb3hnbmRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NzI0NzIsImV4cCI6MjA5NDM0ODQ3Mn0.UYjR8BzJBHG70An99-CFTvYPn8picn-WXEvxQ0GyOec';
+
 /* ── Page ── */
 export default function ContactPage() {
   const [loading, setLoading] = useState(false);
@@ -168,10 +171,39 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Simulate network delay — replace with real API call
-    await new Promise((r) => setTimeout(r, 900));
-    setLoading(false);
-    setSent(true);
+
+    const payload = {
+      first_name: document.getElementById('firstName').value,
+      last_name: document.getElementById('lastName').value,
+      email: document.getElementById('emailAddress').value,
+      inquiry_type: document.getElementById('inquiryType').value,
+      message: document.getElementById('messageText').value,
+    };
+
+    try {
+      const res = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          apikey: SUPABASE_ANON_KEY,
+          Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+          Prefer: 'return=minimal',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error((await res.text()) || `Request failed with status ${res.status}`);
+      }
+
+      e.target.reset();
+      setSent(true);
+    } catch (err) {
+      console.error('Contact form submission failed:', err);
+      alert('Sorry, something went wrong sending your message. Please try again or email us directly.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -263,12 +295,12 @@ export default function ContactPage() {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                     <Field name="firstName">
                       <FieldLabel>First Name</FieldLabel>
-                      <StyledInput placeholder="John" required />
+                      <StyledInput id="firstName" name="firstName" placeholder="John" required />
                       <FieldError>Required</FieldError>
                     </Field>
                     <Field name="lastName">
                       <FieldLabel>Last Name</FieldLabel>
-                      <StyledInput placeholder="Doe" required />
+                      <StyledInput id="lastName" name="lastName" placeholder="Doe" required />
                       <FieldError>Required</FieldError>
                     </Field>
                   </div>
@@ -276,7 +308,7 @@ export default function ContactPage() {
                   {/* Email */}
                   <Field name="email">
                     <FieldLabel>Email Address</FieldLabel>
-                    <StyledInput type="email" placeholder="john@example.com" required />
+                    <StyledInput id="emailAddress" name="email" type="email" placeholder="john@example.com" required />
                     <FieldError>Please enter a valid email.</FieldError>
                   </Field>
 
@@ -294,8 +326,8 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <label style={labelStyle} htmlFor="message">Message</label>
-                    <StyledTextarea id="message" name="message" rows={5} placeholder="How can we help?" required />
+                    <label style={labelStyle} htmlFor="messageText">Message</label>
+                    <StyledTextarea id="messageText" name="message" rows={5} placeholder="How can we help?" required />
                   </div>
 
                   <SubmitButton loading={loading}>Send Message</SubmitButton>
