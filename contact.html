@@ -62,7 +62,7 @@
                         <h1 style="font-size: 3.5rem; margin: 1.5rem 0;">Let's Decode the Future Together.</h1>
                         <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 3rem;">
                             Whether you are a clinician looking for research collaborations, a patient interested in our
-                            platforms, or a scientist passionate about the microbiome, we’d love to hear from you.
+                            platforms, or a scientist passionate about the microbiome, we'd love to hear from you.
                         </p>
 
                         <div class="contact-methods">
@@ -113,40 +113,43 @@
                         style="background: var(--white); padding: 3rem; border-radius: 24px; box-shadow: var(--shadow-lg); border: 1px solid var(--border-color);">
                         <h3 class="contact-title" style="margin-bottom: 2rem; color: var(--navy);">Send us a message</h3>
                         <form id="contactForm">
-                            <div
-                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
                                 <div>
-                                    <label
-                                        style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">First
-                                        Name</label>
-                                    <input type="text" placeholder="John"
+                                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">First Name</label>
+                                    <input id="firstName" type="text" placeholder="John"
                                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background: #f8fafc;">
                                 </div>
                                 <div>
-                                    <label
-                                        style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Last
-                                        Name</label>
-                                    <input type="text" placeholder="Doe"
+                                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Last Name</label>
+                                    <input id="lastName" type="text" placeholder="Doe"
                                         style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background: #f8fafc;">
                                 </div>
                             </div>
                             <div style="margin-bottom: 1.5rem;">
-                                <label
-                                    style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Email
-                                    Address</label>
-                                <input type="email" placeholder="john@example.com"
+                                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Email Address</label>
+                                <input id="emailAddress" type="email" placeholder="john@example.com"
                                     style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background: #f8fafc;">
                             </div>
                             <div style="margin-bottom: 1.5rem;">
-                                <label
-                                    style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Message</label>
-                                <textarea rows="5" placeholder="How can we help?"
+                                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Inquiry Type</label>
+                                <select id="inquiryType"
+                                    style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background: #f8fafc; color: inherit;">
+                                    <option value="">Select an option...</option>
+                                    <option value="Jivanu Atlas (Microbiome Test)">Jivanu Atlas (Microbiome Test)</option>
+                                    <option value="ReBiome (FMT Procedure)">ReBiome (FMT Procedure)</option>
+                                    <option value="Collaboration">Collaboration</option>
+                                    <option value="General Enquiry">General Enquiry</option>
+                                </select>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500;">Message</label>
+                                <textarea id="messageText" rows="5" placeholder="How can we help?"
                                     style="width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--border-color); background: #f8fafc; resize: none;"></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                         </form>
                     </div>
-                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -188,38 +191,68 @@
             </div>
         </div>
     </footer>
+
     <script>
-  const SUPABASE_URL = 'https://pynbsutycwuxneoxgndl.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5bmJzdXR5Y3d1eG5lb3hnbmRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NzI0NzIsImV4cCI6MjA5NDM0ODQ3Mn0.UYjR8BzJBHG70An99-CFTvYPn8picn-WXEvxQ0GyOec';
+        const SUPABASE_URL = 'https://pynbsutycwuxneoxgndl.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB5bmJzdXR5Y3d1eG5lb3hnbmRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NzI0NzIsImV4cCI6MjA5NDM0ODQ3Mn0.UYjR8BzJBHG70An99-CFTvYPn8picn-WXEvxQ0GyOec';
 
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+        window.addEventListener('load', function () {
+            var form = document.getElementById('contactForm');
+            console.log('Form found:', form);
 
-    const inputs = this.querySelectorAll('input, textarea, select');
-    const firstName = inputs[0].value.trim();
-    const lastName = inputs[1].value.trim();
-    const email = inputs[2].value.trim();
-    const inquiryType = inputs[3] ? inputs[3].value : '';
-    const message = inputs[4] ? inputs[4].value.trim() : inputs[3].value.trim();
+            if (!form) {
+                console.error('contactForm not found');
+                return;
+            }
 
-    const response = await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_ANON_KEY,
-        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
-      },
-      body: JSON.stringify({ first_name: firstName, last_name: lastName, email, inquiry_type: inquiryType, message })
-    });
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                e.stopPropagation();
 
-    if (response.ok) {
-      alert('Message sent successfully!');
-      this.reset();
-    } else {
-      alert('Something went wrong. Please try again.');
-    }
-  });
-</script>
+                var firstName = document.getElementById('firstName').value.trim();
+                var lastName = document.getElementById('lastName').value.trim();
+                var email = document.getElementById('emailAddress').value.trim();
+                var inquiryType = document.getElementById('inquiryType').value;
+                var message = document.getElementById('messageText').value.trim();
+
+                console.log('Submitting:', { firstName, lastName, email, inquiryType, message });
+
+                try {
+                    var response = await fetch(SUPABASE_URL + '/rest/v1/contact_submissions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'apikey': SUPABASE_ANON_KEY,
+                            'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+                            'Prefer': 'return=minimal'
+                        },
+                        body: JSON.stringify({
+                            first_name: firstName,
+                            last_name: lastName,
+                            email: email,
+                            inquiry_type: inquiryType,
+                            message: message
+                        })
+                    });
+
+                    console.log('Response status:', response.status);
+
+                    if (response.ok) {
+                        alert('Message sent successfully!');
+                        form.reset();
+                    } else {
+                        var err = await response.text();
+                        console.error('Error response:', err);
+                        alert('Something went wrong. Please try again.');
+                    }
+                } catch (err) {
+                    console.error('Fetch error:', err);
+                    alert('Network error. Please try again.');
+                }
+            });
+        });
+    </script>
+
 </body>
 
 </html>
